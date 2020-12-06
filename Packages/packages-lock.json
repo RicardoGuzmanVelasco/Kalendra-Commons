@@ -1,10 +1,11 @@
 {
   "dependencies": {
     "com.boundfoxstudios.fluentassertions": {
-      "version": "file:com.boundfoxstudios.fluentassertions-0.1.0-preview",
+      "version": "https://github.com/BoundfoxStudios/fluentassertions-unity.git#upm",
       "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "2c40161561692659ca368d32eb43f946d881764c"
     },
     "com.unity.2d.animation": {
       "version": "4.2.6",
