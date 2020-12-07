@@ -23,6 +23,7 @@ namespace Kalendra.Commons.Tests.TestDataBuilders.Application
         }
         
         public static CharacterClassBuilder New() => new CharacterClassBuilder();
+        public static CharacterClassBuilder New_Bard() => new CharacterClassBuilder().WithID("Bard");
         
         public override CharacterClass Build() => new CharacterClass(id, equipableWeaponTypes);
     }

@@ -11,4 +11,9 @@
             Type = type;
         }
     }
+    
+    public sealed class NullWeapon : Weapon
+    {
+        public NullWeapon() : base("", new NullWeaponType()) { }
+    }
 }

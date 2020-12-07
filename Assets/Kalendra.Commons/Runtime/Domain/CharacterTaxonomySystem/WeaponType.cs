@@ -6,4 +6,9 @@
         
         public WeaponType(string id) => ID = id;
     }
+
+    public sealed class NullWeaponType : WeaponType
+    {
+        public NullWeaponType() : base("") { }
+    }
 }
