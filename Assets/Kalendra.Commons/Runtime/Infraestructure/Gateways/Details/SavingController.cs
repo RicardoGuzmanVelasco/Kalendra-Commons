@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AndrewLord.UnityPowerPrefs;
+using UnityEngine;
 using Wolves.Utils.Serialization;
 using Wolves.Utils.StaticExtensions;
 
@@ -95,6 +96,13 @@ namespace Wolves.Utils.Persistence
         {
             var emptySaving = new T();
             Save(emptySaving, extraInfo);
+        }
+        #endregion
+        
+        #region Delete
+        public static void Delete<T>(object extraInfo = null) where T : class, IJsonizable, new()
+        {
+            PlayerPrefs.DeleteKey(extraInfo?.ToString() ?? "");
         }
         #endregion
     }
