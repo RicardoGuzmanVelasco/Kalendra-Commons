@@ -1,7 +1,9 @@
-﻿namespace Kalendra.Commons.Runtime.Domain.Gateways
+﻿using System.Threading.Tasks;
+
+namespace Kalendra.Commons.Runtime.Domain.Gateways
 {
     public interface IDeletionRepository
     {
-        bool Delete(string hashID);
+        Task<bool> Delete(string hashID);
     }
 }

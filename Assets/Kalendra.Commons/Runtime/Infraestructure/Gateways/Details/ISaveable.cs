@@ -1,4 +1,4 @@
-namespace Wolves.Utils.Persistence
+namespace Kalendra.Commons.Utils.Persistence
 {
     public interface ISaveable
     {

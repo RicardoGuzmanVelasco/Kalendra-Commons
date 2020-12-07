@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using AndrewLord.UnityPowerPrefs;
 using UnityEngine;
-using Wolves.Utils.Serialization;
-using Wolves.Utils.StaticExtensions;
+using Kalendra.Commons.Utils.Serialization;
+using Kalendra.Commons.Utils.StaticExtensions;
 
-namespace Wolves.Utils.Persistence
+namespace Kalendra.Commons.Utils.Persistence
 {
     public static class SavingController
     {
@@ -57,13 +57,6 @@ namespace Wolves.Utils.Persistence
                 bunch[i] = Load<T>(extraInfos[i]);
 
             return bunch;
-        }
-
-        public static void LoadAsync<T>(Action<T> receiver, object extraInfo = null) where T : class, IJsonizable, new()
-        {
-         //TODO: conexión con backend cuando sea necesario.
-         var result = Load<T>(extraInfo);
-         receiver.Invoke(result);
         }
         
         #endregion

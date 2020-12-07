@@ -4,7 +4,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 
-namespace Wolves.Utils.StaticExtensions
+namespace Kalendra.Commons.Utils.StaticExtensions
 {
     public static class TypeExtensions
     {

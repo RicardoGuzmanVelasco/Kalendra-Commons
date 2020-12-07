@@ -1,7 +1,10 @@
-﻿namespace Kalendra.Commons.Runtime.Domain.Gateways
+﻿using System.Threading.Tasks;
+using JetBrains.Annotations;
+
+namespace Kalendra.Commons.Runtime.Domain.Gateways
 {
-    public interface IWriteRepository<T>
+    public interface IWriteRepository<in T>
     {
-        void Save(string hashID, T targetToSave);
+        Task Save([NotNull] string hashID, [NotNull] T targetToSave);
     }
 }

@@ -1,7 +1,7 @@
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace Wolves.Utils.Serialization
+namespace Kalendra.Commons.Utils.Serialization
 {
     public interface IJsonizable
     {
