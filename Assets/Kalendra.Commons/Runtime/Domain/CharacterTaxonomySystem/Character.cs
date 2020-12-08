@@ -1,15 +1,17 @@
-﻿namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
+﻿using System;
+
+namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
 {
     internal class Character
     {
         public string Name { get; set; }
-        public CharacterClass CharacterClass { get; }
+        public CharacterClass Class { get; }
         public Weapon Weapon { get; } = new NullWeapon();
 
-        public Character(string name, CharacterClass characterClass)
+        public Character(string name, CharacterClass @class)
         {
             Name = name;
-            CharacterClass = characterClass;
+            Class = @class;
         }
     }
 }

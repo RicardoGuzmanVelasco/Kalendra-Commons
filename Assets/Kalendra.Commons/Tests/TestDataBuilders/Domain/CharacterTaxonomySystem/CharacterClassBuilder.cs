@@ -6,8 +6,8 @@ namespace Kalendra.Commons.Tests.TestDataBuilders.Domain.CharacterTaxonomySystem
 {
     internal class CharacterClassBuilder : Builder<CharacterClass>
     {
-        string id;
-        IEnumerable<WeaponType> equipableWeaponTypes;
+        string id = "";
+        IEnumerable<WeaponType> equipableWeaponTypes = new List<WeaponType>();
 
         public CharacterClassBuilder WithID(string newID)
         {

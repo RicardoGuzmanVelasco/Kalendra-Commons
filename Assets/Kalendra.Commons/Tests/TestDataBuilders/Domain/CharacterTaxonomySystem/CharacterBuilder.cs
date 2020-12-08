@@ -5,8 +5,8 @@ namespace Kalendra.Commons.Tests.TestDataBuilders.Domain.CharacterTaxonomySystem
 {
     internal class CharacterBuilder : Builder<Character>
     {
-        string name;
-        CharacterClass characterClass;
+        string name = "";
+        CharacterClass characterClass = new NullCharacterClass();
         
         public CharacterBuilder WithName(string newName)
         {

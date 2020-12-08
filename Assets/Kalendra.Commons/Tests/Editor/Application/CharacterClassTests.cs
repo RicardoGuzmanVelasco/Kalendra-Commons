@@ -17,17 +17,5 @@ namespace Kalendra.Commons.Tests.Editor.Application
 
             resultID.Should().BeEquivalentTo(characterID);
         }
-
-        [Test]
-        public void CharacterClass_HasEquipableWeaponTypes()
-        {
-            var weaponType = WeaponTypeBuilder.New_Axe().Build();
-            CharacterClass sut = CharacterClassBuilder.New().WithEquipableWeaponTypes(weaponType);
-
-            var resultEquipableWeaponTypes = sut.EquipableWeaponTypes;
-
-            resultEquipableWeaponTypes.Should().Contain(weaponType);
-            resultEquipableWeaponTypes.Should().HaveCount(1);
-        }
     }
 }

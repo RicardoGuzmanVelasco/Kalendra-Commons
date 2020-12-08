@@ -14,9 +14,23 @@ namespace Kalendra.Commons.Tests.Editor.Application
             const string expectedName = "Name";
             Character sut = CharacterBuilder.New().WithName(expectedName);
 
-            var resultClass = sut.CharacterClass;
+            var resultName = sut.Name;
 
-            resultClass.Should().Be(expectedName);
+            resultName.Should().Be(expectedName);
+        }
+
+        [Test]
+        public void Character_CanSetName()
+        {
+            const string expectedName = "Name";
+            Character sut = CharacterBuilder.New();
+
+            var resultNameBefore = sut.Name;
+            sut.Name = expectedName;
+            var resultNameAfter = sut.Name;
+
+            resultNameBefore.Should().NotBe(expectedName);
+            resultNameAfter.Should().Be(expectedName);
         }
         
         [Test]
@@ -25,25 +39,19 @@ namespace Kalendra.Commons.Tests.Editor.Application
             var expectedClass = CharacterClassBuilder.New_Bard().Build();
             Character sut = CharacterBuilder.New().WithClass(expectedClass);
 
-            var resultClass = sut.CharacterClass;
+            var resultClass = sut.Class;
 
             resultClass.Should().Be(expectedClass);
         }
         
         [Test]
-        public void Character_ByDefault_HasWeaponNullObjectPattern()
+        public void Character_HasWeaponNullObjectPattern_ByDefault()
         {
             Character sut = CharacterBuilder.New();
 
             var defaultWeapon = sut.Weapon;
 
             defaultWeapon.Should().BeOfType<NullWeapon>();
-        }
-
-        [Test]
-        public void Character_CanEquipWeapon_IfCharacterClassDoes()
-        {
-            throw new NotImplementedException();
         }
     }
 }
