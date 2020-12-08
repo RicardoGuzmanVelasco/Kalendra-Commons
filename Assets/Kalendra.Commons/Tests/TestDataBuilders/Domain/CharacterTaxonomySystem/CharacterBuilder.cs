@@ -1,12 +1,18 @@
-﻿using System.Collections.Generic;
-using Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem;
+﻿using Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem;
 using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 
-namespace Kalendra.Commons.Tests.TestDataBuilders.Application
+namespace Kalendra.Commons.Tests.TestDataBuilders.Domain.CharacterTaxonomySystem
 {
     internal class CharacterBuilder : Builder<Character>
     {
+        string name;
         CharacterClass characterClass;
+        
+        public CharacterBuilder WithName(string newName)
+        {
+            name = newName;
+            return this;
+        }
         
         public CharacterBuilder WithClass(CharacterClass newClass)
         {
@@ -16,6 +22,6 @@ namespace Kalendra.Commons.Tests.TestDataBuilders.Application
 
         public static CharacterBuilder New() => new CharacterBuilder();
         
-        public override Character Build() => new Character(characterClass);
+        public override Character Build() => new Character(name, characterClass);
     }
 }

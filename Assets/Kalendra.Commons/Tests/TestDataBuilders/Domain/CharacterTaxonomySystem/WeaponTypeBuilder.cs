@@ -1,7 +1,7 @@
 ﻿using Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem;
 using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 
-namespace Kalendra.Commons.Tests.TestDataBuilders.Application
+namespace Kalendra.Commons.Tests.TestDataBuilders.Domain.CharacterTaxonomySystem
 {
     internal class WeaponTypeBuilder : Builder<WeaponType>
     {

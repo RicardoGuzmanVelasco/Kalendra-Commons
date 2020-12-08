@@ -2,12 +2,14 @@
 {
     internal class Character
     {
-        public CharacterClass characterClass { get; }
+        public string Name { get; set; }
+        public CharacterClass CharacterClass { get; }
         public Weapon Weapon { get; } = new NullWeapon();
 
-        public Character(CharacterClass characterClass)
+        public Character(string name, CharacterClass characterClass)
         {
-            this.characterClass = characterClass;
+            Name = name;
+            CharacterClass = characterClass;
         }
     }
 }

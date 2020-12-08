@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem;
-using Kalendra.Commons.Tests.TestDataBuilders.Application;
+using Kalendra.Commons.Tests.TestDataBuilders.Domain.CharacterTaxonomySystem;
 using NUnit.Framework;
 
 namespace Kalendra.Commons.Tests.Editor.Application
