@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-
-namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
+﻿namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
 {
     internal class CharacterClass
     {
         public string ID { get; }
 
-        public CharacterClass(string id, IEnumerable<WeaponType> equipableWeaponTypes)
+        public CharacterClass(string id)
         {
             ID = id;
         }
@@ -14,6 +12,6 @@ namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
 
     internal sealed class NullCharacterClass : CharacterClass
     {
-        public NullCharacterClass() : base("", new List<WeaponType>()) { }
+        public NullCharacterClass() : base("") { }
     }
 }

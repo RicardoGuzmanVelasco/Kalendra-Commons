@@ -16,7 +16,8 @@ namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
 
         public bool IsUsableByClass(CharacterClass @class)
         {
-            return !AllowedClasses.Any() || AllowedClasses.Contains(@class);
+            return !AllowedClasses.Any() ||
+                    AllowedClasses.Any(characterClass => characterClass.ID == @class.ID);
         }
     }
 

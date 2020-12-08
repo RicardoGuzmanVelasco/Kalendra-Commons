@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
+﻿namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
 {
     internal class Character
     {

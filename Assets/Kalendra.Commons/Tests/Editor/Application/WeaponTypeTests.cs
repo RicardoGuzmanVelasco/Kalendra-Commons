@@ -11,7 +11,7 @@ namespace Kalendra.Commons.Tests.Editor.Application
         [Test]
         public void WeaponType_HasID()
         {
-            const string expectedID = "Axe";
+            const string expectedID = "ID";
             WeaponType sut = WeaponTypeBuilder.New().WithID(expectedID);
 
             var result = sut.ID;
@@ -20,9 +20,41 @@ namespace Kalendra.Commons.Tests.Editor.Application
         }
 
         [Test]
+        public void WeaponType_CanBeUsedByClass_IfClassWasPassed()
+        {
+            var someClass = CharacterClassBuilder.New_Bard();
+            WeaponType sut = WeaponTypeBuilder.New().WithAllowedClasses(someClass);
+
+            var expectedIsUsable = sut.IsUsableByClass(someClass);
+
+            expectedIsUsable.Should().BeTrue();
+        }
+        
+        [Test]
         public void WeaponType_CanBeUsedByAnyClass_ByDefault()
         {
-            throw new NotImplementedException();
+            var someClass = CharacterClassBuilder.New_Bard();
+            WeaponType sut = WeaponTypeBuilder.New();
+
+            var expectedIsUsable = sut.IsUsableByClass(someClass);
+
+            expectedIsUsable.Should().BeTrue();
+        }
+        
+        [Test]
+        public void WeaponType_CanNotBeUsedByClass_IfAnyOtherClassWasPassed()
+        {
+            //Arrange
+            var someClass = CharacterClassBuilder.New_Bard();
+            var someOtherClass = CharacterClassBuilder.New().WithID("");
+            
+            WeaponType sut = WeaponTypeBuilder.New().WithAllowedClasses(someOtherClass);
+
+            //Act
+            var expectedIsUsable = sut.IsUsableByClass(someClass);
+
+            //Assert
+            expectedIsUsable.Should().BeFalse();
         }
     }
 }
