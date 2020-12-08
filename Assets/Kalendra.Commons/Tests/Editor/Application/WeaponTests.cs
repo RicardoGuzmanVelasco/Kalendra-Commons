@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem;
-using Kalendra.Commons.Tests.TestDataBuilders.Domain.CharacterTaxonomySystem;
+using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
 using NUnit.Framework;
 
 namespace Kalendra.Commons.Tests.Editor.Application
@@ -10,8 +10,8 @@ namespace Kalendra.Commons.Tests.Editor.Application
         [Test]
         public void Weapon_HasWeaponType()
         {
-            var expectedType = WeaponTypeBuilder.New_Axe().Build();
-            Weapon sut = WeaponBuilder.New().WithType(expectedType);
+            var expectedType = Build.WeaponType_Axe().Build();
+            Weapon sut = Build.Weapon().WithType(expectedType);
 
             var resultType = sut.Type;
 
@@ -22,7 +22,7 @@ namespace Kalendra.Commons.Tests.Editor.Application
         public void Weapon_HasID()
         {
             const string expectedID = "GoldAxe";
-            Weapon sut = WeaponBuilder.New().WithID(expectedID);
+            Weapon sut = Build.Weapon().WithID(expectedID);
 
             var resultID = sut.ID;
 

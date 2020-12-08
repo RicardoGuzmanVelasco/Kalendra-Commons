@@ -1,7 +1,6 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem;
-using Kalendra.Commons.Tests.TestDataBuilders.Domain.CharacterTaxonomySystem;
+using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
 using NUnit.Framework;
 
 namespace Kalendra.Commons.Tests.Editor.Application
@@ -12,7 +11,7 @@ namespace Kalendra.Commons.Tests.Editor.Application
         public void WeaponType_HasID()
         {
             const string expectedID = "ID";
-            WeaponType sut = WeaponTypeBuilder.New().WithID(expectedID);
+            WeaponType sut = Build.WeaponType().WithID(expectedID);
 
             var result = sut.ID;
 
@@ -22,8 +21,8 @@ namespace Kalendra.Commons.Tests.Editor.Application
         [Test]
         public void WeaponType_CanBeUsedByClass_IfClassWasPassed()
         {
-            var someClass = CharacterClassBuilder.New_Bard();
-            WeaponType sut = WeaponTypeBuilder.New().WithAllowedClasses(someClass);
+            var someClass = Build.CharacterClass_Bard();
+            WeaponType sut = Build.WeaponType().WithAllowedClasses(someClass);
 
             var expectedIsUsable = sut.IsUsableByClass(someClass);
 
@@ -33,8 +32,8 @@ namespace Kalendra.Commons.Tests.Editor.Application
         [Test]
         public void WeaponType_CanBeUsedByAnyClass_ByDefault()
         {
-            var someClass = CharacterClassBuilder.New_Bard();
-            WeaponType sut = WeaponTypeBuilder.New();
+            var someClass = Build.CharacterClass_Bard();
+            WeaponType sut = Build.WeaponType();
 
             var expectedIsUsable = sut.IsUsableByClass(someClass);
 
@@ -45,10 +44,10 @@ namespace Kalendra.Commons.Tests.Editor.Application
         public void WeaponType_CanNotBeUsedByClass_IfAnyOtherClassWasPassed()
         {
             //Arrange
-            var someClass = CharacterClassBuilder.New_Bard();
-            var someOtherClass = CharacterClassBuilder.New().WithID("");
+            var someClass = Build.CharacterClass_Bard();
+            var someOtherClass = Build.CharacterClass().WithID("");
             
-            WeaponType sut = WeaponTypeBuilder.New().WithAllowedClasses(someOtherClass);
+            WeaponType sut = Build.WeaponType().WithAllowedClasses(someOtherClass);
 
             //Act
             var expectedIsUsable = sut.IsUsableByClass(someClass);
