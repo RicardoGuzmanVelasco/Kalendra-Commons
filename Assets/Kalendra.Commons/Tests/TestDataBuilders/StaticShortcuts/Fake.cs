@@ -1,4 +1,4 @@
 ﻿namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
 {
-    public static partial class Fake { }
+    internal static partial class Fake { }
 }

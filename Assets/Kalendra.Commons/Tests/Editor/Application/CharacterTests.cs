@@ -61,8 +61,7 @@ namespace Kalendra.Commons.Tests.Editor.Application
             var someClass = Build.CharacterClass_Bard();
             Character sut = Build.Character().WithClass(someClass);
 
-            var mockUsableAlways = Substitute.For<IClassDependantUsable>();
-            mockUsableAlways.IsUsableByClass(default).ReturnsForAnyArgs(true);
+            var mockUsableAlways = Fake.ClassDependantUsable_AlwaysUsable();
 
             //Act
             var resultCanUse = sut.CanUse(mockUsableAlways);
@@ -78,8 +77,7 @@ namespace Kalendra.Commons.Tests.Editor.Application
             var someClass = Build.CharacterClass_Bard();
             Character sut = Build.Character().WithClass(someClass);
 
-            var mockUsableNever = Substitute.For<IClassDependantUsable>();
-            mockUsableNever.IsUsableByClass(default).ReturnsForAnyArgs(false);
+            var mockUsableNever = Fake.ClassDependantUsable_NeverUsable();
 
             //Act
             var resultCanUse = sut.CanUse(mockUsableNever);
