@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Commons.Utils.Patterns
+namespace Kalendra.Commons.Tests.TestDataBuilders.Builders
 {
     public abstract class BehaviourBuilder<T> : Builder<T> where T : Component
     {

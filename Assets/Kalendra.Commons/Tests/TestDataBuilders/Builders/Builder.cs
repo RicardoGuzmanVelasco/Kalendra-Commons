@@ -1,4 +1,4 @@
-﻿namespace Commons.Utils.Patterns
+﻿namespace Kalendra.Commons.Tests.TestDataBuilders.Builders
 {
     public abstract class Builder<T>
     {

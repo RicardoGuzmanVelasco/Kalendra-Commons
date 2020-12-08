@@ -1,6 +1,6 @@
 using NSubstitute;
 
-namespace Commons.Utils.Patterns
+namespace Kalendra.Commons.Tests.TestDataBuilders.Builders
 {
     public class MockBuilder<T> : Builder<T> where T : class // T : interface is not a thing yet.
     {

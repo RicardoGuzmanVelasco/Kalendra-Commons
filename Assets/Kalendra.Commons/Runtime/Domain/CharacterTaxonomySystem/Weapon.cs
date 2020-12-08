@@ -1,6 +1,6 @@
 ﻿namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
 {
-    public class Weapon
+    internal class Weapon
     {
         public string ID { get; }
         public WeaponType Type { get; }
@@ -12,7 +12,7 @@
         }
     }
     
-    public sealed class NullWeapon : Weapon
+    internal sealed class NullWeapon : Weapon
     {
         public NullWeapon() : base("", new NullWeaponType()) { }
     }

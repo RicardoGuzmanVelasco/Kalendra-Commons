@@ -2,9 +2,10 @@
 using System.Threading.Tasks;
 using Kalendra.Commons.Runtime.Domain.Gateways;
 using UnityEngine;
+
 #pragma warning disable 1998
 
-namespace Kalendra.Commons.Runtime.Infraestructure.Gateways.Details
+namespace Kalendra.Commons.Runtime.Infraestructure.Gateways.Adapters
 {
     public class ByResourcesNameNotAsyncRepository<T> : IReadOnlyRepository<T> where T : Object
     {

@@ -1,9 +1,9 @@
-﻿using Commons.Utils.Patterns;
-using Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem;
+﻿using Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem;
+using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 
 namespace Kalendra.Commons.Tests.TestDataBuilders.Application
 {
-    public class WeaponBuilder : Builder<Weapon>
+    internal class WeaponBuilder : Builder<Weapon>
     {
         string id;
         WeaponType type;

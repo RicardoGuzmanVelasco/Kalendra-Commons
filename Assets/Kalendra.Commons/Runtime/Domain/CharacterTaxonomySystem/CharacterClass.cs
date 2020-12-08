@@ -2,7 +2,7 @@
 
 namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
 {
-    public class CharacterClass
+    internal class CharacterClass
     {
         public string ID { get; }
         public IEnumerable<WeaponType> EquipableWeaponTypes { get; }

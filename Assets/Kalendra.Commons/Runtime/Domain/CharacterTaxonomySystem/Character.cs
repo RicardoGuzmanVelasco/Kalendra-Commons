@@ -1,6 +1,6 @@
 ﻿namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
 {
-    public class Character
+    internal class Character
     {
         public CharacterClass characterClass { get; }
         public Weapon Weapon { get; } = new NullWeapon();

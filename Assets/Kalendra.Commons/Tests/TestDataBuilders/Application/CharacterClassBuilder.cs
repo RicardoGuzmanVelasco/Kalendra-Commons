@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Commons.Utils.Patterns;
 using Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem;
+using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 
 namespace Kalendra.Commons.Tests.TestDataBuilders.Application
 {
-    public class CharacterClassBuilder : Builder<CharacterClass>
+    internal class CharacterClassBuilder : Builder<CharacterClass>
     {
         string id;
         IEnumerable<WeaponType> equipableWeaponTypes;

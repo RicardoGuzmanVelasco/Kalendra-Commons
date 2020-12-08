@@ -1,9 +1,10 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem;
 using Kalendra.Commons.Tests.TestDataBuilders.Application;
 using NUnit.Framework;
 
-namespace Kalendra.Commons.Tests.Runtime.Application
+namespace Kalendra.Commons.Tests.Editor.Application
 {
     public class CharacterTests
     {
@@ -26,6 +27,11 @@ namespace Kalendra.Commons.Tests.Runtime.Application
             var defaultWeapon = sut.Weapon;
 
             defaultWeapon.Should().BeOfType<NullWeapon>();
+        }
+
+        public void Character_CanEquipWeapon_IfCharacterClassDoes()
+        {
+            throw new NotImplementedException();
         }
     }
 }
