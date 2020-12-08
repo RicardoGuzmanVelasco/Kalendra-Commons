@@ -11,5 +11,8 @@
             Name = name;
             Class = @class;
         }
+
+        //TODO: move to Interactor concern?
+        public bool CanUse(IClassDependantUsable usable) => usable.IsUsableByClass(Class);
     }
 }
