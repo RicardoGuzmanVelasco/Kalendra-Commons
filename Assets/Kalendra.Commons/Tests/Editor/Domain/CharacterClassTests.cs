@@ -17,5 +17,17 @@ namespace Kalendra.Commons.Tests.Editor.Application
 
             resultID.Should().BeEquivalentTo(characterID);
         }
+
+        [Test]
+        public void AllFamilyID_JustContainsID_IfIsNotDerivedClass()
+        {
+            var expectedID = "ID";
+            CharacterClass sut = Build.CharacterClass().WithID(expectedID);
+
+            var resultFamilyID = sut.AllFamilyID;
+
+            resultFamilyID.Should().HaveCount(1);
+            resultFamilyID.Should().Contain(expectedID);
+        }
     }
 }
