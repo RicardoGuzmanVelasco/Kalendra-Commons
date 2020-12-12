@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem;
 using UnityEngine;
 
 namespace Kalendra.Commons.Runtime.Infraestructure.CharacterTaxonomySystem.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "CharacterClass", menuName = "Kalendra/CharacterTaxonomy/CharacterClass", order = 0)]
-    public class CharacterClassDefinition : ScriptableObject
+    internal class CharacterClassDefinition : DefinitionScriptObj<CharacterClassDefinitionDataModel, CharacterClass>
     {
-        [SerializeField] string id;
-        [SerializeField] List<CharacterClassDefinition> derivedFrom;
-
-        public CharacterClass ToCharacterClass()
+        public override CharacterClass ToDefined()
         {
-            var targetDerivedFrom = derivedFrom?.Select(ancestor => ancestor.ToCharacterClass());
-            return new CharacterClass(id, targetDerivedFrom);
+            var targetID = dataModel.id;
+            var targetDerivedFrom = dataModel.derivedFrom?.Select(ancestor => ancestor.ToDefined());
+            
+            return new CharacterClass(targetID, targetDerivedFrom);
         } 
     }
 }

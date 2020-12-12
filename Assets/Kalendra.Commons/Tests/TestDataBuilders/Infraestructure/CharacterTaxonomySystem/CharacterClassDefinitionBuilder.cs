@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem;
 using Kalendra.Commons.Runtime.Infraestructure.CharacterTaxonomySystem.ScriptableObjects;
-using Kalendra.Commons.Tests.TestDataBuilders.Builders;
-using UnityEngine;
 
 namespace Kalendra.Commons.Tests.TestDataBuilders.Infraestructure.CharacterTaxonomySystem
 {
-    public class CharacterClassDefinitionBuilder : Builder<CharacterClassDefinition>
+    internal class CharacterClassDefinitionBuilder
+        : DefinitionBuilder<CharacterClassDefinition, CharacterClassDefinitionDataModel, CharacterClass>
     {
         string id = "";
         List<CharacterClassDefinition> derivedFrom = new List<CharacterClassDefinition>();
@@ -24,22 +24,14 @@ namespace Kalendra.Commons.Tests.TestDataBuilders.Infraestructure.CharacterTaxon
         }
         
         public static CharacterClassDefinitionBuilder New() => new CharacterClassDefinitionBuilder();
-        
-        public override CharacterClassDefinition Build()
-        {
-            var instance = ScriptableObject.CreateInstance<CharacterClassDefinition>();
-            
-            var instanceID = instance.GetType().GetField("id",
-                System.Reflection.BindingFlags.NonPublic | 
-                System.Reflection.BindingFlags.Instance);
-            instanceID.SetValue(instance, id);
-            
-            var instanceDerivedFrom = instance.GetType().GetField("derivedFrom",
-                System.Reflection.BindingFlags.NonPublic | 
-                System.Reflection.BindingFlags.Instance);
-            instanceDerivedFrom.SetValue(instance, derivedFrom);
 
-            return instance;
+        protected override CharacterClassDefinitionDataModel BuildDataModel()
+        {
+            return new CharacterClassDefinitionDataModel
+            {
+                id = id,
+                derivedFrom = derivedFrom
+            };
         }
     }
 }
