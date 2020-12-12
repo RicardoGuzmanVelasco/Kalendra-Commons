@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
 {
-    internal class CharacterClass
+    public class CharacterClass
     {
         public string ID { get; }
 
-        IEnumerable<CharacterClass> derivedFrom;
+        readonly IEnumerable<CharacterClass> derivedFrom;
 
         public CharacterClass(string id, IEnumerable<CharacterClass> derivedFromClasses = null)
         {
@@ -18,10 +17,21 @@ namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
 
         public IEnumerable<string> AllFamilyID => CreateGenealogicalIDFamily();
 
+        public bool IsAbleToUse(IClassDependantUsable usable)
+        {
+            return !usable.AllowedClasses.Any() ||
+                    usable.AllowedClasses.Any(characterClass => AllFamilyID.Contains(characterClass.ID));
+        }
+
         #region Support methods
         IEnumerable<string> CreateGenealogicalIDFamily()
         {
-            return new List<string>{ID};
+            var familyID = new List<string>{ID};
+            
+            foreach(var ancestor in derivedFrom)
+                familyID.AddRange(ancestor.CreateGenealogicalIDFamily());
+            
+            return familyID;
         }
         #endregion
     }

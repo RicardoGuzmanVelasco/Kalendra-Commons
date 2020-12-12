@@ -1,7 +1,9 @@
-﻿namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
+﻿using System.Collections.Generic;
+
+namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
 {
-    internal interface IClassDependantUsable
+    public interface IClassDependantUsable
     {
-        bool IsUsableByClass(CharacterClass @class);
+        IEnumerable<CharacterClass> AllowedClasses { get; }
     }
 }

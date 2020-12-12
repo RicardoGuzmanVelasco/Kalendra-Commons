@@ -13,6 +13,6 @@
         }
 
         //TODO: move to Interactor concern?
-        public bool CanUse(IClassDependantUsable usable) => usable.IsUsableByClass(Class);
+        public bool CanUse(IClassDependantUsable usable) => Class.IsAbleToUse(usable);
     }
 }

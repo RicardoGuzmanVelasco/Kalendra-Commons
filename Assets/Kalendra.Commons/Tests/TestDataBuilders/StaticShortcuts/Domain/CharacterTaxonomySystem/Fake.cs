@@ -5,18 +5,10 @@ namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
 {
     internal static partial class Fake
     {
-        internal static IClassDependantUsable ClassDependantUsable_AlwaysUsable()
+        internal static IClassDependantUsable ClassDependantUsable_UsableByClass(params CharacterClass[] classesToReturn)
         {
             var mock = Substitute.For<IClassDependantUsable>();
-            mock.IsUsableByClass(default).ReturnsForAnyArgs(true);
-
-            return mock;
-        }
-        
-        internal static IClassDependantUsable ClassDependantUsable_NeverUsable()
-        {
-            var mock = Substitute.For<IClassDependantUsable>();
-            mock.IsUsableByClass(default).ReturnsForAnyArgs(false);
+            mock.AllowedClasses.ReturnsForAnyArgs(classesToReturn);
 
             return mock;
         }

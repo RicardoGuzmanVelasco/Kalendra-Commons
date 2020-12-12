@@ -61,10 +61,26 @@ namespace Kalendra.Commons.Tests.Editor.Application
             var someClass = Build.CharacterClass_Bard();
             Character sut = Build.Character().WithClass(someClass);
 
-            var mockUsableAlways = Fake.ClassDependantUsable_AlwaysUsable();
+            var mockUsable = Fake.ClassDependantUsable_UsableByClass(sut.Class);
 
             //Act
-            var resultCanUse = sut.CanUse(mockUsableAlways);
+            var resultCanUse = sut.CanUse(mockUsable);
+
+            //Assert
+            resultCanUse.Should().BeTrue();
+        }
+        
+        [Test]
+        public void Character_CanUseUsable_IfUsableAllowedClassesIsVoid()
+        {
+            //Arrange
+            var someClass = Build.CharacterClass_Bard();
+            Character sut = Build.Character().WithClass(someClass);
+
+            var mockUsable = Fake.ClassDependantUsable_UsableByClass();
+
+            //Act
+            var resultCanUse = sut.CanUse(mockUsable);
 
             //Assert
             resultCanUse.Should().BeTrue();
@@ -77,10 +93,10 @@ namespace Kalendra.Commons.Tests.Editor.Application
             var someClass = Build.CharacterClass_Bard();
             Character sut = Build.Character().WithClass(someClass);
 
-            var mockUsableNever = Fake.ClassDependantUsable_NeverUsable();
+            var mockNotUsable = Fake.ClassDependantUsable_UsableByClass(Build.CharacterClass());
 
             //Act
-            var resultCanUse = sut.CanUse(mockUsableNever);
+            var resultCanUse = sut.CanUse(mockNotUsable);
 
             //Assert
             resultCanUse.Should().BeFalse();
