@@ -14,24 +14,37 @@ namespace Kalendra.Commons.Tests.Runtime.Acceptance
             new ByResourcesNameNotAsyncRepository<CharacterClassDefinition>();
 
         [Test]
-        public async void NoCharacterClassDefinition_HasVoidID()
+        public async void NoCharacterClassDefinition_HasEmptyID()
         {
             var definitions = await loader.LoadAll();
 
-            foreach(var definition in definitions)
-                string.IsNullOrWhiteSpace(definition.ToDefined().ID).Should()
-                    .BeFalse($"{definition.name} musn't have void ID");
+            definitions.Should().NotContain(
+                definition => string.IsNullOrWhiteSpace(definition.ToDefined().ID),
+                "musn't have void ID");
         }
         
         [Test]
-        public async void NoCharacterClassDefinition_HasDuplicatedID()
+        public async void AllCharacterClassDefinition_HasUniqueID()
         {
             var definitions = await loader.LoadAll();
 
+            var definitionsGroupedByID = definitions.GroupBy(definition => definition.ToDefined().ID);
+
+            foreach(var definitionGroup in definitionsGroupedByID)
+                definitionGroup.Should().ContainSingle("ID must be unique");
+        }
+        
+        [Test]
+        public async void NoCharacterClassDefinition_DerivesFromDuplicated()
+        {
+            var definitions = await loader.LoadAll();
+            
             foreach(var definition in definitions)
-                definitions
-                    .Count(classDefinition => classDefinition.ToDefined().ID == definition.ToDefined().ID)
-                    .Should().Be(1, $"{definition.name} shouldn't be repeated in other definition");
+            {
+                var ancestorsGroupedByID = definition.ToDefined().AllFamilyID.GroupBy(s => s);
+                foreach(var ancestorsGroup in ancestorsGroupedByID)
+                    ancestorsGroup.Should().ContainSingle($"ancestor in {definition.name} should be unique");
+            }
         }
     }
 }

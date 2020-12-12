@@ -13,6 +13,10 @@ namespace Kalendra.Commons.Runtime.Infraestructure.CharacterTaxonomySystem.Scrip
             var targetDerivedFrom = dataModel.derivedFrom?.Select(ancestor => ancestor.ToDefined());
             
             return new CharacterClass(targetID, targetDerivedFrom);
-        } 
+        }
+
+        #region Format
+        public override string ToString() => $@"{name}: [{ToDefined()}]";
+        #endregion
     }
 }

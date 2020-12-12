@@ -34,6 +34,10 @@ namespace Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem
             return familyID;
         }
         #endregion
+
+        #region Format
+        public override string ToString() => $"{nameof(ID)}: {ID}";
+        #endregion
     }
 
     internal sealed class NullCharacterClass : CharacterClass
