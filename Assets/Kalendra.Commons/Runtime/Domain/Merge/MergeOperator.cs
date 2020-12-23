@@ -13,7 +13,7 @@ namespace Kalendra.Commons.Runtime.Domain.Merge
             this.colorProductions = colorProductions;
         }
 
-        [CanBeNull] public ColoredPiece Merge([NotNull] params ColoredPiece[] coloredPieces)
+        [CanBeNull] internal ColoredPiece Merge([NotNull] params ColoredPiece[] coloredPieces)
         {
             if(!AllPiecesHaveSameTier(coloredPieces) || !AllPiecesHaveSamePieceID(coloredPieces))
                 return null;
@@ -24,8 +24,8 @@ namespace Kalendra.Commons.Runtime.Domain.Merge
         }
 
         #region Pieces comparison
-        static bool AllPiecesHaveSameTier(ColoredPiece[] coloredPieces) => coloredPieces.GroupBy(piece => piece.Tier).Count() == 1;
-        static bool AllPiecesHaveSamePieceID(ColoredPiece[] coloredPieces) => coloredPieces.GroupBy(piece => piece.PieceID).Count() == 1;
+        static bool AllPiecesHaveSameTier(IEnumerable<ColoredPiece> coloredPieces) => coloredPieces.GroupBy(piece => piece.Tier).Count() == 1;
+        static bool AllPiecesHaveSamePieceID(IEnumerable<ColoredPiece> coloredPieces) => coloredPieces.GroupBy(piece => piece.PieceID).Count() == 1;
         //TODO: extension method utils for collections.
         static bool AllPiecesAreTheSame(ColoredPiece[] coloredPieces) => coloredPieces.All(piece => piece.Equals(coloredPieces.First()));
         #endregion

@@ -38,9 +38,9 @@ namespace Kalendra.Commons.Tests.Editor.Domain.Merge
         public void Merge_ReturnsSameTierProducedColor_WhenMergingEquivalentPiecesDifferentColors()
         {
             //Arrange
-            const string color1 = "green";
-            const string color2 = "blue";
-            const string expectedColorResult = "cyan";
+            const string color1 = "1";
+            const string color2 = "2";
+            const string expectedColorResult = "result";
 
             var piece1 = Build.ColoredPiece_Some().WithColorID(color1).Build();
             var piece2 = Build.ColoredPiece_Some().WithColorID(color2).Build();

@@ -1,6 +1,6 @@
 ﻿namespace Kalendra.Commons.Runtime.Domain.Merge
 {
-    public class ColoredPiece
+    internal class ColoredPiece
     {
         public int Tier { get; }
         public string PieceID { get; }
