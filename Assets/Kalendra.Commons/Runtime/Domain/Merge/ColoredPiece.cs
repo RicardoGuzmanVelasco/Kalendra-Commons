@@ -1,6 +1,6 @@
 ﻿namespace Kalendra.Commons.Runtime.Domain.Merge
 {
-    internal class ColoredPiece
+    public class ColoredPiece
     {
         public int Tier { get; }
         public string PieceID { get; }
@@ -31,5 +31,10 @@
                 return hashCode;
             }
         }
+    }
+
+    public class NullColoredPiece : ColoredPiece
+    {
+        public NullColoredPiece() : base(0, "", "") { }
     }
 }

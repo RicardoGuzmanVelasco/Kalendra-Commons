@@ -5,7 +5,7 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem
     internal class BoardTile : ITile
     {
         public (int x, int y) Coords { get; }
-        public ITileContent Content { get; } = new NullTileContent();
+        public ITileContent Content { get; set; } = new NullTileContent();
 
         #region Constructors/Init
         public BoardTile(int coordX, int coordY)

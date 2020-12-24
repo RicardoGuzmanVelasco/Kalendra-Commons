@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FluentAssertions;
 using Kalendra.Commons.Runtime.Domain.BoardSystem;
 using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
@@ -52,6 +53,30 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             var result = sut.GetTile(1, 0);
 
             result.Should().BeOfType<NullTile>();
+        }
+        #endregion
+        
+        #region ListAllEmptyTiles
+        [Test]
+        public void ListAllEmptyTiles_ReturnsAllTiles_ByDefault()
+        {
+            Board sut = Build.Board();
+
+            var resultEmptyTiles = sut.ListAllEmptyTiles.ToList();
+
+            resultEmptyTiles.Should().Contain((0, 0));
+            resultEmptyTiles.Should().HaveCount(1);
+        }
+
+        [Test]
+        public void ListAllEmptyTiles_WhenNoEmptyTiles_ReturnsEmptyCollection()
+        {
+            Board sut = Build.Board();
+            sut.GetTile(0, 0).Content = Fake.TileContent_NotNull();
+            
+            var resultemptyTiles = sut.ListAllEmptyTiles.ToList();
+            
+            resultemptyTiles.Should().BeEmpty();
         }
         #endregion
 

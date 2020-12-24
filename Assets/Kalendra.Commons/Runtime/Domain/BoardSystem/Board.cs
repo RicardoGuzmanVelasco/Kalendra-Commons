@@ -86,7 +86,8 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem
             Size = (xMax + 1, yMax + 1);
         }
         #endregion
-        
+
+        public IEnumerable<(int x, int y)> ListAllEmptyTiles => tiles.Where(pair => pair.Value.Content is NullTileContent).Select(pair => pair.Key);
         IEnumerable<KeyValuePair<(int x, int y), ITile>> FindNoNullTiles() => tiles.Where(pair => !(pair.Value is NullTile));
     }
 }

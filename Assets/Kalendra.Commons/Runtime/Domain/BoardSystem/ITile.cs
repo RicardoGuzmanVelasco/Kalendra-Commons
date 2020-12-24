@@ -3,12 +3,16 @@
     public interface ITile
     {
         (int x, int y) Coords { get; }
-        ITileContent Content { get; }
+        ITileContent Content { get; set; }
     }
 
     public class NullTile : ITile
     {
         public (int x, int y) Coords { get; }
-        public ITileContent Content { get; }
+        public ITileContent Content
+        {
+            get => new NullTileContent();
+            set { }
+        }
     }
 }
