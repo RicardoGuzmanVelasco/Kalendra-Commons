@@ -135,6 +135,19 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             resultBefore.Should().BeTrue();
             resultAfter.Should().BeFalse();
         }
+
+        [Test]
+        public void RemoveTile_WhenRemovesACompleteLine_ThenSizeIsUpdated()
+        {
+            Board sut = Build.Board();
+
+            var resultBefore = sut.Size;
+            sut.RemoveTile(0, 0);
+            var resultAfter = sut.Size;
+
+            resultBefore.Should().Be((1, 1));
+            resultAfter.Should().Be((0, 0));
+        }
         #endregion
 
         #region AddTile
@@ -159,6 +172,19 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
 
             resultBefore.Should().BeFalse();
             resultAfter.Should().BeTrue();
+        }
+
+        [Test]
+        public void AddTile_WhenNewLineIsCompleted_ThenSizeIsUpdated()
+        {
+            Board sut = Build.Board_WithNoTiles();
+
+            var resultBefore = sut.Size;
+            sut.AddTile(0, 0);
+            var resultAfter = sut.Size;
+
+            resultBefore.Should().Be((0, 0));
+            resultAfter.Should().Be((1, 1));
         }
         #endregion
     }
