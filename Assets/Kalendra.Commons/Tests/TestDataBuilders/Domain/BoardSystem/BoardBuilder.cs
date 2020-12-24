@@ -19,6 +19,13 @@ namespace Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem
 
         #region ObjectMother/FactoryMethods
         public static BoardBuilder New() => new BoardBuilder();
+
+        public static Board BoardWithNoTiles()
+        {
+            var boardObjectMother = new BoardBuilder().Build();
+            boardObjectMother.RemoveTile(0, 0);
+            return boardObjectMother;
+        }
         #endregion
 
         #region Builder implementation

@@ -8,6 +8,7 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
 {
     public class BoardTests
     {
+        #region New
         [Test]
         public void New_IsCreatedWithSize()
         {
@@ -30,7 +31,9 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             actFirstArg.Should().Throw<ArgumentOutOfRangeException>();
             actSecondArg.Should().Throw<ArgumentOutOfRangeException>();
         }
+        #endregion
 
+        #region GetTile
         [Test]
         public void GetTile_TileIsNotNull_ByDefault()
         {
@@ -40,5 +43,123 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
 
             result.Should().NotBeNull();
         }
+        
+        [Test]
+        public void GetTile_OutOfRange_ReturnsNullTile()
+        {
+            Board sut = Build.Board();
+
+            var result = sut.GetTile(1, 0);
+
+            result.Should().BeOfType<NullTile>();
+        }
+        #endregion
+
+        #region HasTile
+        [Test]
+        public void HasTile_InRange_ReturnsTrue()
+        {
+            Board sut = Build.Board();
+
+            var result = sut.HasTile(0, 0);
+
+            result.Should().BeTrue();
+        }
+
+        [Test]
+        public void HasTile_NegativeRange_ReturnsFalse()
+        {
+            Board sut = Build.Board();
+
+            var resultX = sut.HasTile(-1, 0);
+            var resultY = sut.HasTile(0, -1);
+
+            resultX.Should().BeFalse();
+            resultY.Should().BeFalse();
+        }
+
+        [Test]
+        public void HasTile_OutOfRange_ReturnsFalse()
+        {
+            Board sut = Build.Board();
+
+            var resultX = sut.HasTile(0, 1);
+            var resultY = sut.HasTile(1, 0);
+
+            resultX.Should().BeFalse();
+            resultY.Should().BeFalse();
+        }
+        #endregion
+
+        #region RemoveTile
+        [Test]
+        public void RemoveTile_ReturnsTrue_ByDefault()
+        {
+            Board sut = Build.Board();
+
+            var resultRemoved = sut.RemoveTile(0, 0);
+
+            resultRemoved.Should().BeTrue();
+        }
+
+        [Test]
+        public void RemoveTile_OutOfRange_ReturnsFalse()
+        {
+            Board sut = Build.Board();
+
+            var resultRemoved = sut.RemoveTile(1, 0);
+
+            resultRemoved.Should().BeFalse();
+        }
+
+        [Test]
+        public void RemoveTile_OnPreviouslyRemovedTile_ReturnsFalse()
+        {
+            Board sut = Build.Board();
+
+            sut.RemoveTile(0, 0);
+            var resultRemoved = sut.RemoveTile(0, 0);
+
+            resultRemoved.Should().BeFalse();
+        }
+        
+        [Test]
+        public void RemoveTile_ThenHasTile_ReturnsFalse()
+        {
+            Board sut = Build.Board();
+
+            var resultBefore = sut.HasTile(0, 0);
+            sut.RemoveTile(0, 0);
+            var resultAfter = sut.HasTile(0, 0);
+
+            resultBefore.Should().BeTrue();
+            resultAfter.Should().BeFalse();
+        }
+        #endregion
+
+        #region AddTile
+        [Test]
+        public void AddTile_OnExistingTile_ReturnsFalse()
+        {
+            Board sut = Build.Board();
+
+            var resultAdded = sut.AddTile(0, 0);
+
+            resultAdded.Should().BeFalse();
+        }
+
+        [Test]
+        public void AddTile_OutOfRange_ThenHasTile_ReturnsTrue()
+        {
+            Board sut = Build.Board_WithNoTiles();
+
+            var resultBefore = sut.HasTile(0, 0);
+            sut.AddTile(0, 0);
+            var resultAfter = sut.HasTile(0, 0);
+
+            resultBefore.Should().BeFalse();
+            resultAfter.Should().BeTrue();
+        }
+        #endregion
     }
 }

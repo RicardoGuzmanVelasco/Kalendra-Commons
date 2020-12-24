@@ -1,10 +1,18 @@
 ﻿namespace Kalendra.Commons.Runtime.Domain.BoardSystem
 {
-    internal interface ITile
+    public interface ITile
     {
     }
 
-    class NullTile : ITile
+    internal class BoardTile : ITile
+    {
+        public BoardTile(int coordX, int coordY)
+        {
+            
+        }
+    }
+
+    public class NullTile : ITile
     {
     }
 }
