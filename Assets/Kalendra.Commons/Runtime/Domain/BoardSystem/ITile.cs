@@ -2,17 +2,13 @@
 {
     public interface ITile
     {
-    }
-
-    internal class BoardTile : ITile
-    {
-        public BoardTile(int coordX, int coordY)
-        {
-            
-        }
+        (int x, int y) Coords { get; }
+        ITileContent Content { get; }
     }
 
     public class NullTile : ITile
     {
+        public (int x, int y) Coords { get; }
+        public ITileContent Content { get; }
     }
 }
