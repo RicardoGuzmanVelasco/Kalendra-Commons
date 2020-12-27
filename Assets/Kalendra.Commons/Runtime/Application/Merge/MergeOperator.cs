@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
+using Kalendra.Commons.Runtime.Domain.Merge;
 
-namespace Kalendra.Commons.Runtime.Domain.Merge
+namespace Kalendra.Commons.Runtime.Application.Merge
 {
     /// <summary>
     /// Policy:
@@ -17,15 +17,6 @@ namespace Kalendra.Commons.Runtime.Domain.Merge
         public MergeOperator(HashSet<ColorProduction> colorProductions)
         {
             this.colorProductions = colorProductions;
-        }
-
-        public bool IsAvailable(params ColoredPiece[] coloredPieces)
-        {
-            if(!AllPiecesHaveSameTier(coloredPieces) || !AllPiecesHaveSamePieceID(coloredPieces))
-                return false;
-            
-            return AllPiecesAreTheSame(coloredPieces) ||
-                   ProducedColorPieceFrom(coloredPieces) != null;
         }
 
         public ColoredPiece Merge( params ColoredPiece[] coloredPieces)

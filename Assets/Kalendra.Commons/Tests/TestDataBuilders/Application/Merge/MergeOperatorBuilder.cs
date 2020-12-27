@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Kalendra.Commons.Runtime.Application.Merge;
 using Kalendra.Commons.Runtime.Domain.Merge;
 using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 

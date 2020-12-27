@@ -78,6 +78,16 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             
             resultemptyTiles.Should().BeEmpty();
         }
+
+        [Test]
+        public void ListAllEmptyTiles_WhenNoTilesInBoard_ReturnsEmptyCollection()
+        {
+            Board sut = Build.Board_WithNoTiles();
+            
+            var resultemptyTiles = sut.ListAllEmptyTiles.ToList();
+            
+            resultemptyTiles.Should().BeEmpty();
+        }
         #endregion
 
         #region HasTile

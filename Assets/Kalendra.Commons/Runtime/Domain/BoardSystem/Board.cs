@@ -87,7 +87,7 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem
         }
         #endregion
 
-        public IEnumerable<(int x, int y)> ListAllEmptyTiles => tiles.Where(pair => pair.Value.Content is NullTileContent).Select(pair => pair.Key);
+        public IEnumerable<(int x, int y)> ListAllEmptyTiles => FindNoNullTiles().Where(pair => pair.Value.Content is NullTileContent).Select(pair => pair.Key);
         IEnumerable<KeyValuePair<(int x, int y), ITile>> FindNoNullTiles() => tiles.Where(pair => !(pair.Value is NullTile));
     }
 }

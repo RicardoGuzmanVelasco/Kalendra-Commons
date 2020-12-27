@@ -23,7 +23,7 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
         [Test]
         public void Execute_DoesNothing_IfMergeIsNotAvailable()
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("TODO! To continue with after spawn operation!");
         }
     }
 }

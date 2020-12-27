@@ -27,6 +27,11 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
         }
         #endregion
 
+        public bool IsAvailable(IBoard targetBoard)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Execute(IBoard targetBoard)
         {
             //use mergePolicy. if merge is produced,store in target, clean merge in origin. 

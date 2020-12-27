@@ -7,6 +7,9 @@ namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
     {
         public static BoardBuilder Board() => BoardBuilder.New();
         public static Board Board_WithNoTiles() => BoardBuilder.BoardWithNoTiles();
+        
         public static BoardTileBuilder BoardTile() => BoardTileBuilder.New();
+
+        public static SpawnOperationBuilder SpawnOperation() => SpawnOperationBuilder.New();
     }
 }
