@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataModel:
     pieceID: default
-    tier: 1
+    tier: 4
   visualModel:
     name: "Pieza b\xE1sica"
     sprite: {fileID: 0}

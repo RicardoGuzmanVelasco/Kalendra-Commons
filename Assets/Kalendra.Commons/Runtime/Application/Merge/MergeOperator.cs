@@ -19,6 +19,15 @@ namespace Kalendra.Commons.Runtime.Domain.Merge
             this.colorProductions = colorProductions;
         }
 
+        public bool IsAvailable(params ColoredPiece[] coloredPieces)
+        {
+            if(!AllPiecesHaveSameTier(coloredPieces) || !AllPiecesHaveSamePieceID(coloredPieces))
+                return false;
+            
+            return AllPiecesAreTheSame(coloredPieces) ||
+                   ProducedColorPieceFrom(coloredPieces) != null;
+        }
+
         public ColoredPiece Merge( params ColoredPiece[] coloredPieces)
         {
             if(!AllPiecesHaveSameTier(coloredPieces) || !AllPiecesHaveSamePieceID(coloredPieces))

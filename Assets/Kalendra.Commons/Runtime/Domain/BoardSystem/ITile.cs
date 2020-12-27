@@ -12,7 +12,7 @@
         public ITileContent Content
         {
             get => new NullTileContent();
-            set { }
+            set { } //Empty to accomplish Liskov's Substitution Principle. 
         }
     }
 }

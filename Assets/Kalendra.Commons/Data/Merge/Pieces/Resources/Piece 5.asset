@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9b482dea44a4336bab83a958a53d09d, type: 3}
-  m_Name: Piece 4
+  m_Name: Piece 5
   m_EditorClassIdentifier: 
   dataModel:
     pieceID: default
-    tier: 1
+    tier: 5
   visualModel:
     name: "Pieza b\xE1sica"
     sprite: {fileID: 0}

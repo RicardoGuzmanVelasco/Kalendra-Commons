@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Kalendra.Commons.Runtime.Domain.BoardSystem
+namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
 {
     public class BoardOperationResult
     {

@@ -4,6 +4,7 @@ namespace Kalendra.Commons.Runtime.Domain.Merge
 {
     public interface IMergeOperatorPolicy
     {
-        [CanBeNull] ColoredPiece Merge([NotNull] params ColoredPiece[] coloredPieces);
+        //TODO: may receive Tiles? Add IsAvailable method? Use MergeRequestInstead?
+        ColoredPiece Merge([NotNull] params ColoredPiece[] coloredPieces);
     }
 }
