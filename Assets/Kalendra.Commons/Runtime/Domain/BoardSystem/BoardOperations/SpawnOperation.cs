@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Kalendra.Commons.Runtime.Application.Merge;
 
 namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
 {
-    class SpawnOperation : IBoardOperation
+    internal class SpawnOperation : IBoardOperation
     {
-        ISpawnOperatorPolicy spawnPolicy;
+        readonly ISpawnOperatorPolicy spawnPolicy;
 
         public SpawnOperation(ISpawnOperatorPolicy spawnPolicy)
         {
@@ -19,14 +20,15 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
             return targetBoard.ListAllEmptyTiles.Any();
         }
 
-        public void Execute(IBoard targetBoard)
+        public async Task Execute(IBoard targetBoard)
         {
-            //select tile where spawn and content to spawn from SpawnOperator;
-            //targetBoard[targetTile].Content = spawnedContent;
-            throw new NotImplementedException();
+            var (whereSpawnX, whereSpawnY) = spawnPolicy.SelectTileWhereSpawn(targetBoard).Coords;
+            var spawnedContent = await spawnPolicy.SpawnContent();
+
+            targetBoard.GetTile(whereSpawnX, whereSpawnY).Content = spawnedContent;
         }
 
-        public void Undo(IBoard targetBoard)
+        public async Task Undo(IBoard targetBoard)
         {
             throw new NotImplementedException();
         }

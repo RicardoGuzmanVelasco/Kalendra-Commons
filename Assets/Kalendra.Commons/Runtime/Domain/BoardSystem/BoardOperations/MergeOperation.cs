@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Kalendra.Commons.Runtime.Domain.Merge;
 
 namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
@@ -32,14 +33,14 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
             throw new NotImplementedException();
         }
 
-        public void Execute(IBoard targetBoard)
+        public async Task Execute(IBoard targetBoard)
         {
             //use mergePolicy. if merge is produced,store in target, clean merge in origin. 
             
             throw new System.NotImplementedException();
         }
 
-        public void Undo(IBoard targetBoard)
+        public async Task Undo(IBoard targetBoard)
         {
             throw new System.NotImplementedException();
         }

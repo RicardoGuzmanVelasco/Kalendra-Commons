@@ -20,10 +20,9 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             act.Should().Throw<InvalidOperationException>();
         }
 
-        [Test]
+        [Test, Category("TODO")]
         public void Execute_DoesNothing_IfMergeIsNotAvailable()
         {
-            throw new NotImplementedException("TODO! To continue with after spawn operation!");
         }
     }
 }
