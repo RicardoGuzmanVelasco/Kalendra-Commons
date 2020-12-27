@@ -22,6 +22,9 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
 
         public async Task Execute(IBoard targetBoard)
         {
+            if(!IsAvailable(targetBoard))
+                await Task.FromException(new InvalidOperationException());
+            
             var (whereSpawnX, whereSpawnY) = spawnPolicy.SelectTileWhereSpawn(targetBoard).Coords;
             var spawnedContent = await spawnPolicy.SpawnContent();
 

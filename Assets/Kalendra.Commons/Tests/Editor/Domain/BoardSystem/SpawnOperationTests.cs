@@ -2,19 +2,16 @@
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Kalendra.Commons.Runtime.Application.BoardSystem;
-using Kalendra.Commons.Runtime.Application.Merge;
-using Kalendra.Commons.Runtime.Domain.BoardSystem;
 using Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations;
-using Kalendra.Commons.Runtime.Domain.Merge;
 using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
-using NSubstitute;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
 {
     public class SpawnOperationTests
     {
+        #region IsAvailable
         [Test]
         public void IsAvailable_IfBoardHasAnyEmptyTile()
         {
@@ -36,16 +33,24 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
 
             result.Should().BeFalse();
         }
+        #endregion
 
+        #region Execute
         [Test]
-        public void Execute_WhenIsNotAvailable_DoesNothing()
+        public async void Execute_WhenIsNotAvailable_ThrowsException()
         {
-            var someFullBoard = Build.Board_WithNoTiles();
-            SpawnOperation sut = Build.SpawnOperation();
+            //Arrange
+            var someFullBoard = Build.Board().Build();
+            someFullBoard.GetTile(0, 0).Content = Fake.TileContent_NotNull();
+
+            var mockSpawnPolicy = Fake.SpawnOperatorPolicy();
+            SpawnOperation sut = Build.SpawnOperation().WithSpawnPolicy(mockSpawnPolicy);
             
-            Action act = () => sut.Execute(someFullBoard);
-            
-            act.Should().NotThrow();
+            //Act
+            var act = sut.Execute(someFullBoard);
+
+            //Assert
+            act.Status.Should().Be(TaskStatus.Faulted);
         }
 
         [Test]
@@ -66,5 +71,6 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             
             resultSpawnedContent.Should().Be(expectedSpawnedContent);
         }
+        #endregion
     }
 }
