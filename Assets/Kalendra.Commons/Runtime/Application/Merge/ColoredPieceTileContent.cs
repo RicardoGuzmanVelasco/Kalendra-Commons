@@ -5,6 +5,11 @@ namespace Kalendra.Commons.Runtime.Application.BoardSystem
 {
     public class ColoredPieceTileContent : ITileContent
     {
-        public ColoredPiece ContainedPiece { get; set; } = new NullColoredPiece();
+        public ColoredPiece ContainedPiece { get; }
+
+        public ColoredPieceTileContent(ColoredPiece containedPiece)
+        {
+            ContainedPiece = containedPiece;
+        }
     }
 }

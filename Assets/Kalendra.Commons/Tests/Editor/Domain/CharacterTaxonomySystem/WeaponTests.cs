@@ -3,7 +3,7 @@ using Kalendra.Commons.Runtime.Domain.CharacterTaxonomySystem;
 using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
 using NUnit.Framework;
 
-namespace Kalendra.Commons.Tests.Editor.Application
+namespace Kalendra.Commons.Tests.Editor.Domain.CharacterTaxonomySystem
 {
     public class WeaponTests
     {

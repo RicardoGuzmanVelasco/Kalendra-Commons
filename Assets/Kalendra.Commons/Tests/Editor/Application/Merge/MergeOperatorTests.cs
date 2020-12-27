@@ -3,7 +3,7 @@ using Kalendra.Commons.Runtime.Domain.Merge;
 using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
 using NUnit.Framework;
 
-namespace Kalendra.Commons.Tests.Editor.Domain.Merge
+namespace Kalendra.Commons.Tests.Editor.Application
 {
     public class MergeOperatorTests
     {

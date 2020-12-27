@@ -4,7 +4,13 @@ using JetBrains.Annotations;
 
 namespace Kalendra.Commons.Runtime.Domain.Merge
 {
-    public class MergeOperator
+    /// <summary>
+    /// Policy:
+    /// no same tier or no same ID -> no merge
+    /// Same tier, same color -> next tier, same color
+    /// Same tier, different color -> same tier, produced color if any; no merge otherwise
+    /// </summary>
+    public class MergeOperator : IMergeOperatorPolicy
     {
         readonly HashSet<ColorProduction> colorProductions;
 
@@ -13,7 +19,7 @@ namespace Kalendra.Commons.Runtime.Domain.Merge
             this.colorProductions = colorProductions;
         }
 
-        [CanBeNull] internal ColoredPiece Merge([NotNull] params ColoredPiece[] coloredPieces)
+        public ColoredPiece Merge( params ColoredPiece[] coloredPieces)
         {
             if(!AllPiecesHaveSameTier(coloredPieces) || !AllPiecesHaveSamePieceID(coloredPieces))
                 return null;

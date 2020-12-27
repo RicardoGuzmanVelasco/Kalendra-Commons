@@ -4,6 +4,6 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem
 {
     public class BoardOperationResult
     {
-        public List<IBoardOperation> CollateralOperations;
+        public List<IBoardOperation> CollateralOperations { get; }
     }
 }

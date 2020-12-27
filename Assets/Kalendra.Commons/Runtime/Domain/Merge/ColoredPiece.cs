@@ -32,9 +32,4 @@
             }
         }
     }
-
-    public class NullColoredPiece : ColoredPiece
-    {
-        public NullColoredPiece() : base(0, "", "") { }
-    }
 }

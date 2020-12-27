@@ -2,7 +2,7 @@
 {
     public interface IBoardOperation
     {
-        BoardOperationResult Do();
-        void Undo();
+        BoardOperationResult Execute(IBoard targetBoard);
+        void Undo(IBoard targetBoard);
     }
 }
