@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Kalendra.Commons.Runtime.Domain.Gateways;
 using UnityEngine;
-
-#pragma warning disable 1998
 
 namespace Kalendra.Commons.Runtime.Infraestructure.Gateways.Adapters
 {
@@ -12,13 +11,13 @@ namespace Kalendra.Commons.Runtime.Infraestructure.Gateways.Adapters
         public async Task<IEnumerable<T>> LoadAll() 
         {
             var loadedCollection = Resources.LoadAll<T>("");
-            return loadedCollection;
+            return await Task.FromResult(loadedCollection);
         }
 
         public async Task<T> Load(string hashID)
         {
             var loaded = Resources.Load<T>(hashID);
-            return loaded;
+            return await Task.FromResult(loaded);
         }
     }
 }

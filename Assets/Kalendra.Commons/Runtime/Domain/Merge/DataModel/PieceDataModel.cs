@@ -7,5 +7,7 @@ namespace Kalendra.Commons.Runtime.Domain.Merge.DataModel
     {
         public string pieceID;
         public int tier;
+
+        public override string ToString() => $"{nameof(pieceID)}: {pieceID}, {nameof(tier)}: {tier}";
     }
 }

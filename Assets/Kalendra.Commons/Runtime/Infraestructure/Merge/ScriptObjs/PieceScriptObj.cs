@@ -10,7 +10,7 @@ namespace Kalendra.Commons.Runtime.Infraestructure.Merge.ScriptObjs
         [SerializeField] PieceDataModel dataModel;
         [SerializeField] PieceVisualModel visualModel;
 
-        public static implicit operator PieceDataModel(PieceScriptObj scriptObj) => scriptObj.dataModel;
-        public static implicit operator PieceVisualModel(PieceScriptObj scriptObj) => scriptObj.visualModel;
+        public static explicit operator PieceDataModel(PieceScriptObj scriptObj) => scriptObj.dataModel;
+        public static explicit operator PieceVisualModel(PieceScriptObj scriptObj) => scriptObj.visualModel;
     }
 }
