@@ -33,14 +33,18 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
             throw new NotImplementedException();
         }
 
+#pragma warning disable 1998
         public async Task Execute(IBoard targetBoard)
+#pragma warning restore 1998
         {
             //use mergePolicy. if merge is produced,store in target, clean merge in origin. 
             
             throw new System.NotImplementedException();
         }
 
+#pragma warning disable 1998
         public async Task Undo(IBoard targetBoard)
+#pragma warning restore 1998
         {
             throw new System.NotImplementedException();
         }

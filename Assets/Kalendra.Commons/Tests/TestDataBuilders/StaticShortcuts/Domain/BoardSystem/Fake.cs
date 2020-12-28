@@ -4,7 +4,6 @@ using Kalendra.Commons.Runtime.Application.Merge;
 using Kalendra.Commons.Runtime.Domain.BoardSystem;
 using Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem;
 using NSubstitute;
-using NSubstitute.ReturnsExtensions;
 
 namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
 {

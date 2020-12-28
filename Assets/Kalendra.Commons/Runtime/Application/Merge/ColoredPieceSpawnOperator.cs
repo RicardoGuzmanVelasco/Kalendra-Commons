@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Kalendra.BoardCore.Domain.Services;
 using Kalendra.Commons.Runtime.Application.BoardSystem;
 using Kalendra.Commons.Runtime.Domain.BoardSystem;
@@ -13,7 +14,7 @@ namespace Kalendra.Commons.Runtime.Application.Merge
     /// Selects a random empty tile from board.
     /// Spawns a <see cref="ColoredPieceTileContent"/> with tier 1, random piece and color.
     /// </summary>
-    internal class ColoredPieceSpawnOperator : ISpawnOperatorPolicy
+    public class ColoredPieceSpawnOperator : ISpawnOperatorPolicy
     {
         readonly IRandomService randomService;
         readonly IReadOnlyRepository<ColorDataModel> colorsGateway;

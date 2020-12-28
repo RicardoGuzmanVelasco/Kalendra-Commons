@@ -9,6 +9,8 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
     {
         readonly ISpawnOperatorPolicy spawnPolicy;
 
+        SpawnRequestResult spawnResultCache;
+
         public SpawnOperation(ISpawnOperatorPolicy spawnPolicy)
         {
             this.spawnPolicy = spawnPolicy;
@@ -24,16 +26,45 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
         {
             if(!IsAvailable(targetBoard))
                 await Task.FromException(new InvalidOperationException());
-            
-            var (whereSpawnX, whereSpawnY) = spawnPolicy.SelectTileWhereSpawn(targetBoard).Coords;
-            var spawnedContent = await spawnPolicy.SpawnContent();
 
-            targetBoard.GetTile(whereSpawnX, whereSpawnY).Content = spawnedContent;
+            if(spawnResultCache is null)
+                await RequestSpawn(targetBoard);
+
+            SpawnCachedResult(targetBoard);
         }
 
         public async Task Undo(IBoard targetBoard)
         {
-            throw new NotImplementedException();
+            if(spawnResultCache is null)
+                await Task.FromException(new InvalidOperationException());
+
+            var (x, y) = spawnResultCache.coordsWhereSpawn;
+            if(spawnResultCache.spawnedContent != targetBoard.GetTile(x, y).Content)
+                await Task.FromException(new ArgumentException());
+
+            targetBoard.GetTile(x, y).Content = spawnResultCache.oldCachedContent;
+        }
+        #endregion
+        
+        #region Support methods
+        async Task RequestSpawn(IBoard targetBoard)
+        {
+            var coords = spawnPolicy.SelectTileWhereSpawn(targetBoard).Coords;
+            var spawnedContent = await spawnPolicy.SpawnContent();
+
+            SaveSpawnResultInCache(targetBoard, coords, spawnedContent);
+        }
+        
+        void SaveSpawnResultInCache(IBoard targetBoard, (int x, int y) coords, ITileContent spawnedContent)
+        {
+            var cachedContent = targetBoard.GetTile(coords.x, coords.y).Content;
+            spawnResultCache = new SpawnRequestResult(coords, spawnedContent, cachedContent);
+        }
+
+        void SpawnCachedResult(IBoard targetBoard)
+        {
+            var (x, y) = spawnResultCache.coordsWhereSpawn;
+            targetBoard.GetTile(x, y).Content = spawnResultCache.spawnedContent;
         }
         #endregion
     }

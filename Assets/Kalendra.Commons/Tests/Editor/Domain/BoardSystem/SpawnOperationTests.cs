@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations;
 using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
 using NUnit.Framework;
-using UnityEngine;
 
 namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
 {
@@ -47,10 +45,11 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             SpawnOperation sut = Build.SpawnOperation().WithSpawnPolicy(mockSpawnPolicy);
             
             //Act
-            var act = sut.Execute(someFullBoard);
+            var act = new Func<Task>(async() => await sut.Execute(someFullBoard));
 
             //Assert
-            act.Status.Should().Be(TaskStatus.Faulted);
+            act.Should().Throw<InvalidOperationException>();
+            await act.Should().ThrowAsync<InvalidOperationException>();
         }
 
         [Test]
@@ -70,6 +69,69 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             var resultSpawnedContent = someEmptyBoard.GetTile(0, 0).Content;
             
             resultSpawnedContent.Should().Be(expectedSpawnedContent);
+        }
+        
+                
+        [Test]
+        public async void Execute_Twice_SpawnsSameContentInSameTile()
+        {
+            //Arrange
+            var someEmptyBoard = Build.Board().Build();
+
+            var randomSpawnPolicy = Build.ColoredPieceSpawnOperator_WithSystemRandom();
+            SpawnOperation sut = Build.SpawnOperation().WithSpawnPolicy(randomSpawnPolicy);
+            
+            //Act
+            await sut.Execute(someEmptyBoard);
+            var resultContentBefore = someEmptyBoard.GetTile(0, 0).Content;
+            await sut.Undo(someEmptyBoard);
+            await sut.Execute(someEmptyBoard);
+            var resultContentAfter = someEmptyBoard.GetTile(0, 0).Content;
+
+            //Assert
+            resultContentAfter.Should().Be(resultContentBefore);
+        }
+        #endregion
+        
+        #region Undo
+        [Test]
+        public async void Undo_WhenNotExecutedBefore_ThrowsException()
+        {
+            //Arrange
+            var someBoard = Build.Board().Build();
+
+            var mockSpawnPolicy = Fake.SpawnOperatorPolicy();
+            SpawnOperation sut = Build.SpawnOperation().WithSpawnPolicy(mockSpawnPolicy);
+            
+            //Act
+            var act = new Func<Task>(async() => await sut.Undo(someBoard));
+
+            //Assert
+            await act.Should().ThrowAsync<InvalidOperationException>();
+        }
+        
+        [Test]
+        public async void Undo_AfterExecuted_RecoversTileContent()
+        {
+            //Arrange
+            var someEmptyBoard = Build.Board().Build();
+
+            var mockSpawnPolicy = Fake.SpawnOperatorPolicy();
+            SpawnOperation sut = Build.SpawnOperation().WithSpawnPolicy(mockSpawnPolicy);
+            
+            //Act
+            var resultContentBefore = someEmptyBoard.GetTile(0, 0).Content;
+            await sut.Execute(someEmptyBoard);
+            var resultContentInBetween = someEmptyBoard.GetTile(0, 0).Content;
+            await sut.Undo(someEmptyBoard);
+            var resultContentAfter = someEmptyBoard.GetTile(0, 0).Content;
+
+            //Assert
+            var expectedSpawnedContent = await mockSpawnPolicy.SpawnContent();
+
+            resultContentAfter.Should().Be(resultContentBefore);
+            resultContentAfter.Should().NotBe(resultContentInBetween);
+            resultContentInBetween.Should().Be(expectedSpawnedContent);
         }
         #endregion
     }

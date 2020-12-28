@@ -1,4 +1,5 @@
-﻿using Kalendra.Commons.Tests.TestDataBuilders.Domain.Merge;
+﻿using Kalendra.Commons.Runtime.Application.Merge;
+using Kalendra.Commons.Tests.TestDataBuilders.Domain.Merge;
 
 namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
 {
@@ -10,5 +11,8 @@ namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
         
         public static ColoredPieceBuilder ColoredPiece() => ColoredPieceBuilder.New();
         public static ColoredPieceBuilder ColoredPiece_Some() => ColoredPieceBuilder.New().WithTier(1).WithPieceID("pieceID").WithColorID("colorID");
+
+        public static ColoredPieceSpawnOperatorBuilder ColoredPieceSpawnOperator() => ColoredPieceSpawnOperatorBuilder.New();
+        public static ColoredPieceSpawnOperator ColoredPieceSpawnOperator_WithSystemRandom() => ColoredPieceSpawnOperatorBuilder.WithSystemRandomService();
     }
 }
