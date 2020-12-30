@@ -1,21 +1,22 @@
 ﻿using System.Threading.Tasks;
 using Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations;
-using Kalendra.Commons.Runtime.Domain.Boundaries;
 using Kalendra.Commons.Runtime.Domain.Patterns;
 
 namespace Kalendra.Commons.Runtime.Domain.BoardSystem.UseCases
 {
-    public class SpawnInteractor : IBoundaryInputPort
+    public class SpawnInteractor : ISpawnInputReceiver
     {
         readonly IBoard entityBoard;
         readonly IFactory<SpawnOperation> spawnFactory;
-        readonly IBoundaryOutputPort outputBoundary;
+        readonly ISpawnOutputReceiver outputBoundary;
+        readonly ISpawnNotAvailableOutputReceiver outputNotAvailableBoundary;
         
-        public SpawnInteractor(IBoard entityBoard, IFactory<SpawnOperation> spawnFactory, IBoundaryOutputPort outputBoundary)
+        public SpawnInteractor(IBoard entityBoard, IFactory<SpawnOperation> spawnFactory, ISpawnOutputReceiver outputBoundary, ISpawnNotAvailableOutputReceiver outputNotAvailableBoundary = null)
         {
             this.entityBoard = entityBoard;
             this.spawnFactory = spawnFactory;
             this.outputBoundary = outputBoundary;
+            this.outputNotAvailableBoundary = outputNotAvailableBoundary;
         }
 
         public void Request()
@@ -43,7 +44,7 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.UseCases
 
         void ResponseNotAvailableUseCase()
         {
-            throw new System.NotImplementedException();
+            outputNotAvailableBoundary?.Response();
         }
     }
 }

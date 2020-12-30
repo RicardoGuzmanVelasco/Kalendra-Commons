@@ -23,19 +23,83 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             var mockFactory = Substitute.For<IFactory<SpawnOperation>>();
             mockFactory.Create().Returns(spawnOperation);
 
-            var boundaryOutputStub = Substitute.For<IBoundaryOutputPort>();
-            IBoundaryInputPort sut = new SpawnInteractor(someBoard, mockFactory, boundaryOutputStub);
+            var outputReceiverStub = Substitute.For<ISpawnOutputReceiver>();
+            IBoundaryInputPort sut = new SpawnInteractor(someBoard, mockFactory, outputReceiverStub);
 
             //Act
             var resultEmptyTilesBefore = someBoard.ListAllEmptyTiles;
             sut.Request();
+            await Task.Delay(1);
             var resultEmptyTilesAfter = someBoard.ListAllEmptyTiles;
 
             //Assert
             resultEmptyTilesBefore.Should().NotBeEmpty();
-            await Task.Delay(1);
-            boundaryOutputStub.Received().Response();
             resultEmptyTilesAfter.Should().BeEmpty();
+        }
+        
+        [Test]
+        public async void Request_WhenBoardIsNotFull_CallsReceiverAfterSpawn()
+        {
+            //Arrange
+            var someBoard = Build.Board().Build();
+            
+            IBoardOperation spawnOperation = Build.SpawnOperation().WithSpawnPolicy(Build.ColoredPieceSpawnOperator_WithSystemRandom()).Build();
+            var mockFactory = Substitute.For<IFactory<SpawnOperation>>();
+            mockFactory.Create().Returns(spawnOperation);
+
+            var outputReceiverStub = Substitute.For<ISpawnOutputReceiver>();
+            IBoundaryInputPort sut = new SpawnInteractor(someBoard, mockFactory, outputReceiverStub);
+
+            //Act
+            sut.Request();
+
+            //Assert
+            await Task.Delay(1);
+            outputReceiverStub.Received().Response();
+        }
+
+        [Test]
+        public async void Request_WhenBoardIsFull_DoesNotCallsReceiverAfterSpawn()
+        {
+            //Arrange
+            var someBoard = Build.Board_WithNoTiles();
+            
+            IBoardOperation spawnOperation = Build.SpawnOperation().WithSpawnPolicy(Build.ColoredPieceSpawnOperator_WithSystemRandom()).Build();
+            var mockFactory = Substitute.For<IFactory<SpawnOperation>>();
+            mockFactory.Create().Returns(spawnOperation);
+
+            var outputReceiverStub = Substitute.For<ISpawnOutputReceiver>();
+            IBoundaryInputPort sut = new SpawnInteractor(someBoard, mockFactory, outputReceiverStub);
+
+            //Act
+            sut.Request();
+
+            //Assert
+            await Task.Delay(1);
+            outputReceiverStub.DidNotReceive().Response();
+        }
+        
+        [Test]
+        public async void Request_WhenBoardIsFull_CallsNotAvailableReceiverAfterSpawn()
+        {
+            //Arrange
+            var someBoard = Build.Board_WithNoTiles();
+            
+            IBoardOperation spawnOperation = Build.SpawnOperation().WithSpawnPolicy(Build.ColoredPieceSpawnOperator_WithSystemRandom()).Build();
+            var mockFactory = Substitute.For<IFactory<SpawnOperation>>();
+            mockFactory.Create().Returns(spawnOperation);
+
+            var outputReceiverStub = Substitute.For<ISpawnOutputReceiver>();
+            var outputNotAvailableReceiverStub = Substitute.For<ISpawnNotAvailableOutputReceiver>();
+            IBoundaryInputPort sut = new SpawnInteractor(someBoard, mockFactory, outputReceiverStub, outputNotAvailableReceiverStub);
+
+            //Act
+            sut.Request();
+            await Task.Delay(1);
+
+            //Assert
+            outputNotAvailableReceiverStub.Received().Response();
+            outputReceiverStub.DidNotReceive().Response();
         }
     }
 }
