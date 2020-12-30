@@ -22,7 +22,7 @@ namespace Kalendra.Commons.Runtime.Domain.Patterns
         Task Undo();
     }
 
-    public interface ICommandAsync<T>
+    public interface ICommandAsync<in T>
     {
         Task Execute(T arg);
         Task Undo(T arg);

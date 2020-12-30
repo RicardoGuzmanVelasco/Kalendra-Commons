@@ -11,5 +11,7 @@ namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
         public static BoardTileBuilder BoardTile() => BoardTileBuilder.New();
 
         public static SpawnOperationBuilder SpawnOperation() => SpawnOperationBuilder.New();
+
+        public static BoardOperationsManagerBuilder BoardOperationsManager() => BoardOperationsManagerBuilder.New();
     }
 }
