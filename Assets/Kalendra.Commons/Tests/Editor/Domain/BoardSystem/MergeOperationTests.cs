@@ -23,6 +23,7 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
         [Test, Category("TODO")]
         public void Execute_DoesNothing_IfMergeIsNotAvailable()
         {
+            
         }
     }
 }
