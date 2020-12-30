@@ -19,19 +19,19 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.UseCases
             this.outputNotAvailableBoundary = outputNotAvailableBoundary;
         }
 
-        public void Request()
+        public async Task Request()
         {
             var spawnOperation = spawnFactory.Create();
 
             if(spawnOperation.IsAvailable(entityBoard))
-                LaunchSpawnUseCase(spawnOperation);
+                await LaunchSpawnUseCase(spawnOperation);
             else
                 ResponseNotAvailableUseCase();
         }
 
-        void LaunchSpawnUseCase(SpawnOperation spawnOperation)
+        async Task LaunchSpawnUseCase(SpawnOperation spawnOperation)
         {
-            Task.Run(() => WaitForSpawnUseCase(spawnOperation));
+            await WaitForSpawnUseCase(spawnOperation);
         }
         
         async Task WaitForSpawnUseCase(SpawnOperation spawnOperation)

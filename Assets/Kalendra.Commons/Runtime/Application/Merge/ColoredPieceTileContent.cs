@@ -11,5 +11,10 @@ namespace Kalendra.Commons.Runtime.Application.BoardSystem
         {
             ContainedPiece = containedPiece;
         }
+
+        public override string ToString()
+        {
+            return $"{nameof(ContainedPiece)}: {ContainedPiece}";
+        }
     }
 }

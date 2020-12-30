@@ -1,4 +1,5 @@
-﻿using Kalendra.Commons.Runtime.Domain.BoardSystem.UseCases;
+﻿using System.Threading.Tasks;
+using Kalendra.Commons.Runtime.Domain.BoardSystem.UseCases;
 using UnityEngine;
 
 namespace Kalendra.Commons.Runtime.EntryPoint
@@ -12,17 +13,18 @@ namespace Kalendra.Commons.Runtime.EntryPoint
             this.output = output;
         }
 
-        public void Request()
+        public async Task Request()
         {
-            output?.Response();
+            await output?.Response();
         }
     }
 
     internal class DummySpawnUseCaseOutputPort : ISpawnOutputReceiver
     {
-        public void Response()
+        public Task Response()
         {
             Debug.Log("Received");
+            return Task.CompletedTask;
         }
     }
 }

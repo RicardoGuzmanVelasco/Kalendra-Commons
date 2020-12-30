@@ -31,5 +31,10 @@
                 return hashCode;
             }
         }
+
+        public override string ToString()
+        {
+            return $"{nameof(Tier)}: {Tier}, {nameof(PieceID)}: {PieceID}, {nameof(ColorID)}: {ColorID}";
+        }
     }
 }

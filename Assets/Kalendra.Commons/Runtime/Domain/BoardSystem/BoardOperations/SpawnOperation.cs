@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Kalendra.Commons.Runtime.Application.Merge;
+using UnityEngine;
 
 namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
 {
@@ -11,7 +12,6 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
 
         SpawnRequestResult spawnResultCache;
 
-        public SpawnOperation() { }
         public SpawnOperation(ISpawnOperatorPolicy spawnPolicy)
         {
             this.spawnPolicy = spawnPolicy;
@@ -64,6 +64,8 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
 
         void SpawnCachedResult(IBoard targetBoard)
         {
+            Debug.Log("Spawn " + spawnResultCache);
+            
             var (x, y) = spawnResultCache.coordsWhereSpawn;
             targetBoard.GetTile(x, y).Content = spawnResultCache.spawnedContent;
         }

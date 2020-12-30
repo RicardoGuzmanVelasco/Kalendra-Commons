@@ -21,4 +21,19 @@ namespace Kalendra.Commons.Runtime.Infraestructure.Gateways.Adapters
             return await Task.FromResult(loaded);
         }
     }
+    
+    public class ByResourcesNameNotAsyncRepository<TDefinition, TModel> : IReadOnlyRepository<TModel> where TDefinition : Object where TModel : class
+    {
+        public async Task<IEnumerable<TModel>> LoadAll() 
+        {
+            var loadedCollection = Resources.LoadAll<TDefinition>("");
+            return await Task.FromResult(loadedCollection.Cast<TModel>());
+        }
+
+        public async Task<TModel> Load(string hashID)
+        {
+            var loaded = Resources.Load<TDefinition>(hashID);
+            return await Task.FromResult(loaded as TModel);
+        }
+    }
 }

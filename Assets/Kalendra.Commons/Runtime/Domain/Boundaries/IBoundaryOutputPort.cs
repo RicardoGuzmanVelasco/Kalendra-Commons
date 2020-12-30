@@ -1,8 +1,10 @@
-﻿namespace Kalendra.Commons.Runtime.Domain.Boundaries
+﻿using System.Threading.Tasks;
+
+namespace Kalendra.Commons.Runtime.Domain.Boundaries
 {
     public interface IBoundaryOutputPort
     {
-        void Response();
+        Task Response();
     }
 
     public interface IBoundaryOutputPort<in T> where T : BoundaryResponseDTO
