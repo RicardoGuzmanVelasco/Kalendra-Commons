@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Kalendra.Commons.Runtime.Domain.Gateways;
+using Kalendra.Commons.Runtime.Domain.Merge.DataModel;
 using UnityEngine;
 
 namespace Kalendra.Commons.Runtime.Infraestructure.Gateways.Adapters

@@ -40,8 +40,7 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.UseCases
             await spawnOperation.Execute(entityBoard);
             outputBoundary.Response();
         }
-
-
+        
         void ResponseNotAvailableUseCase()
         {
             outputNotAvailableBoundary?.Response();

@@ -11,6 +11,7 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
 
         SpawnRequestResult spawnResultCache;
 
+        public SpawnOperation() { }
         public SpawnOperation(ISpawnOperatorPolicy spawnPolicy)
         {
             this.spawnPolicy = spawnPolicy;
