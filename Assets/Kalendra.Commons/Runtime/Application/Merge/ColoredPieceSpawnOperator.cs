@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Kalendra.BoardCore.Domain.Services;
 using Kalendra.Commons.Runtime.Application.BoardSystem;
 using Kalendra.Commons.Runtime.Domain.BoardSystem;

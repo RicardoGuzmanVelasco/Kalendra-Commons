@@ -5,7 +5,7 @@ using Kalendra.Commons.Runtime.Application.Merge;
 
 namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
 {
-    internal class SpawnOperation : IBoardOperation
+    public class SpawnOperation : IBoardOperation //TODO: <OperationRequestREsult>
     {
         readonly ISpawnOperatorPolicy spawnPolicy;
 
