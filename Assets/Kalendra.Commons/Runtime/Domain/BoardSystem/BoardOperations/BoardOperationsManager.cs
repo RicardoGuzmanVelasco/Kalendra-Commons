@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
@@ -11,6 +10,10 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
         readonly Stack<IBoardOperation> undone = new Stack<IBoardOperation>();
 
         public IEnumerable<IBoardOperation> Scheduled => scheduled;
+
+        public bool HasScheduled => scheduled.Any();
+        public bool HasExecuted => executed.Any();
+        public bool HasUndone => undone.Any();
 
 
         public BoardOperationsManager(ICollection<IBoardOperation> begginingOperations = null)

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations;
 using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
 using NSubstitute;
@@ -30,6 +28,125 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             sut.RegisterOperation(operationMock);
 
             sut.Scheduled.Should().Contain(operationMock);
+        }
+        #endregion
+        
+        #region HasScheduled
+        [Test]
+        public void HasScheduled_IsFalse_ByDefault()
+        {
+            BoardOperationsManager sut = Build.BoardOperationsManager();
+
+            var result = sut.HasScheduled;
+
+            result.Should().BeFalse();
+        }
+        
+        [Test]
+        public void HasScheduled_WhenNoScheduledLeft_IsFalse()
+        {
+            var someBoard = Build.Board().Build();
+            BoardOperationsManager sut = Build.BoardOperationsManager().WithOperations(Fake.BoardOperation());
+            sut.DoNext(someBoard);
+            
+            var result = sut.HasScheduled;
+
+            result.Should().BeFalse();
+        }
+
+        [Test]
+        public void HasScheduled_AfterRegisterAnOperation_IsTrue()
+        {
+            BoardOperationsManager sut = Build.BoardOperationsManager().WithOperations(Fake.BoardOperation());
+            
+            var result = sut.HasScheduled;
+
+            result.Should().BeTrue();
+        }
+        
+        [Test]
+        public void HasScheduled_AfterDoLessOperationThanRegistered_IsTrue()
+        {
+            var someBoard = Build.Board().Build();
+            var operationMocks = Fake.BoardOperations(2);
+            BoardOperationsManager sut = Build.BoardOperationsManager().WithOperations(operationMocks);
+            sut.DoNext(someBoard);
+            
+            var result = sut.HasScheduled;
+
+            result.Should().BeTrue();
+        }
+        #endregion
+
+        #region HasExecuted
+        [Test]
+        public void HasExecuted_ByDefault_IsFalse()
+        {
+            BoardOperationsManager sut = Build.BoardOperationsManager();
+
+            var result = sut.HasExecuted;
+
+            result.Should().BeFalse();
+        }
+
+        [Test]
+        public void HasExecuted_BeforeAnyExecuteOperation_IsFalse()
+        {
+            BoardOperationsManager sut = Build.BoardOperationsManager().WithOperations(Fake.BoardOperation());
+
+            var result = sut.HasExecuted;
+
+            result.Should().BeFalse();
+        }
+
+        [Test]
+        public void HasExecuted_AfterExecute_IsTrue()
+        {
+            var someBoard = Build.Board().Build();
+            BoardOperationsManager sut = Build.BoardOperationsManager().WithOperations(Fake.BoardOperation());
+            
+            sut.DoNext(someBoard);
+            var result = sut.HasExecuted;
+
+            result.Should().BeTrue();
+        }
+
+        [Test]
+        public void HasExecuted_AfterUndoExecutedOperations_IsFalse()
+        {
+            var someBoard = Build.Board().Build();
+            BoardOperationsManager sut = Build.BoardOperationsManager().WithOperations(Fake.BoardOperation());
+            
+            sut.DoNext(someBoard);
+            sut.UndoLast(someBoard);
+            var result = sut.HasExecuted;
+
+            result.Should().BeFalse();
+        }
+        #endregion
+
+        #region HasUndone
+        [Test]
+        public void HasUndone_IsFalse_ByDefault()
+        {
+            BoardOperationsManager sut = Build.BoardOperationsManager().WithOperations(Fake.BoardOperation());
+
+            var result = sut.HasUndone;
+
+            result.Should().BeFalse();
+        }
+
+        [Test]
+        public void HasUndone_AfterUndone_IsTrue()
+        {
+            var someBoard = Build.Board().Build();
+            BoardOperationsManager sut = Build.BoardOperationsManager().WithOperations(Fake.BoardOperation());
+
+            sut.DoNext(someBoard);
+            sut.UndoLast(someBoard);
+            var result = sut.HasUndone;
+
+            result.Should().BeTrue();
         }
         #endregion
 
