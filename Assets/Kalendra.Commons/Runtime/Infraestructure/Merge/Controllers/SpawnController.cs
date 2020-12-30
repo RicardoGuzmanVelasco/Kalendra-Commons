@@ -1,12 +1,13 @@
 ﻿using System;
 using Kalendra.Commons.Runtime.Domain.BoardSystem.UseCases;
 using UnityEngine;
+using Zenject;
 
 namespace Kalendra.Commons.Runtime.Infraestructure.Merge.Controllers
 {
     public class SpawnController : MonoBehaviour
     {
-        ISpawnInputReceiver spawnReceiver;
+        [Inject] ISpawnInputReceiver spawnReceiver;
 
         void Update()
         {
