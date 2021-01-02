@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Kalendra.BoardCore.Domain.Services;
 using Kalendra.Commons.Runtime.Application.BoardSystem;
+using Kalendra.Commons.Runtime.Architecture.Gateways;
+using Kalendra.Commons.Runtime.Architecture.Services;
 using Kalendra.Commons.Runtime.Domain.BoardSystem;
-using Kalendra.Commons.Runtime.Domain.Gateways;
 using Kalendra.Commons.Runtime.Domain.Merge;
 using Kalendra.Commons.Runtime.Domain.Merge.DataModel;
 

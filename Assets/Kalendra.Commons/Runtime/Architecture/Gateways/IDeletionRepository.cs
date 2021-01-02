@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Kalendra.Commons.Runtime.Domain.Gateways
+namespace Kalendra.Commons.Runtime.Architecture.Gateways
 {
     public interface IDeletionRepository
     {

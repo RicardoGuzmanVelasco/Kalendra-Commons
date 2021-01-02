@@ -1,22 +1,24 @@
 ﻿using System.Threading.Tasks;
+using Kalendra.Commons.Runtime.Architecture.Patterns;
 using Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations;
-using Kalendra.Commons.Runtime.Domain.Patterns;
 
 namespace Kalendra.Commons.Runtime.Domain.BoardSystem.UseCases
 {
-    public class SpawnInteractor : ISpawnInputReceiver
+    public class SpawnUseCaseInteractor : ISpawnUseCaseInput
     {
         readonly IBoard entityBoard;
         readonly IFactory<SpawnOperation> spawnFactory;
-        readonly ISpawnOutputReceiver outputBoundary;
-        readonly ISpawnNotAvailableOutputReceiver outputNotAvailableBoundary;
+
+        readonly ISpawnUseCaseOutput useCaseOutputBoundary;
+        readonly ISpawnNotAvailableUseCaseOutput useCaseOutputNotAvailableUseCaseBoundary;
         
-        public SpawnInteractor(IBoard entityBoard, IFactory<SpawnOperation> spawnFactory, ISpawnOutputReceiver outputBoundary, ISpawnNotAvailableOutputReceiver outputNotAvailableBoundary = null)
+        public SpawnUseCaseInteractor(IBoard entityBoard, IFactory<SpawnOperation> spawnFactory, ISpawnUseCaseOutput useCaseOutputBoundary, ISpawnNotAvailableUseCaseOutput useCaseOutputNotAvailableUseCaseBoundary = null)
         {
             this.entityBoard = entityBoard;
             this.spawnFactory = spawnFactory;
-            this.outputBoundary = outputBoundary;
-            this.outputNotAvailableBoundary = outputNotAvailableBoundary;
+
+            this.useCaseOutputBoundary = useCaseOutputBoundary;
+            this.useCaseOutputNotAvailableUseCaseBoundary = useCaseOutputNotAvailableUseCaseBoundary;
         }
 
         public async Task Request()
@@ -31,19 +33,14 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.UseCases
 
         async Task LaunchSpawnUseCase(SpawnOperation spawnOperation)
         {
-            await WaitForSpawnUseCase(spawnOperation);
-        }
-        
-        async Task WaitForSpawnUseCase(SpawnOperation spawnOperation)
-        {
             //TODO: operations command center, to let Undo after.
             await spawnOperation.Execute(entityBoard);
-            outputBoundary.Response();
+            useCaseOutputBoundary.Response();
         }
-        
+
         void ResponseNotAvailableUseCase()
         {
-            outputNotAvailableBoundary?.Response();
+            useCaseOutputNotAvailableUseCaseBoundary?.Response();
         }
     }
 }

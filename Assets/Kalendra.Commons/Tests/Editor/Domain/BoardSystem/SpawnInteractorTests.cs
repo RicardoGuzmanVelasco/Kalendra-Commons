@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using FluentAssertions;
+using Kalendra.Commons.Runtime.Architecture.Boundaries;
+using Kalendra.Commons.Runtime.Architecture.Patterns;
 using Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations;
 using Kalendra.Commons.Runtime.Domain.BoardSystem.UseCases;
-using Kalendra.Commons.Runtime.Domain.Boundaries;
-using Kalendra.Commons.Runtime.Domain.Patterns;
 using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
 using NSubstitute;
 using NUnit.Framework;
@@ -23,8 +23,8 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             var mockFactory = Substitute.For<IFactory<SpawnOperation>>();
             mockFactory.Create().Returns(spawnOperation);
 
-            var outputReceiverStub = Substitute.For<ISpawnOutputReceiver>();
-            IBoundaryInputPort sut = new SpawnInteractor(someBoard, mockFactory, outputReceiverStub);
+            var outputReceiverStub = Substitute.For<ISpawnUseCaseOutput>();
+            IBoundaryInputPort sut = new SpawnUseCaseInteractor(someBoard, mockFactory, outputReceiverStub);
 
             //Act
             var resultEmptyTilesBefore = someBoard.ListAllEmptyTiles;
@@ -47,8 +47,8 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             var mockFactory = Substitute.For<IFactory<SpawnOperation>>();
             mockFactory.Create().Returns(spawnOperation);
 
-            var outputReceiverStub = Substitute.For<ISpawnOutputReceiver>();
-            IBoundaryInputPort sut = new SpawnInteractor(someBoard, mockFactory, outputReceiverStub);
+            var outputReceiverStub = Substitute.For<ISpawnUseCaseOutput>();
+            IBoundaryInputPort sut = new SpawnUseCaseInteractor(someBoard, mockFactory, outputReceiverStub);
 
             //Act
             sut.Request();
@@ -68,8 +68,8 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             var mockFactory = Substitute.For<IFactory<SpawnOperation>>();
             mockFactory.Create().Returns(spawnOperation);
 
-            var outputReceiverStub = Substitute.For<ISpawnOutputReceiver>();
-            IBoundaryInputPort sut = new SpawnInteractor(someBoard, mockFactory, outputReceiverStub);
+            var outputReceiverStub = Substitute.For<ISpawnUseCaseOutput>();
+            IBoundaryInputPort sut = new SpawnUseCaseInteractor(someBoard, mockFactory, outputReceiverStub);
 
             //Act
             sut.Request();
@@ -89,9 +89,9 @@ namespace Kalendra.Commons.Tests.Editor.Domain.BoardSystem
             var mockFactory = Substitute.For<IFactory<SpawnOperation>>();
             mockFactory.Create().Returns(spawnOperation);
 
-            var outputReceiverStub = Substitute.For<ISpawnOutputReceiver>();
-            var outputNotAvailableReceiverStub = Substitute.For<ISpawnNotAvailableOutputReceiver>();
-            IBoundaryInputPort sut = new SpawnInteractor(someBoard, mockFactory, outputReceiverStub, outputNotAvailableReceiverStub);
+            var outputReceiverStub = Substitute.For<ISpawnUseCaseOutput>();
+            var outputNotAvailableReceiverStub = Substitute.For<ISpawnNotAvailableUseCaseOutput>();
+            IBoundaryInputPort sut = new SpawnUseCaseInteractor(someBoard, mockFactory, outputReceiverStub, outputNotAvailableReceiverStub);
 
             //Act
             sut.Request();

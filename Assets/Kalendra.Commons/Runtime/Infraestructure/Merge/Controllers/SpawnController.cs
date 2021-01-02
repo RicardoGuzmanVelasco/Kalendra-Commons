@@ -8,7 +8,7 @@ namespace Kalendra.Commons.Runtime.Infraestructure.Merge.Controllers
 {
     public class SpawnController : MonoBehaviour
     {
-        [Inject] ISpawnInputReceiver spawnReceiver;
+        [Inject] ISpawnUseCaseInput spawnUseCase;
 
         async void Update()
         {
@@ -32,7 +32,7 @@ namespace Kalendra.Commons.Runtime.Infraestructure.Merge.Controllers
 
         async Task RequestSpawnUseCase()
         {
-            await spawnReceiver.Request();
+            await spawnUseCase.Request();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Kalendra.Commons.Runtime.Domain.Patterns
+﻿namespace Kalendra.Commons.Runtime.Architecture.Patterns
 {
     public interface IFactory<out T>
     {

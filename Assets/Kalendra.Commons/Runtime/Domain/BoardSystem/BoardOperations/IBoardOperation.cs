@@ -1,4 +1,4 @@
-﻿using Kalendra.Commons.Runtime.Domain.Patterns;
+﻿using Kalendra.Commons.Runtime.Architecture.Patterns;
 
 namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
 {

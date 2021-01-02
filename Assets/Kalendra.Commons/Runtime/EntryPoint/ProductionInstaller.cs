@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Kalendra.BoardCore.Domain.Services;
 using Kalendra.BoardCore.Infraestructure.Services;
 using Kalendra.Commons.Runtime.Application.Merge;
+using Kalendra.Commons.Runtime.Architecture.Gateways;
+using Kalendra.Commons.Runtime.Architecture.Services;
 using Kalendra.Commons.Runtime.Domain.BoardSystem;
 using Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations;
 using Kalendra.Commons.Runtime.Domain.BoardSystem.UseCases;
-using Kalendra.Commons.Runtime.Domain.Gateways;
 using Kalendra.Commons.Runtime.Domain.Merge.DataModel;
-using Kalendra.Commons.Runtime.Domain.Patterns;
 using Kalendra.Commons.Runtime.Infraestructure.Gateways.Adapters;
 using Kalendra.Commons.Runtime.Infraestructure.Merge.ScriptObjs;
 using UnityEngine;
@@ -52,24 +51,24 @@ namespace Kalendra.Commons.Runtime.EntryPoint
         void InstallOperations()
         {
             Container.Bind<ISpawnOperatorPolicy>().To<ColoredPieceSpawnOperator>().AsTransient();
-            Container.Bind<Domain.Patterns.IFactory<SpawnOperation>>()
+            Container.Bind<Architecture.Patterns.IFactory<SpawnOperation>>()
                 .FromInstance(new TestSpawnOperationFactory())
                 .AsSingle();
         }
 
         void InstallInputBoundaries()
         {
-            Container.Bind<ISpawnInputReceiver>().To<SpawnInteractor>().AsCached();
+            Container.Bind<ISpawnUseCaseInput>().To<SpawnUseCaseInteractor>().AsCached();
         }
         
         void InstallOutputBoundaries()
         {
-            Container.Bind<ISpawnNotAvailableOutputReceiver>().To<DummySpawnUseCaseNotAvailableOutputPort>().AsSingle();
-            Container.Bind<ISpawnOutputReceiver>().To<DummySpawnUseCaseOutputPort>().AsSingle();
+            Container.Bind<ISpawnNotAvailableUseCaseOutput>().To<DummySpawnUseCaseNotAvailableUseCaseOutputPort>().AsSingle();
+            Container.Bind<ISpawnUseCaseOutput>().To<DummySpawnUseCaseUseCaseOutputPort>().AsSingle();
         }
     }
 
-    internal class DummySpawnUseCaseNotAvailableOutputPort : ISpawnNotAvailableOutputReceiver
+    internal class DummySpawnUseCaseNotAvailableUseCaseOutputPort : ISpawnNotAvailableUseCaseOutput
     {
         public Task Response()
         {
@@ -78,7 +77,7 @@ namespace Kalendra.Commons.Runtime.EntryPoint
         }
     }
 
-    internal class TestSpawnOperationFactory : Domain.Patterns.IFactory<SpawnOperation>
+    internal class TestSpawnOperationFactory : Architecture.Patterns.IFactory<SpawnOperation>
     {
         public SpawnOperation Create()
         {

@@ -1,7 +1,7 @@
-﻿using Kalendra.BoardCore.Domain.Services;
-using Kalendra.BoardCore.Infraestructure.Services;
+﻿using Kalendra.BoardCore.Infraestructure.Services;
 using Kalendra.Commons.Runtime.Application.Merge;
-using Kalendra.Commons.Runtime.Domain.Gateways;
+using Kalendra.Commons.Runtime.Architecture.Gateways;
+using Kalendra.Commons.Runtime.Architecture.Services;
 using Kalendra.Commons.Runtime.Domain.Merge.DataModel;
 using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;

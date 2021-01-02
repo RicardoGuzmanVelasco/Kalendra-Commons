@@ -1,5 +1,4 @@
-﻿using Kalendra.Commons.Runtime.Domain.Gateways;
-using Kalendra.Commons.Runtime.Domain.Merge.DataModel;
+﻿using Kalendra.Commons.Runtime.Domain.Merge.DataModel;
 using Kalendra.Commons.Runtime.Infraestructure.Gateways.Adapters;
 using Kalendra.Commons.Runtime.Infraestructure.Merge.ScriptObjs;
 using NUnit.Framework;

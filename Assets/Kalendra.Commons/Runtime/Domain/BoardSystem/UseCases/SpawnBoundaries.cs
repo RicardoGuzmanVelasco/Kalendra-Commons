@@ -1,9 +1,9 @@
-﻿using Kalendra.Commons.Runtime.Domain.Boundaries;
+﻿using Kalendra.Commons.Runtime.Architecture.Boundaries;
 
 namespace Kalendra.Commons.Runtime.Domain.BoardSystem.UseCases
 {
-    public interface ISpawnInputReceiver : IBoundaryInputPort { }
+    public interface ISpawnUseCaseInput : IBoundaryInputPort { }
     
-    public interface ISpawnOutputReceiver : IBoundaryOutputPort { }
-    public interface ISpawnNotAvailableOutputReceiver : IBoundaryOutputPort { }
+    public interface ISpawnUseCaseOutput : IBoundaryOutputPort { }
+    public interface ISpawnNotAvailableUseCaseOutput : IBoundaryOutputPort { }
 }

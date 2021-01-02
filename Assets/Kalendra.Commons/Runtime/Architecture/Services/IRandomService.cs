@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Kalendra.BoardCore.Domain.Services
+namespace Kalendra.Commons.Runtime.Architecture.Services
 {
     public interface IRandomService
     {

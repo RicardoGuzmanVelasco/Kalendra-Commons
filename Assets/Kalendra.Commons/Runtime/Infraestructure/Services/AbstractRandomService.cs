@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Kalendra.BoardCore.Domain.Services;
+using Kalendra.Commons.Runtime.Architecture.Services;
 
 namespace Kalendra.BoardCore.Infraestructure.Services
 {

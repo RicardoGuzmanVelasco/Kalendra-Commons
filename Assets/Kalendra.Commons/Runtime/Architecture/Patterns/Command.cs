@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Kalendra.Commons.Runtime.Domain.Patterns
+namespace Kalendra.Commons.Runtime.Architecture.Patterns
 {
     #region Sync
     public interface ICommand

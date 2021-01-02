@@ -14,12 +14,12 @@ namespace Kalendra.Commons.Runtime.EntryPoint
         
         void InstallInputBoundaries()
         {
-            Container.Bind<ISpawnInputReceiver>().To<DummySpawnUseCaseInputPort>().AsSingle();
+            Container.Bind<ISpawnUseCaseInput>().To<DummySpawnUseCaseUseCaseInputPort>().AsSingle();
         }
 
         void InstallOutputBoundaries()
         {
-            Container.Bind<ISpawnOutputReceiver>().To<DummySpawnUseCaseOutputPort>().AsSingle();
+            Container.Bind<ISpawnUseCaseOutput>().To<DummySpawnUseCaseUseCaseOutputPort>().AsSingle();
         }
     }
 }

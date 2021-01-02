@@ -4,22 +4,22 @@ using UnityEngine;
 
 namespace Kalendra.Commons.Runtime.EntryPoint
 {
-    internal class DummySpawnUseCaseInputPort : ISpawnInputReceiver
+    internal class DummySpawnUseCaseUseCaseInputPort : ISpawnUseCaseInput
     {
-        readonly ISpawnOutputReceiver output;
+        readonly ISpawnUseCaseOutput useCaseOutput;
 
-        public DummySpawnUseCaseInputPort(ISpawnOutputReceiver output)
+        public DummySpawnUseCaseUseCaseInputPort(ISpawnUseCaseOutput useCaseOutput)
         {
-            this.output = output;
+            this.useCaseOutput = useCaseOutput;
         }
 
         public async Task Request()
         {
-            await output?.Response();
+            await useCaseOutput?.Response();
         }
     }
 
-    internal class DummySpawnUseCaseOutputPort : ISpawnOutputReceiver
+    internal class DummySpawnUseCaseUseCaseOutputPort : ISpawnUseCaseOutput
     {
         public Task Response()
         {

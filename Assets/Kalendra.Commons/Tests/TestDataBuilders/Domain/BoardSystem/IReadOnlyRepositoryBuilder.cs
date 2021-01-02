@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Kalendra.Commons.Runtime.Domain.Gateways;
+using Kalendra.Commons.Runtime.Architecture.Gateways;
 using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 using NSubstitute;
 

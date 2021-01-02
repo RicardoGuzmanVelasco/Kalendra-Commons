@@ -12,6 +12,9 @@ namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
 
         SpawnRequestResult spawnResultCache;
 
+        public (int x, int y) CoordsWhereSpawn => spawnResultCache.coordsWhereSpawn;
+        public ITileContent SpawnedContent => spawnResultCache.spawnedContent;
+
         public SpawnOperation(ISpawnOperatorPolicy spawnPolicy)
         {
             this.spawnPolicy = spawnPolicy;
