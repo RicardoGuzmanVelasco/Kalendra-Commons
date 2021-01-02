@@ -1,4 +1,5 @@
-﻿using NSubstitute;
+﻿using Kalendra.CharacterTaxonomySystem.Runtime.Domain.Entities;
+using NSubstitute;
 
 namespace Kalendra.CharacterTaxonomySystem.Tests.TestDataBuilders.StaticShortcuts.Domain
 {

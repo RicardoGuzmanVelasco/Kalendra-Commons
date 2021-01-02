@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Kalendra.CharacterTaxonomySystem.Runtime.Infraestructure.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "CharacterClass", menuName = "Kalendra/CharacterTaxonomy/CharacterClass", order = 0)]
-    internal class CharacterClassDefinition : DefinitionScriptObj<CharacterClassDefinitionDataModel, CharacterClass>
+    public class CharacterClassDefinition : DefinitionScriptObj<CharacterClassDefinitionDataModel, CharacterClass>
     {
         public override CharacterClass ToDefined()
         {

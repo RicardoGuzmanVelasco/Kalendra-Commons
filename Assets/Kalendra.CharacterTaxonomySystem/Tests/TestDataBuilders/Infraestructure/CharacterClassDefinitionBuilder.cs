@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Kalendra.CharacterTaxonomySystem.Runtime.Domain.Entities;
 
 namespace Kalendra.CharacterTaxonomySystem.Tests.TestDataBuilders.Infraestructure
 {

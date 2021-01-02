@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Kalendra.CharacterTaxonomySystem.Runtime.Infraestructure.ScriptableObjects
 {
     [Serializable]
-    internal class CharacterClassDefinitionDataModel : DefinitionDataModel
+    public class CharacterClassDefinitionDataModel : DefinitionDataModel
     {
         [SerializeField] public string id;
         [SerializeField] public List<CharacterClassDefinition> derivedFrom;

@@ -1,4 +1,5 @@
-﻿using Kalendra.Commons.Tests.TestDataBuilders.Builders;
+﻿using Kalendra.CharacterTaxonomySystem.Runtime.Domain.Entities;
+using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 
 namespace Kalendra.CharacterTaxonomySystem.Tests.TestDataBuilders.Domain
 {
