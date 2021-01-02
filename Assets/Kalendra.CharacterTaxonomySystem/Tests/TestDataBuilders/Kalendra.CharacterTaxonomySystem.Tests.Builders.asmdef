@@ -1,0 +1,22 @@
+{
+    "name": "Kalendra.CharacterTaxonomySystem.Tests.Builders",
+    "references": [
+        "GUID:dd71efc06e808dd4f96fc733e2faea61",
+        "GUID:4c5265916d537f3428fe30fb54b7b82d",
+        "GUID:15a77fb0866be10418614024f8a4e64f",
+        "GUID:996a65d23c5b117449a560ab9ba7fd30"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "NSubstitute.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

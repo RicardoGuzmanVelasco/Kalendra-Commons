@@ -5,5 +5,5 @@ namespace Kalendra.Commons.Runtime.Infraestructure.CharacterTaxonomySystem.Scrip
     /// <remarks>
     /// Just a constraint to clarify any child is supposed to be marked as [Serializable] in order to be shown in inspector.
     /// </remarks>
-    internal abstract class DefinitionDataModel { }
+    public abstract class DefinitionDataModel { }
 }

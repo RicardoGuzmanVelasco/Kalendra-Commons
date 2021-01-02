@@ -3,16 +3,16 @@ using Kalendra.Commons.Tests.TestDataBuilders.Domain.Merge;
 
 namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
 {
-    internal static partial class Build
+    public static partial class Build
     {
-        public static ColorProductionBuilder ColorProduction() => ColorProductionBuilder.New();
+        internal static ColorProductionBuilder ColorProduction() => ColorProductionBuilder.New();
         
-        public static MergeOperatorBuilder MergeOperator() => MergeOperatorBuilder.New();
+        internal static MergeOperatorBuilder MergeOperator() => MergeOperatorBuilder.New();
         
-        public static ColoredPieceBuilder ColoredPiece() => ColoredPieceBuilder.New();
-        public static ColoredPieceBuilder ColoredPiece_Some() => ColoredPieceBuilder.New().WithTier(1).WithPieceID("pieceID").WithColorID("colorID");
+        internal static ColoredPieceBuilder ColoredPiece() => ColoredPieceBuilder.New();
+        internal static ColoredPieceBuilder ColoredPiece_Some() => ColoredPieceBuilder.New().WithTier(1).WithPieceID("pieceID").WithColorID("colorID");
 
-        public static ColoredPieceSpawnOperatorBuilder ColoredPieceSpawnOperator() => ColoredPieceSpawnOperatorBuilder.New();
-        public static ColoredPieceSpawnOperator ColoredPieceSpawnOperator_WithSystemRandom() => ColoredPieceSpawnOperatorBuilder.WithSystemRandomService();
+        internal static ColoredPieceSpawnOperatorBuilder ColoredPieceSpawnOperator() => ColoredPieceSpawnOperatorBuilder.New();
+        internal static ColoredPieceSpawnOperator ColoredPieceSpawnOperator_WithSystemRandom() => ColoredPieceSpawnOperatorBuilder.WithSystemRandomService();
     }
 }
