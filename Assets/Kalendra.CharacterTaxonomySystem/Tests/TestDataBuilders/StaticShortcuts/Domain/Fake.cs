@@ -1,16 +1,35 @@
-﻿using Kalendra.CharacterTaxonomySystem.Runtime.Domain.Entities;
+﻿using System.Threading.Tasks;
+using Kalendra.Commons.Runtime.Application.BoardSystem;
+using Kalendra.Commons.Runtime.Application.Merge;
+using Kalendra.Commons.Runtime.Domain.BoardSystem;
+using Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations;
+using Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem;
 using NSubstitute;
 
-namespace Kalendra.CharacterTaxonomySystem.Tests.TestDataBuilders.StaticShortcuts
+namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
 {
+    //TODO: shortcuts to Fake MockBuilders.
     internal static partial class Fake
     {
-        internal static IClassDependantUsable ClassDependantUsable_UsableByClass(params CharacterClass[] classesToReturn)
-        {
-            var mock = Substitute.For<IClassDependantUsable>();
-            mock.AllowedClasses.ReturnsForAnyArgs(classesToReturn);
+        public static ITileContent TileContent_NotNull() => TileContentMockBuilder.New().Build();
 
-            return mock;
+        public static ISpawnOperatorPolicy SpawnOperatorPolicy()
+        {
+            var mockSpawnPolicy = Substitute.For<ISpawnOperatorPolicy>();
+            var someContent = new ColoredPieceTileContent(Build.ColoredPiece());
+            mockSpawnPolicy.SpawnContent().Returns(Task.FromResult((ITileContent) someContent));
+
+            return mockSpawnPolicy;
+        }
+
+        public static IBoardOperation BoardOperation() => Substitute.For<IBoardOperation>();
+
+        public static IBoardOperation[] BoardOperations(int count)
+        {
+            var collection = new IBoardOperation[count];
+            for(var i = 0; i < collection.Length; i++)
+                collection[i] = Substitute.For<IBoardOperation>();
+            return collection;
         }
     }
 }

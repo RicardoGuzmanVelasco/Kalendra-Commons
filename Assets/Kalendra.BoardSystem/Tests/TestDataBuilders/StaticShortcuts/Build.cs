@@ -1,4 +1,4 @@
-﻿namespace Kalendra.CharacterTaxonomySystem.Tests.TestDataBuilders.StaticShortcuts
+﻿namespace Kalendra.BoardSystem.Tests.TestDataBuilders.StaticShortcuts
 {
     public static partial class Build { }
 }

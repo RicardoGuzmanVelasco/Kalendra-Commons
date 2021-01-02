@@ -1,17 +1,17 @@
-﻿using Kalendra.CharacterTaxonomySystem.Tests.TestDataBuilders.Domain;
+﻿using Kalendra.Commons.Runtime.Domain.BoardSystem;
+using Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem;
 
-namespace Kalendra.CharacterTaxonomySystem.Tests.TestDataBuilders.StaticShortcuts
+namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
 {
     public static partial class Build
     {
-        internal static WeaponBuilder Weapon() => WeaponBuilder.New();
-
-        internal static WeaponTypeBuilder WeaponType() => WeaponTypeBuilder.New();
-        internal static WeaponTypeBuilder WeaponType_Axe() => WeaponTypeBuilder.New_Axe();
-
-        internal static CharacterClassBuilder CharacterClass() => CharacterClassBuilder.New();
-        internal static CharacterClassBuilder CharacterClass_Bard() => CharacterClassBuilder.New_Bard();
+        internal static BoardBuilder Board() => BoardBuilder.New();
+        internal static Board Board_WithNoTiles() => BoardBuilder.BoardWithNoTiles();
         
-        internal static CharacterBuilder Character() => CharacterBuilder.New();
+        internal static BoardTileBuilder BoardTile() => BoardTileBuilder.New();
+
+        internal static SpawnOperationBuilder SpawnOperation() => SpawnOperationBuilder.New();
+
+        internal static BoardOperationsManagerBuilder BoardOperationsManager() => BoardOperationsManagerBuilder.New();
     }
 }
