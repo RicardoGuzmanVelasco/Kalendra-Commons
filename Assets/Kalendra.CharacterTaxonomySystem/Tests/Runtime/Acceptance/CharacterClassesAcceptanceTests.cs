@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using FluentAssertions;
+using Kalendra.CharacterTaxonomySystem.Runtime.Infraestructure.ScriptableObjects;
 using Kalendra.Commons.Runtime.Architecture.Gateways;
 using Kalendra.Commons.Runtime.Infraestructure.Gateways.Adapters;
 using NUnit.Framework;

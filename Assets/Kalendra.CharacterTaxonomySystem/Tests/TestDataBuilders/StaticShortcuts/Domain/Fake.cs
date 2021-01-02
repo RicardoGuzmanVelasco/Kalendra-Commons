@@ -1,7 +1,7 @@
 ﻿using Kalendra.CharacterTaxonomySystem.Runtime.Domain.Entities;
 using NSubstitute;
 
-namespace Kalendra.CharacterTaxonomySystem.Tests.TestDataBuilders.StaticShortcuts.Domain
+namespace Kalendra.CharacterTaxonomySystem.Tests.TestDataBuilders.StaticShortcuts
 {
     internal static partial class Fake
     {

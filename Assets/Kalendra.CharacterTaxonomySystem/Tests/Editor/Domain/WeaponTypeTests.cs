@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Kalendra.CharacterTaxonomySystem.Runtime.Domain.Entities;
+using Kalendra.CharacterTaxonomySystem.Tests.TestDataBuilders.StaticShortcuts;
 using NUnit.Framework;
 
 namespace Kalendra.CharacterTaxonomySystem.Tests.Editor.Domain
