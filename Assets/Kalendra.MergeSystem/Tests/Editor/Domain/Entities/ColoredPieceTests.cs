@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using Kalendra.MergeSystem.Runtime.Domain.Entities;
+using Kalendra.MergeSystem.Tests.TestDataBuilders.StaticShortcuts;
+using NUnit.Framework;
 
 namespace Kalendra.MergeSystem.Tests.Editor.Domain.Entities
 {

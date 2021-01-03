@@ -8,7 +8,7 @@ namespace Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem
 {
     internal class ReadOnlyRepositoryMockBuilder<T> : MockBuilder<IReadOnlyRepository<T>> where T : new()
     {
-        ReadOnlyRepositoryMockBuilder() { }
+        ReadOnlyRepositoryMockBuilder() { } 
 
         #region Fluent API
         #endregion
