@@ -67,8 +67,6 @@ namespace Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations
 
         void SpawnCachedResult(IBoard targetBoard)
         {
-            Debug.Log("Spawn " + spawnResultCache);
-            
             var (x, y) = spawnResultCache.coordsWhereSpawn;
             targetBoard.GetTile(x, y).Content = spawnResultCache.spawnedContent;
         }
