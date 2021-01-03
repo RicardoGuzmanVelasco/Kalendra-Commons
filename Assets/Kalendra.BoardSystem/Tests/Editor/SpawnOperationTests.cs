@@ -72,24 +72,24 @@ namespace Kalendra.BoardSystem.Tests.Editor
             resultSpawnedContent.Should().Be(expectedSpawnedContent);
         }
         
-        [Test, Category("TODO")]
+        [Test]
         public async void Execute_Twice_SpawnsSameContentInSameTile()
         {
-            // //Arrange
-            // var someEmptyBoard = Build.Board().Build();
-            //
-            // var randomSpawnPolicy = Build.ColoredPieceSpawnOperator_WithSystemRandom();
-            // SpawnOperation sut = Build.SpawnOperation().WithSpawnPolicy(randomSpawnPolicy);
-            //
-            // //Act
-            // await sut.Execute(someEmptyBoard);
-            // var resultContentBefore = someEmptyBoard.GetTile(0, 0).Content;
-            // await sut.Undo(someEmptyBoard);
-            // await sut.Execute(someEmptyBoard);
-            // var resultContentAfter = someEmptyBoard.GetTile(0, 0).Content;
-            //
-            // //Assert
-            // resultContentAfter.Should().Be(resultContentBefore);
+            //Arrange
+            var someEmptyBoard = Build.Board().Build();
+            
+            var randomSpawnPolicy = Fake.SpawnOperatorPolicy();
+            SpawnOperation sut = Build.SpawnOperation().WithSpawnPolicy(randomSpawnPolicy);
+            
+            //Act
+            await sut.Execute(someEmptyBoard);
+            var resultContentBefore = someEmptyBoard.GetTile(0, 0).Content;
+            await sut.Undo(someEmptyBoard);
+            await sut.Execute(someEmptyBoard);
+            var resultContentAfter = someEmptyBoard.GetTile(0, 0).Content;
+            
+            //Assert
+            resultContentAfter.Should().Be(resultContentBefore);
         }
         #endregion
         
