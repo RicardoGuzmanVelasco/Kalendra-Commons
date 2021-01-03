@@ -1,4 +1,4 @@
-﻿namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
+﻿namespace Kalendra.MergeSystem.Tests.TestDataBuilders.StaticShortcuts
 {
     public static partial class Build { }
 }

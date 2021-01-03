@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using Kalendra.Commons.Runtime.Application.Merge;
-using Kalendra.Commons.Runtime.Domain.Merge;
-using Kalendra.Commons.Tests.TestDataBuilders.Builders;
+using Kalendra.MergeSystem.Runtime.Application;
+using Kalendra.MergeSystem.Runtime.Domain.Entities;
 
-namespace Kalendra.Commons.Tests.TestDataBuilders.Domain.Merge
+namespace Kalendra.MergeSystem.Tests.TestDataBuilders.Application
 {
     internal class MergeOperatorBuilder : Builder<MergeOperator>
     {

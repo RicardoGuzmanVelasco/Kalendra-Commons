@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Kalendra.Commons.Runtime.Domain.Merge
+namespace Kalendra.MergeSystem.Runtime.Domain.Entities
 {
     public class ColorProduction
     {

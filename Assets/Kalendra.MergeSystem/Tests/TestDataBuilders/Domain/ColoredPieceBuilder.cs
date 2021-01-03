@@ -1,7 +1,6 @@
-﻿using Kalendra.Commons.Runtime.Domain.Merge;
-using Kalendra.Commons.Tests.TestDataBuilders.Builders;
+﻿using Kalendra.MergeSystem.Runtime.Domain.Entities;
 
-namespace Kalendra.Commons.Tests.TestDataBuilders.Domain.Merge
+namespace Kalendra.MergeSystem.Tests.TestDataBuilders.Domain
 {
     internal class ColoredPieceBuilder : Builder<ColoredPiece>
     {

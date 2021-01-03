@@ -1,9 +1,6 @@
-﻿using FluentAssertions;
-using Kalendra.Commons.Runtime.Application.Merge;
-using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace Kalendra.Commons.Tests.Editor.Application
+namespace Kalendra.MergeSystem.Tests.Editor.Application.UseCases
 {
     public class MergeOperatorTests
     {

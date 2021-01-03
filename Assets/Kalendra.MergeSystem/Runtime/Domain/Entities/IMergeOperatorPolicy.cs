@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace Kalendra.Commons.Runtime.Domain.Merge
+namespace Kalendra.MergeSystem.Runtime.Domain.Entities
 {
     public interface IMergeOperatorPolicy
     {

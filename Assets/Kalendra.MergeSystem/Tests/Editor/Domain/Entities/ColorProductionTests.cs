@@ -1,9 +1,6 @@
-﻿using FluentAssertions;
-using Kalendra.Commons.Runtime.Domain.Merge;
-using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace Kalendra.Commons.Tests.Editor.Domain.Merge
+namespace Kalendra.MergeSystem.Tests.Editor.Domain.Entities
 {
     public class ColorProductionTests
     {

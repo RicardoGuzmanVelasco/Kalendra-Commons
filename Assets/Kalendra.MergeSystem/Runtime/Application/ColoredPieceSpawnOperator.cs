@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
-using Kalendra.Commons.Runtime.Application.BoardSystem;
+using Kalendra.BoardSystem.Runtime.Domain.Entities;
+using Kalendra.BoardSystem.Runtime.Domain.Policy;
 using Kalendra.Commons.Runtime.Architecture.Gateways;
 using Kalendra.Commons.Runtime.Architecture.Services;
-using Kalendra.Commons.Runtime.Domain.BoardSystem;
-using Kalendra.Commons.Runtime.Domain.Merge;
-using Kalendra.Commons.Runtime.Domain.Merge.DataModel;
+using Kalendra.MergeSystem.Runtime.Domain.Entities;
+using Kalendra.MergeSystem.Runtime.Domain.Entities.DataModel;
 
-namespace Kalendra.Commons.Runtime.Application.Merge
+namespace Kalendra.MergeSystem.Runtime.Application
 {
     /// <summary>
     /// Policy:

@@ -1,12 +1,8 @@
-﻿using Kalendra.BoardCore.Infraestructure.Services;
-using Kalendra.Commons.Runtime.Application.Merge;
-using Kalendra.Commons.Runtime.Architecture.Gateways;
-using Kalendra.Commons.Runtime.Architecture.Services;
-using Kalendra.Commons.Runtime.Domain.Merge.DataModel;
-using Kalendra.Commons.Tests.TestDataBuilders.Builders;
-using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
+﻿using Kalendra.MergeSystem.Runtime.Application;
+using Kalendra.MergeSystem.Runtime.Domain.Entities.DataModel;
+using Kalendra.MergeSystem.Tests.TestDataBuilders.StaticShortcuts;
 
-namespace Kalendra.Commons.Tests.TestDataBuilders.Domain.Merge
+namespace Kalendra.MergeSystem.Tests.TestDataBuilders.Application
 {
     internal class ColoredPieceSpawnOperatorBuilder : Builder<ColoredPieceSpawnOperator>
     {

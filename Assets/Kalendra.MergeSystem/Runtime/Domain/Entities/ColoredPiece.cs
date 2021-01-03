@@ -1,4 +1,4 @@
-﻿namespace Kalendra.Commons.Runtime.Domain.Merge
+﻿namespace Kalendra.MergeSystem.Runtime.Domain.Entities
 {
     public class ColoredPiece
     {

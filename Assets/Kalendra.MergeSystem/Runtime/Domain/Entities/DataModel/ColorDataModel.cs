@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kalendra.Commons.Runtime.Domain.Merge.DataModel
+namespace Kalendra.MergeSystem.Runtime.Domain.Entities.DataModel
 {
     [Serializable]
     public class ColorDataModel

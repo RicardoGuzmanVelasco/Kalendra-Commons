@@ -1,7 +1,4 @@
-﻿using Kalendra.Commons.Runtime.Architecture.Gateways;
-using Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem;
-
-namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
+﻿namespace Kalendra.MergeSystem.Tests.TestDataBuilders.StaticShortcuts
 {
     internal static partial class Fake
     {

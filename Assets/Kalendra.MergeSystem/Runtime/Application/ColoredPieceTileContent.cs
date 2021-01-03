@@ -1,7 +1,7 @@
-﻿using Kalendra.Commons.Runtime.Domain.BoardSystem;
-using Kalendra.Commons.Runtime.Domain.Merge;
+﻿using Kalendra.BoardSystem.Runtime.Domain.Entities;
+using Kalendra.MergeSystem.Runtime.Domain.Entities;
 
-namespace Kalendra.Commons.Runtime.Application.BoardSystem
+namespace Kalendra.MergeSystem.Runtime.Application
 {
     public class ColoredPieceTileContent : ITileContent
     {

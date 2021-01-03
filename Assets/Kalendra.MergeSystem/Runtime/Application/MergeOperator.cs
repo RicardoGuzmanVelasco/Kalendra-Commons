@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Kalendra.Commons.Runtime.Domain.Merge;
+using Kalendra.MergeSystem.Runtime.Domain.Entities;
 
-namespace Kalendra.Commons.Runtime.Application.Merge
+namespace Kalendra.MergeSystem.Runtime.Application
 {
     /// <summary>
     /// Policy:
