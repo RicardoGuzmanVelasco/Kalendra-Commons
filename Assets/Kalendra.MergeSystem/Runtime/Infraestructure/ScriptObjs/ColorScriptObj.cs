@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using Kalendra.Commons.Runtime.Domain.Merge;
-using Kalendra.Commons.Runtime.Domain.Merge.DataModel;
 using Kalendra.Commons.Runtime.Infraestructure.Merge.DataModel;
+using Kalendra.MergeSystem.Runtime.Domain.Entities;
+using Kalendra.MergeSystem.Runtime.Domain.Entities.DataModel;
 using UnityEngine;
 
 namespace Kalendra.Commons.Runtime.Infraestructure.Merge.ScriptObjs

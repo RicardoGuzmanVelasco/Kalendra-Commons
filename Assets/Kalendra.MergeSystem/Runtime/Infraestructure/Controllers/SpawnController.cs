@@ -1,6 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using Kalendra.Commons.Runtime.Domain.BoardSystem.UseCases;
+﻿using System.Threading.Tasks;
+using Kalendra.BoardSystem.Runtime.Domain.UseCases;
 using UnityEngine;
 using Zenject;
 

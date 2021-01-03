@@ -1,8 +1,10 @@
 {
     "name": "Kalendra.MergeSystem.Infraestructure",
     "references": [
+        "GUID:dd71efc06e808dd4f96fc733e2faea61",
         "GUID:7cffe5698f6593647aa6b44ffb86b235",
-        "GUID:1619e1e406660f94683d5bd8291ac516"
+        "GUID:1619e1e406660f94683d5bd8291ac516",
+        "GUID:54043fe83d89fc64dacdfa2401a9efac"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

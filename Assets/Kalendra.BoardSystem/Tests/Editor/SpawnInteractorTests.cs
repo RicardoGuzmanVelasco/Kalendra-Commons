@@ -1,12 +1,4 @@
-﻿using System.Threading.Tasks;
-using FluentAssertions;
-using Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations;
-using Kalendra.BoardSystem.Runtime.Domain.UseCases;
-using Kalendra.BoardSystem.Tests.TestDataBuilders.StaticShortcuts;
-using Kalendra.Commons.Runtime.Architecture.Boundaries;
-using Kalendra.Commons.Runtime.Architecture.Patterns;
-using NSubstitute;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Kalendra.BoardSystem.Tests.Editor
 {

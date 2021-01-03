@@ -1,8 +1,4 @@
-﻿using System;
-using FluentAssertions;
-using Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations;
-using Kalendra.BoardSystem.Tests.TestDataBuilders.StaticShortcuts;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Kalendra.BoardSystem.Tests.Editor
 {

@@ -1,5 +1,5 @@
-﻿using Kalendra.Commons.Runtime.Architecture.Gateways;
-using Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem;
+﻿using Kalendra.BoardSystem.Tests.TestDataBuilders.Domain;
+using Kalendra.Commons.Runtime.Architecture.Gateways;
 
 namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
 {
