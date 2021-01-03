@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Kalendra.BoardSystem.Runtime.Domain.Entities;
-using Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations;
 
-namespace Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations
+namespace Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations
 {
     internal class MergeOperation : IBoardOperation
     {

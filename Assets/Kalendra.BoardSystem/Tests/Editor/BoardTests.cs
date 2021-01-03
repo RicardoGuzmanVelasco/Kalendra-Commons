@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using FluentAssertions;
-using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
+using Kalendra.BoardSystem.Runtime.Domain.Entities;
+using Kalendra.BoardSystem.Tests.TestDataBuilders.StaticShortcuts;
 using NUnit.Framework;
 
 namespace Kalendra.BoardSystem.Tests.Editor

@@ -1,4 +1,6 @@
-﻿using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
+﻿using FluentAssertions;
+using Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations;
+using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
 using NUnit.Framework;
 
 namespace Kalendra.BoardSystem.Tests.Editor

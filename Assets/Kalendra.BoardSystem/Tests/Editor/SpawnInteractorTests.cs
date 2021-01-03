@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations;
+using Kalendra.BoardSystem.Runtime.Domain.UseCases;
 using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
 using NSubstitute;
 using NUnit.Framework;
