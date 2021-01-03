@@ -1,4 +1,10 @@
-﻿using NUnit.Framework;
+﻿using System;
+using FluentAssertions;
+using Kalendra.BoardSystem.Runtime.Domain.Entities;
+using Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations;
+using Kalendra.BoardSystem.Tests.TestDataBuilders.StaticShortcuts;
+using NSubstitute;
+using NUnit.Framework;
 
 namespace Kalendra.BoardSystem.Tests.Editor
 {
@@ -7,13 +13,13 @@ namespace Kalendra.BoardSystem.Tests.Editor
         [Test, Category("TODO")]
         public void New_WhenOriginAndTargetTilesAreTheSame_ThrowsException()
         {
-            // var someOperator = Build.MergeOperator().Build();
-            // var sameTile = Build.BoardTile().Build();
-            // MergeOperation sut;
-            //     
-            // Action act = () => sut = new MergeOperation(sameTile, sameTile, someOperator);
-            //
-            // act.Should().Throw<InvalidOperationException>();
+            var someOperator = Substitute.For<IMergeOperatorPolicy>();
+            var sameTile = Substitute.For<ITile>();
+            MergeOperation sut;
+                
+            Action act = () => sut = new MergeOperation(sameTile, sameTile, someOperator);
+            
+            act.Should().Throw<InvalidOperationException>();
         }
 
         [Test, Category("TODO")]
