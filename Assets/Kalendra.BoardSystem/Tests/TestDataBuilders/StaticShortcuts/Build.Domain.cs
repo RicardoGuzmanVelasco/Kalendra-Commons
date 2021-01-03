@@ -1,5 +1,5 @@
 ﻿using Kalendra.BoardSystem.Runtime.Domain.Entities;
-using Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem;
+using Kalendra.BoardSystem.Tests.TestDataBuilders.Domain;
 
 namespace Kalendra.BoardSystem.Tests.TestDataBuilders.StaticShortcuts
 {

@@ -2,10 +2,10 @@
 using Kalendra.BoardSystem.Runtime.Domain.Entities;
 using Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations;
 using Kalendra.BoardSystem.Runtime.Domain.Policy;
-using Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem;
+using Kalendra.BoardSystem.Tests.TestDataBuilders.Domain;
 using NSubstitute;
 
-namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
+namespace Kalendra.BoardSystem.Tests.TestDataBuilders.StaticShortcuts
 {
     //TODO: shortcuts to Fake MockBuilders.
     internal static partial class Fake

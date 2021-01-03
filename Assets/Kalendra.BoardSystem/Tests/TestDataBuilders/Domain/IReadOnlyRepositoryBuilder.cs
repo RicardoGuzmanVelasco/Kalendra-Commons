@@ -4,7 +4,7 @@ using Kalendra.Commons.Runtime.Architecture.Gateways;
 using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 using NSubstitute;
 
-namespace Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem
+namespace Kalendra.BoardSystem.Tests.TestDataBuilders.Domain
 {
     internal class ReadOnlyRepositoryMockBuilder<T> : MockBuilder<IReadOnlyRepository<T>> where T : new()
     {

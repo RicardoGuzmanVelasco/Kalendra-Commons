@@ -3,7 +3,7 @@ using Kalendra.BoardSystem.Runtime.Domain.Policy;
 using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 using NSubstitute;
 
-namespace Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem
+namespace Kalendra.BoardSystem.Tests.TestDataBuilders.Domain
 {
     internal class SpawnOperationBuilder : Builder<SpawnOperation>
     {

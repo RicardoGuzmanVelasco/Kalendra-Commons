@@ -2,7 +2,7 @@
 using Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations;
 using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 
-namespace Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem
+namespace Kalendra.BoardSystem.Tests.TestDataBuilders.Domain
 {
     internal class BoardOperationsManagerBuilder : Builder<BoardOperationsManager>
     {
