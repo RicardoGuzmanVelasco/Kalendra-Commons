@@ -16,6 +16,7 @@ namespace Kalendra.Commons.Runtime.Architecture.Patterns
     }
     #endregion
 
+    #region Async
     public interface ICommandAsync
     {
         Task Execute();
@@ -27,4 +28,5 @@ namespace Kalendra.Commons.Runtime.Architecture.Patterns
         Task Execute(T arg);
         Task Undo(T arg);
     }
+    #endregion
 }
