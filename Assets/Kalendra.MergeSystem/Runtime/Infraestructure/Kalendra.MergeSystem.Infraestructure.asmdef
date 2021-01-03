@@ -1,0 +1,16 @@
+{
+    "name": "Kalendra.MergeSystem.Infraestructure",
+    "references": [
+        "GUID:7cffe5698f6593647aa6b44ffb86b235",
+        "GUID:1619e1e406660f94683d5bd8291ac516"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
