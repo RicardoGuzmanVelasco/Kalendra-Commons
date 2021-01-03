@@ -1,7 +1,8 @@
 ﻿using FluentAssertions;
 using Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations;
-using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
+using Kalendra.BoardSystem.Tests.TestDataBuilders.StaticShortcuts;
 using NUnit.Framework;
+using Fake = Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts.Fake;
 
 namespace Kalendra.BoardSystem.Tests.Editor
 {

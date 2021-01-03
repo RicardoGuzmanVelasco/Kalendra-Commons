@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations;
+using Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations;
 using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 
 namespace Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem

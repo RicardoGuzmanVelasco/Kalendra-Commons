@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Kalendra.Commons.Runtime.Application.BoardSystem;
-using Kalendra.Commons.Runtime.Application.Merge;
-using Kalendra.Commons.Runtime.Domain.BoardSystem;
-using Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations;
+using Kalendra.BoardSystem.Runtime.Domain.Entities;
+using Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations;
+using Kalendra.BoardSystem.Runtime.Domain.Policy;
 using Kalendra.Commons.Tests.TestDataBuilders.Domain.BoardSystem;
 using NSubstitute;
 
@@ -16,8 +15,8 @@ namespace Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts
         public static ISpawnOperatorPolicy SpawnOperatorPolicy()
         {
             var mockSpawnPolicy = Substitute.For<ISpawnOperatorPolicy>();
-            var someContent = new ColoredPieceTileContent(Build.ColoredPiece());
-            mockSpawnPolicy.SpawnContent().Returns(Task.FromResult((ITileContent) someContent));
+            var someContent = TileContent_NotNull(); //TODO.
+            mockSpawnPolicy.SpawnContent().Returns(Task.FromResult(someContent));
 
             return mockSpawnPolicy;
         }

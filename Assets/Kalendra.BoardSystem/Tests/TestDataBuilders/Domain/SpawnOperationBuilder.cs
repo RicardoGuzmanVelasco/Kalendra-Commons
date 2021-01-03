@@ -1,5 +1,5 @@
-﻿using Kalendra.Commons.Runtime.Application.Merge;
-using Kalendra.Commons.Runtime.Domain.BoardSystem.BoardOperations;
+﻿using Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations;
+using Kalendra.BoardSystem.Runtime.Domain.Policy;
 using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 using NSubstitute;
 
