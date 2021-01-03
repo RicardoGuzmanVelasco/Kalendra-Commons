@@ -10,13 +10,15 @@ namespace Kalendra.BoardSystem.Tests.TestDataBuilders.StaticShortcuts
     //TODO: shortcuts to Fake MockBuilders.
     internal static partial class Fake
     {
+        public static ITile Tile() => TileMockBuilder.New().Build();
+        
         public static ITileContent TileContent_NotNull() => TileContentMockBuilder.New().Build();
 
         public static ISpawnOperatorPolicy SpawnOperatorPolicy()
         {
             var mockSpawnPolicy = Substitute.For<ISpawnOperatorPolicy>();
             var someContent = TileContent_NotNull(); //TODO.
-            mockSpawnPolicy.SpawnContent().Returns(Task.FromResult(someContent));
+            mockSpawnPolicy.SpawnContent().Returns(Task.FromResult(someContent), Task.FromResult(someContent));
 
             return mockSpawnPolicy;
         }

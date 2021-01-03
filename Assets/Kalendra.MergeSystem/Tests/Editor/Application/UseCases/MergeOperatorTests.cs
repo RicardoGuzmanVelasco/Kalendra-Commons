@@ -12,7 +12,7 @@ namespace Kalendra.MergeSystem.Tests.Editor.Application.UseCases
         {
             var coloredPiece1 = Build.ColoredPiece().WithPieceID("1");
             var coloredPiece2 = Build.ColoredPiece().WithPieceID("2");
-            MergeOperator sut = Build.MergeOperator();
+            ColoredPieceMergeOperator sut = Build.MergeOperator();
 
             var result = sut.Merge(coloredPiece1, coloredPiece2);
 
@@ -24,7 +24,7 @@ namespace Kalendra.MergeSystem.Tests.Editor.Application.UseCases
         {
             var piece1 = Build.ColoredPiece_Some().Build();
             var piece2 = Build.ColoredPiece_Some().Build();
-            MergeOperator sut = Build.MergeOperator();
+            ColoredPieceMergeOperator sut = Build.MergeOperator();
 
             var resultMerged = sut.Merge(piece1, piece2);
 
@@ -45,7 +45,7 @@ namespace Kalendra.MergeSystem.Tests.Editor.Application.UseCases
             var piece1 = Build.ColoredPiece_Some().WithColorID(color1).Build();
             var piece2 = Build.ColoredPiece_Some().WithColorID(color2).Build();
             
-            MergeOperator sut = Build.MergeOperator()
+            ColoredPieceMergeOperator sut = Build.MergeOperator()
                 .WithColorProductions(Build.ColorProduction()
                     .WithOriginalColors(color1, color2)
                     .WithResultColor(expectedColorResult));

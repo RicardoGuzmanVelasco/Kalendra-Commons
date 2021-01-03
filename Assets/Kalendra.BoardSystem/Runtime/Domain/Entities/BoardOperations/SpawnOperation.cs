@@ -23,7 +23,7 @@ namespace Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations
         #region IBoardOperation implementation
         public bool IsAvailable(IBoard targetBoard)
         {
-            return targetBoard.ListAllEmptyTiles.Any();
+            return targetBoard.ListAllEmptyTiles.Any(); //TODO: policy-dependent
         }
 
         public async Task Execute(IBoard targetBoard)

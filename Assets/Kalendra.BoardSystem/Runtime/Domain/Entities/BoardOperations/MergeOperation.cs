@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Kalendra.BoardSystem.Runtime.Domain.Policy;
+using UnityEngine;
 
 namespace Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations
 {
     internal class MergeOperation : IBoardOperation
     {
-        ITile originTile;
-        ITile targetTile;
+        readonly ITile originTile;
+        readonly ITile targetTile;
 
-        IMergeOperatorPolicy mergePolicy;
+        readonly IMergeOperatorPolicy mergePolicy;
+
+        MergeRequestResult mergeResultCache;
 
         #region Constructors
         public MergeOperation(ITile originTile, ITile targetTile, IMergeOperatorPolicy mergePolicy)
@@ -29,28 +33,33 @@ namespace Kalendra.BoardSystem.Runtime.Domain.Entities.BoardOperations
 
         public bool IsAvailable(IBoard targetBoard)
         {
-            throw new NotImplementedException();
+            return mergePolicy.IsAvailable(targetBoard);
         }
 
-#pragma warning disable 1998
         public async Task Execute(IBoard targetBoard)
-#pragma warning restore 1998
         {
-            //use mergePolicy. if merge is produced,store in target, clean merge in origin. 
+            if(mergeResultCache is null)
+                RequestMerge();
             
-            throw new System.NotImplementedException();
+            targetTile.Content = mergeResultCache.mergedTargetContent;
+            originTile.Content = new NullTileContent();
         }
 
-#pragma warning disable 1998
-        public async Task Undo(IBoard targetBoard)
-#pragma warning restore 1998
+        void RequestMerge()
         {
-            throw new System.NotImplementedException();
+            var targetContent = mergePolicy.Merge(originTile.Content, targetTile.Content);
+            SaveMergeResultInCache(targetContent);
         }
-    }
 
-    internal interface IMergeOperatorPolicy
-    {
-        //TEMP.
+        void SaveMergeResultInCache(ITileContent mergedContent)
+        {
+            mergeResultCache = new MergeRequestResult(originTile.Content, targetTile.Content, mergedContent);
+        }
+
+        public async Task Undo(IBoard targetBoard)
+        {
+            originTile.Content = mergeResultCache.oldOriginTileContent;
+            targetTile.Content = mergeResultCache.oldTargetTileContent;
+        }
     }
 }

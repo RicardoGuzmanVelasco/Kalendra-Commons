@@ -10,16 +10,16 @@ namespace Kalendra.MergeSystem.Runtime.Application
     /// Same tier, same color -> next tier, same color
     /// Same tier, different color -> same tier, produced color if any; no merge otherwise
     /// </summary>
-    public class MergeOperator : IMergeOperatorPolicy
+    public class ColoredPieceMergeOperator
     {
         readonly HashSet<ColorProduction> colorProductions;
 
-        public MergeOperator(HashSet<ColorProduction> colorProductions)
+        public ColoredPieceMergeOperator(HashSet<ColorProduction> colorProductions)
         {
             this.colorProductions = colorProductions;
         }
-
-        public ColoredPiece Merge( params ColoredPiece[] coloredPieces)
+        
+        public ColoredPiece Merge(params ColoredPiece[] coloredPieces)
         {
             if(!AllPiecesHaveSameTier(coloredPieces) || !AllPiecesHaveSamePieceID(coloredPieces))
                 return null;

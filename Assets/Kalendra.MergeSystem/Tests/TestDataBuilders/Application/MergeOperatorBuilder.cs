@@ -5,7 +5,7 @@ using Kalendra.MergeSystem.Runtime.Domain.Entities;
 
 namespace Kalendra.MergeSystem.Tests.TestDataBuilders.Application
 {
-    internal class MergeOperatorBuilder : Builder<MergeOperator>
+    internal class MergeOperatorBuilder : Builder<ColoredPieceMergeOperator>
     {
         HashSet<ColorProduction> colorProductions = new HashSet<ColorProduction>();
 
@@ -17,6 +17,6 @@ namespace Kalendra.MergeSystem.Tests.TestDataBuilders.Application
 
         public static MergeOperatorBuilder New() => new MergeOperatorBuilder();
         
-        public override MergeOperator Build() => new MergeOperator(colorProductions);
+        public override ColoredPieceMergeOperator Build() => new ColoredPieceMergeOperator(colorProductions);
     }
 }
