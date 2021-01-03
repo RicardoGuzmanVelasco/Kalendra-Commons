@@ -1,0 +1,23 @@
+{
+    "name": "Kalendra.MergeSystem.Tests.Builders",
+    "references": [
+        "GUID:dd71efc06e808dd4f96fc733e2faea61",
+        "GUID:6f60214731725354d8edd2fd110ee006",
+        "GUID:4c5265916d537f3428fe30fb54b7b82d",
+        "GUID:7cffe5698f6593647aa6b44ffb86b235",
+        "GUID:1619e1e406660f94683d5bd8291ac516"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "NSubstitute.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
