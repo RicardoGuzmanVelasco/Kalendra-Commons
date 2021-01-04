@@ -8,6 +8,8 @@ namespace Kalendra.BoardSystem.Runtime.Domain.Entities
 
         bool HasTile(int i, int j);
         ITile GetTile(int i, int j);
+        ITile this[int i, int j] { get; }
+        
         bool RemoveTile(int i, int j);
         bool AddTile(int i, int j);
         

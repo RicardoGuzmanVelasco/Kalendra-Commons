@@ -89,5 +89,9 @@ namespace Kalendra.BoardSystem.Runtime.Domain.Entities
 
         public IEnumerable<(int x, int y)> ListAllEmptyTiles => FindNoNullTiles().Where(pair => pair.Value.Content is NullTileContent).Select(pair => pair.Key).ToList();
         IEnumerable<KeyValuePair<(int x, int y), ITile>> FindNoNullTiles() => tiles.Where(pair => !(pair.Value is NullTile));
+
+        #region Operator overloading
+        public ITile this[int x, int y] => GetTile(x, y);
+        #endregion
     }
 }

@@ -54,6 +54,17 @@ namespace Kalendra.BoardSystem.Tests.Editor
 
             result.Should().BeOfType<NullTile>();
         }
+
+        [Test]
+        public void GetTile_SameThan_Indexer()
+        {
+            IBoard sut = Build.Board().Build();
+
+            var expected = sut[0, 0];
+            var result = sut.GetTile(0, 0);
+            
+            result.Should().BeEquivalentTo(expected);
+        }
         #endregion
         
         #region ListAllEmptyTiles
