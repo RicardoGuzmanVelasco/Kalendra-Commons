@@ -54,13 +54,13 @@ namespace Kalendra.BoardSystem.Tests.Editor
             mergeOperatorMock.IsAvailable(default).ReturnsForAnyArgs(true);
             mergeOperatorMock.Merge(default).ReturnsForAnyArgs(someContent);
 
-            MergeOperation sut = Build.MergeOperation().WithTargetTile(someboard.GetTile(0, 1)).WithPolicy(mergeOperatorMock);
+            MergeOperation sut = Build.MergeOperation().WithTargetTile(someboard[0, 1]).WithPolicy(mergeOperatorMock);
             
             //Act
             await sut.Execute(someboard);
             
             //Assert
-            someboard.GetTile(0, 1).Content.Should().Be(someContent);
+            someboard[0, 1].Content.Should().Be(someContent);
         }
         
         [Test]
@@ -68,20 +68,20 @@ namespace Kalendra.BoardSystem.Tests.Editor
         {
             //Arrange
             var someboard = Build.Board().WithSize(1, 2).Build();
-            someboard.GetTile(0, 0).Content = Fake.TileContent_NotNull();
+            someboard[0, 0].Content = Fake.TileContent_NotNull();
             
             var someContent = Fake.TileContent_NotNull();
             var mergeOperatorMock = Substitute.For<IMergeOperatorPolicy>();
             mergeOperatorMock.IsAvailable(default).ReturnsForAnyArgs(true);
             mergeOperatorMock.Merge(default).ReturnsForAnyArgs(someContent);
 
-            MergeOperation sut = Build.MergeOperation().WithOriginTile(someboard.GetTile(0, 0)).WithPolicy(mergeOperatorMock);
+            MergeOperation sut = Build.MergeOperation().WithOriginTile(someboard[0, 0]).WithPolicy(mergeOperatorMock);
             
             //Act
             await sut.Execute(someboard);
             
             //Assert
-            someboard.GetTile(0, 0).Content.Should().BeOfType<NullTileContent>();
+            someboard[0, 0].Content.Should().BeOfType<NullTileContent>();
         }
 
         [Test]
@@ -94,18 +94,18 @@ namespace Kalendra.BoardSystem.Tests.Editor
             mergeOperatorMock.IsAvailable(default).ReturnsForAnyArgs(true);
             mergeOperatorMock.Merge(default).ReturnsForAnyArgs(Fake.TileContent_NotNull(), Fake.TileContent_NotNull());
 
-            MergeOperation sut = Build.MergeOperation().WithTargetTile(someboard.GetTile(0, 1)).WithPolicy(mergeOperatorMock);
+            MergeOperation sut = Build.MergeOperation().WithTargetTile(someboard[0, 1]).WithPolicy(mergeOperatorMock);
             
             //Act
             await sut.Execute(someboard);
-            var expectedContent = someboard.GetTile(0, 1).Content;
+            var expectedContent = someboard[0, 1].Content;
             
             await sut.Undo(someboard);
             
             await sut.Execute(someboard);
             
             //Assert
-            someboard.GetTile(0, 1).Content.Should().Be(expectedContent);
+            someboard[0, 1].Content.Should().Be(expectedContent);
         }
         #endregion
         
@@ -121,14 +121,14 @@ namespace Kalendra.BoardSystem.Tests.Editor
             mergeOperatorMock.IsAvailable(default).ReturnsForAnyArgs(true);
             mergeOperatorMock.Merge(default).ReturnsForAnyArgs(someContent);
 
-            MergeOperation sut = Build.MergeOperation().WithTargetTile(someboard.GetTile(0, 1)).WithPolicy(mergeOperatorMock);
+            MergeOperation sut = Build.MergeOperation().WithTargetTile(someboard[0, 1]).WithPolicy(mergeOperatorMock);
             
             //Act
             await sut.Execute(someboard);
             await sut.Undo(someboard);
             
             //Assert
-            someboard.GetTile(0, 1).Content.Should().BeOfType<NullTileContent>();
+            someboard[0, 1].Content.Should().BeOfType<NullTileContent>();
         }
         
         [Test]
@@ -137,21 +137,21 @@ namespace Kalendra.BoardSystem.Tests.Editor
             //Arrange
             var pastContent = Fake.TileContent_NotNull();
             var someboard = Build.Board().WithSize(1, 2).Build();
-            someboard.GetTile(0, 1).Content = pastContent;
+            someboard[0, 1].Content = pastContent;
             
             var someContent = Fake.TileContent_NotNull();
             var mergeOperatorMock = Substitute.For<IMergeOperatorPolicy>();
             mergeOperatorMock.IsAvailable(default).ReturnsForAnyArgs(true);
             mergeOperatorMock.Merge(default).ReturnsForAnyArgs(someContent);
 
-            MergeOperation sut = Build.MergeOperation().WithTargetTile(someboard.GetTile(0, 1)).WithPolicy(mergeOperatorMock);
+            MergeOperation sut = Build.MergeOperation().WithTargetTile(someboard[0, 1]).WithPolicy(mergeOperatorMock);
             
             //Act
             await sut.Execute(someboard);
             await sut.Undo(someboard);
             
             //Assert
-            someboard.GetTile(0, 1).Content.Should().Be(pastContent);
+            someboard[0, 1].Content.Should().Be(pastContent);
         }
         
         [Test]
@@ -160,21 +160,21 @@ namespace Kalendra.BoardSystem.Tests.Editor
             //Arrange
             var pastContent = Fake.TileContent_NotNull();
             var someboard = Build.Board().WithSize(1, 2).Build();
-            someboard.GetTile(0, 0).Content = pastContent;
+            someboard[0, 0].Content = pastContent;
             
             var someContent = Fake.TileContent_NotNull();
             var mergeOperatorMock = Substitute.For<IMergeOperatorPolicy>();
             mergeOperatorMock.IsAvailable(default).ReturnsForAnyArgs(true);
             mergeOperatorMock.Merge(default).ReturnsForAnyArgs(someContent);
 
-            MergeOperation sut = Build.MergeOperation().WithOriginTile(someboard.GetTile(0, 0)).WithPolicy(mergeOperatorMock);
+            MergeOperation sut = Build.MergeOperation().WithOriginTile(someboard[0, 0]).WithPolicy(mergeOperatorMock);
             
             //Act
             await sut.Execute(someboard);
             await sut.Undo(someboard);
             
             //Assert
-            someboard.GetTile(0, 0).Content.Should().Be(pastContent);
+            someboard[0, 0].Content.Should().Be(pastContent);
         }
         #endregion
     }

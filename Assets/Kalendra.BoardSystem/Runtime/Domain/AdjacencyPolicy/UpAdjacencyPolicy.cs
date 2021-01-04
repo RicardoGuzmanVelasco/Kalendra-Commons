@@ -15,7 +15,7 @@ namespace Kalendra.BoardSystem.Runtime.Domain.AdjacencyPolicy
             if(!board.HasTile(x, y))
                 yield break;
             
-            yield return board.GetTile(x, y);
+            yield return board[x, y];
         }
 
         (int x, int y) GetAdjacentCoords((int x, int y) coords)

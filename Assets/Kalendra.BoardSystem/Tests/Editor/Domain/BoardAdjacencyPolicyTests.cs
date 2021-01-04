@@ -26,7 +26,7 @@ namespace Kalendra.BoardSystem.Tests.Editor
             var board = Build.Board().Build();
             UpAdjacencyPolicy sut = new UpAdjacencyPolicy();
 
-            var result = sut.GetAdjacentTiles(board, board.GetTile(0, 0));
+            var result = sut.GetAdjacentTiles(board, board[0, 0]);
 
             result.Should().BeEmpty();
         }
@@ -37,7 +37,7 @@ namespace Kalendra.BoardSystem.Tests.Editor
             var board = Build.Board().WithSize(1, 2).Build();
             UpAdjacencyPolicy sut = new UpAdjacencyPolicy();
 
-            var result = sut.GetAdjacentTiles(board, board.GetTile(0, 0));
+            var result = sut.GetAdjacentTiles(board, board[0, 0]);
 
             result.Single().Coords.Should().Be((0, 1));
         }
@@ -61,7 +61,7 @@ namespace Kalendra.BoardSystem.Tests.Editor
             var board = Build.Board().Build();
             DownAdjacencyPolicy sut = new DownAdjacencyPolicy();
 
-            var result = sut.GetAdjacentTiles(board, board.GetTile(0, 0));
+            var result = sut.GetAdjacentTiles(board, board[0, 0]);
 
             result.Should().BeEmpty();
         }
@@ -72,7 +72,7 @@ namespace Kalendra.BoardSystem.Tests.Editor
             var board = Build.Board().WithSize(1, 2).Build();
             DownAdjacencyPolicy sut = new DownAdjacencyPolicy();
 
-            var result = sut.GetAdjacentTiles(board, board.GetTile(0, 1));
+            var result = sut.GetAdjacentTiles(board, board[0, 1]);
 
             result.Single().Coords.Should().Be((0, 0));
         }

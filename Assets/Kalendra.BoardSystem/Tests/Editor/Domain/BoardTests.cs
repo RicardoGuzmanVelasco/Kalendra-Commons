@@ -40,7 +40,7 @@ namespace Kalendra.BoardSystem.Tests.Editor
         {
             Board sut = Build.Board();
 
-            var result = sut.GetTile(0, 0);
+            var result = sut[0, 0];
 
             result.Should().NotBeNull();
         }
@@ -50,7 +50,7 @@ namespace Kalendra.BoardSystem.Tests.Editor
         {
             Board sut = Build.Board();
 
-            var result = sut.GetTile(1, 0);
+            var result = sut[1, 0];
 
             result.Should().BeOfType<NullTile>();
         }
@@ -61,7 +61,7 @@ namespace Kalendra.BoardSystem.Tests.Editor
             IBoard sut = Build.Board().Build();
 
             var expected = sut[0, 0];
-            var result = sut.GetTile(0, 0);
+            var result = sut[0, 0];
             
             result.Should().BeEquivalentTo(expected);
         }
@@ -83,7 +83,7 @@ namespace Kalendra.BoardSystem.Tests.Editor
         public void ListAllEmptyTiles_WhenNoEmptyTiles_ReturnsEmptyCollection()
         {
             Board sut = Build.Board();
-            sut.GetTile(0, 0).Content = Fake.TileContent_NotNull();
+            sut[0, 0].Content = Fake.TileContent_NotNull();
             
             var resultemptyTiles = sut.ListAllEmptyTiles.ToList();
             
