@@ -9,46 +9,30 @@ namespace Kalendra.Commons.Tests.Runtime.Services
 {
     public class RandomServicesTests
     {
-        [UnityTest]
-        public IEnumerator SystemRandomService_SameSeedReturnsSameValues()
+        const int SomeSeed = 1500;
+
+        [Test]
+        public void SystemRandomService_SameSeedReturnsSameValues()
         {
-            var sut1 = new SystemRandomService(1500);
-            yield return null;
-            var sut2 = new SystemRandomService(1500);
+            var sut1 = new SystemRandomService(SomeSeed);
+            var sut2 = new SystemRandomService(SomeSeed);
 
             var resultsService1 = new[] {sut1.Next(), sut1.Next(), sut1.Next()};
-            yield return null;
             var resultsService2 = new[] {sut2.Next(), sut2.Next(), sut2.Next()};
 
             resultsService1.Should().BeEquivalentTo(resultsService2);
         }
         
-        [UnityTest, Category("TODO")]
-        public IEnumerator UnityRandomService_SameSeedReturnsSameValues()
+        [Test]
+        public void UnityRandomService_SameSeedReturnsSameValues()
         {
-            yield break;
-            var sut1 = new UnityEngineRandomService(1500);
-            yield return null;
-            var sut2 = new UnityEngineRandomService(1500);
+            var sut1 = new UnityEngineRandomService(SomeSeed);
+            var sut2 = new UnityEngineRandomService(SomeSeed);
 
             var resultsService1 = new[] {sut1.Next(), sut1.Next(), sut1.Next()};
-            yield return null;
             var resultsService2 = new[] {sut2.Next(), sut2.Next(), sut2.Next()};
 
             resultsService1.Should().BeEquivalentTo(resultsService2);
-        }
-
-        [Test]
-        public void UnityRandomServices_SameSeedReturnsSameValues()
-        {
-            var sut = new UnityEngineRandomService();
-
-            sut.Seed = 1500;
-            var resultFirst = new [] {sut.Next(), sut.Next(), sut.Next()};
-            sut.Seed = 1500;
-            var resultSecond = new [] {sut.Next(), sut.Next(), sut.Next()};
-
-            resultFirst.Should().BeEquivalentTo(resultSecond);
         }
     }
 }

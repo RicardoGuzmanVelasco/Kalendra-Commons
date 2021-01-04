@@ -1,8 +1,6 @@
 {
     "name": "Kalendra.MergeSystem.Domain",
-    "references": [
-        "GUID:dd71efc06e808dd4f96fc733e2faea61"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
