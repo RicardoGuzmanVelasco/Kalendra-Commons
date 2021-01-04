@@ -9,5 +9,4 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Kalendra.BoardSystem.Tests")]
 [assembly: InternalsVisibleTo("Kalendra.BoardSystem.Editor.Tests")]
 [assembly: InternalsVisibleTo("Kalendra.BoardSystem.Tests.Builders")]
-[assembly: InternalsVisibleTo("Kalendra.BoardSystem.EntryPoint")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")] //Where the mocks are. 

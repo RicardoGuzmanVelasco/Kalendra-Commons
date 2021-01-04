@@ -9,5 +9,4 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Kalendra.CharacterTaxonomySystem.Tests")]
 [assembly: InternalsVisibleTo("Kalendra.CharacterTaxonomySystem.Editor.Tests")]
 [assembly: InternalsVisibleTo("Kalendra.CharacterTaxonomySystem.Tests.Builders")]
-[assembly: InternalsVisibleTo("Kalendra.CharacterTaxonomySystem.EntryPoint")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")] //Where the mocks are. 
