@@ -1,18 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Threading.Tasks;
+using Kalendra.Commons.Runtime.Architecture.Boundaries;
 using UnityEngine;
 
-public class BoardPresenter : MonoBehaviour
+public class BoardPresenter : MonoBehaviour, IBoundaryOutputPort
 {
-    // Start is called before the first frame update
-    void Start()
+    public Task Response()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        throw new System.NotImplementedException();
     }
 }

@@ -1,6 +1,6 @@
-﻿using Kalendra.BoardCore.Infraestructure.Services;
-using Kalendra.Commons.Runtime.Architecture.Gateways;
+﻿using Kalendra.Commons.Runtime.Architecture.Gateways;
 using Kalendra.Commons.Runtime.Architecture.Services;
+using Kalendra.Commons.Runtime.Infraestructure.Services;
 using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 using Kalendra.Commons.Tests.TestDataBuilders.StaticShortcuts;
 using Kalendra.MergeSystem.Runtime.Application;

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Kalendra.CharacterTaxonomySystem.Runtime.Domain.Entities;
-using Kalendra.Commons.Runtime.Infraestructure.CharacterTaxonomySystem.ScriptableObjects;
+using Kalendra.Commons.Runtime.Infraestructure.Definitions;
 using UnityEngine;
 
 namespace Kalendra.CharacterTaxonomySystem.Runtime.Infraestructure.ScriptableObjects

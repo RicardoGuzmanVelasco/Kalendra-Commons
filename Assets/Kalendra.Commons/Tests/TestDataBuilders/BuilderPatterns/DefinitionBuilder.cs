@@ -1,4 +1,4 @@
-﻿using Kalendra.Commons.Runtime.Infraestructure.CharacterTaxonomySystem.ScriptableObjects;
+﻿using Kalendra.Commons.Runtime.Infraestructure.Definitions;
 using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 using UnityEngine;
 

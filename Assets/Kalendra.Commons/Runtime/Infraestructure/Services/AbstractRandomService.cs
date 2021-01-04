@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Kalendra.Commons.Runtime.Architecture.Services;
 
-namespace Kalendra.BoardCore.Infraestructure.Services
+namespace Kalendra.Commons.Runtime.Infraestructure.Services
 {
     public abstract class AbstractRandomService : IRandomService
     {

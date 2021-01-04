@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Kalendra.Commons.Runtime.Infraestructure.CharacterTaxonomySystem.ScriptableObjects
+namespace Kalendra.Commons.Runtime.Infraestructure.Definitions
 {
     public abstract class DefinitionScriptObj<TDataModel, TDefined> : ScriptableObject
         where TDataModel : DefinitionDataModel

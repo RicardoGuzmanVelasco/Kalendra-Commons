@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Kalendra.BoardCore.Infraestructure.Services
+namespace Kalendra.Commons.Runtime.Infraestructure.Services
 {
     public sealed class UnityEngineRandomService : AbstractRandomService
     {
