@@ -11,7 +11,7 @@ namespace Kalendra.CharacterTaxonomySystem.Tests.Runtime.Acceptance
     public class CharacterClassesAcceptanceTests
     {
         readonly IReadOnlyRepository<CharacterClassDefinition> loader =
-            new ByResourcesNameNotAsyncRepository<CharacterClassDefinition>();
+            new ResourcesNameSyncGateway<CharacterClassDefinition>();
 
         [Test]
         public async void NoCharacterClassDefinition_HasEmptyID()
