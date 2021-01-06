@@ -42,11 +42,7 @@ namespace Kalendra.BoardSystem.Runtime.Domain.Entities
 
         public bool HasTile(int i, int j)
         {
-            var (sizeX, sizeY) = Size;
-            
-            return 0 <= i && i < sizeX &&
-                   0 <= j && j < sizeY &&
-                   !(tiles[(i, j)] is NullTile);
+            return tiles.ContainsKey((i, j)) && !(tiles[(i, j)] is NullTile);
         }
 
         public bool RemoveTile(int i, int j)

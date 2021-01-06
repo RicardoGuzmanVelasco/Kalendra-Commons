@@ -208,6 +208,25 @@ namespace Kalendra.BoardSystem.Tests.Editor
         }
 
         [Test]
+        public void AddTile_NegativeCoords_ThenHasTile_ReturnsTrue()
+        {
+            Board sut = Build.Board();
+
+            var resultBefore = sut.HasTile(-1, -1);
+            sut.AddTile(-1, -1);
+            var resultAfter = sut.HasTile(-1, -1);
+
+            resultBefore.Should().BeFalse();
+            resultAfter.Should().BeTrue();
+        }
+
+        [Test, Category("TODO")]
+        public void AddTile_OnNewRange_ThenOthersInRange_AreNotAdded()
+        {
+            
+        }
+        
+        [Test]
         public void AddTile_OutOfRange_ThenHasTile_ReturnsTrue()
         {
             Board sut = Build.Board_WithNoTiles();

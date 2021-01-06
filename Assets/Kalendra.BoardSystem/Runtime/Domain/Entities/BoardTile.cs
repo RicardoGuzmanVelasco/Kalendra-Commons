@@ -10,14 +10,7 @@ namespace Kalendra.BoardSystem.Runtime.Domain.Entities
         #region Constructors/Init
         public BoardTile(int coordX, int coordY)
         {
-            AssertNonNegativeCoords(coordX, coordY);
             Coords = (coordX, coordY);
-        }
-
-        static void AssertNonNegativeCoords(int coordX, int coordY)
-        {
-            if(coordX < 0 || coordY < 0)
-                throw new ArgumentOutOfRangeException();
         }
         #endregion
     }
