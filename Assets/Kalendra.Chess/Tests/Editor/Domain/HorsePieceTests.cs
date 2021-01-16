@@ -6,13 +6,23 @@ using NUnit.Framework;
 
 namespace Kalendra.Chess.Tests.Editor.Domain
 {
-    public class HorseMovementTests
+    public class KnightPieceTests
     {
         [Test]
-        public void HorseMovement_OnNotTiledBoard_ReturnsEmpty()
+        public void KnightPiece_HasChessSet()
+        {
+            var sut = new KnightChessPiece(ChessSet.White);
+            
+            var result = sut.Set;
+
+            result.Should().Be(ChessSet.White);
+        }
+        
+        [Test]
+        public void KnightMovement_OnNotTiledBoard_ReturnsEmpty()
         {
             var notTiledBoard = Build.Board().Build();
-            var sut = new HorseMovement();
+            var sut = new KnightChessPiece();
 
             var result = sut.ListAvailableMovements(notTiledBoard, notTiledBoard[0, 0]);
 
@@ -20,10 +30,10 @@ namespace Kalendra.Chess.Tests.Editor.Domain
         }
 
         [Test]
-        public void HorseMovement_OnEmptyBoard_ReturnsLCoords()
+        public void KnightChessPiece_OnEmptyBoard_ReturnsLCoords()
         {
             var chessEmptyBoard = Build.Board().WithSize(8, 8).Build();
-            var sut = new HorseMovement();
+            var sut = new KnightChessPiece();
 
             var result = sut.ListAvailableMovements(chessEmptyBoard, chessEmptyBoard[2, 2]);
 
@@ -39,10 +49,10 @@ namespace Kalendra.Chess.Tests.Editor.Domain
         }
 
         [Test]
-        public void HorseMovement_OnCorner_NotReturnsCoordsOutOfRange()
+        public void KnightChessPiece_OnCorner_NotReturnsCoordsOutOfRange()
         {
             var chessEmptyBoard = Build.Board().WithSize(2, 3).Build();
-            var sut = new HorseMovement();
+            var sut = new KnightChessPiece();
 
             var result = sut.ListAvailableMovements(chessEmptyBoard, chessEmptyBoard[0, 0]);
 

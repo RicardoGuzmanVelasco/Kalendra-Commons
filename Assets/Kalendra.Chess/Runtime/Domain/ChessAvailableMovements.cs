@@ -6,13 +6,16 @@ namespace Kalendra.Chess.Runtime.Domain
 {
     public class ChessAvailableMovements
     {
-        readonly List<List<ITile>> tilesByTrajectory;
+        readonly ICollection<IEnumerable<ITile>> tilesByTrajectory;
 
-        public ChessAvailableMovements(List<List<ITile>> tilesByTrajectory)
+        public ChessAvailableMovements() : this(new List<IEnumerable<ITile>>()) { }
+        public ChessAvailableMovements(ICollection<IEnumerable<ITile>> tilesByTrajectory)
         {
             this.tilesByTrajectory = tilesByTrajectory;
         }
 
-        public IEnumerable<ITile> AllCoords => tilesByTrajectory.SelectMany(list => list);
+        public IEnumerable<(int x, int y)> AllCoords => tilesByTrajectory.SelectMany(trajectory => trajectory.Select(tile => tile.Coords));
+
+        public void AddNewTrajectory(params ITile[] tilesInTrajectory) => tilesByTrajectory.Add(tilesInTrajectory);
     }
 }

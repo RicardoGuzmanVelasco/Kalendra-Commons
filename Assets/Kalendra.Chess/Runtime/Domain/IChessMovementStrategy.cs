@@ -2,15 +2,8 @@
 
 namespace Kalendra.Chess.Runtime.Domain
 {
-    internal interface IChessPiece : ITileContent
+    internal interface IChessMovementStrategy
     {
-        ChessSet Set { get; }
         ChessAvailableMovements ListAvailableMovements(Board board, ITile tile);
-    }
-
-    internal enum ChessSet
-    {
-        White,
-        Black
     }
 }

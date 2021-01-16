@@ -2,7 +2,7 @@
 
 namespace Kalendra.Chess.Runtime.Domain
 {
-    internal class HorseMovement
+    internal class KnightMovement : IChessMovementStrategy
     {
         ChessAvailableMovements availableMovements;
         IBoard board;
