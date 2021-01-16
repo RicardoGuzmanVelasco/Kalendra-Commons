@@ -8,7 +8,7 @@ namespace Kalendra.Chess.Runtime.Domain
         IBoard board;
         (int x, int y) tileCoords;
 
-        public ChessAvailableMovements ListAvailableMovements(Board board, ITile tile)
+        public ChessAvailableMovements ListAvailableMovements(IBoard board, ITile tile)
         {
             availableMovements = new ChessAvailableMovements();
             this.board = board;

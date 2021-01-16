@@ -2,15 +2,28 @@
 
 namespace Kalendra.Chess.Runtime.Domain
 {
-    internal interface IChessPiece : ITileContent
+    public abstract class ChessPiece : IChessPiece
     {
-        ChessSet Set { get; }
-        ChessAvailableMovements ListAvailableMovements(Board board, ITile tile);
-    }
+        readonly IChessMovementStrategy movementStrategy;
+        public ChessSet Set { get; }
 
-    internal enum ChessSet
+        protected ChessPiece(ChessSet set, IChessMovementStrategy movementStrategy)
+        {
+            Set = set;
+            this.movementStrategy = movementStrategy;
+        }
+
+        public ChessAvailableMovements ListAvailableMovements(IBoard board, ITile tile)
+        {
+            return movementStrategy.ListAvailableMovements(board, tile);
+        }
+    }
+    
+    public class KnightChessPiece : ChessPiece
     {
-        White,
-        Black
+        public ChessSet Set { get; }
+
+        public KnightChessPiece() : this(ChessSet.White) { }
+        public KnightChessPiece(ChessSet set) : base(set, new KnightMovement()) { }
     }
 }
