@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Kalendra.BoardSystem.Runtime.Domain.Entities
 {
-    internal class Board : IBoard
+    public class Board : IBoard
     {
         public (int x, int y) Size { get; private set; }
         readonly Dictionary<(int x, int y), ITile> tiles = new Dictionary<(int, int), ITile>();

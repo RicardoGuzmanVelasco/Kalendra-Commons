@@ -34,7 +34,7 @@ namespace Kalendra.Chess.Tests.Editor.Domain
         [Test]
         public void AvailableMovements_OnEmptyBoard_ReturnsLCoords()
         {
-            var chessEmptyBoard = BoardBuild.Board().WithSize(8, 8).Build();
+            var chessEmptyBoard = BoardBuild.Board().WithSize(8, 8).Build(); //TODO: chessboard.
             var sut = ChessBuild.KnightPiece().Build();
 
             var result = sut.ListAvailableMovements(chessEmptyBoard, chessEmptyBoard[2, 2]);
@@ -62,19 +62,37 @@ namespace Kalendra.Chess.Tests.Editor.Domain
         }
 
         [Test]
-        public void AvailableMovements_IncludesCoords_WhithPieceOfDifferentSet()
+        public void AvailableMovements_IncludesCoords_WithPieceOfDifferentSet()
         {
             //Arrange
-            var chessEmptyBoard = BoardBuild.Board().WithSize(2, 3).Build();
-            chessEmptyBoard[1, 2].Content = Fake.BlackPiece().Build();
+            var someBoard = BoardBuild.Board().WithSize(2, 3).Build();
+            someBoard[1, 2].Content = Fake.BlackPiece().Build();
             
             var sut = ChessBuild.KnightPiece().WithSet(ChessSet.White).Build();
+            someBoard[0, 0].Content = sut;
 
             //Act
-            var result = sut.ListAvailableMovements(chessEmptyBoard, chessEmptyBoard[2, 2]);
+            var result = sut.ListAvailableMovements(someBoard, someBoard[2, 2]);
             
             //Assert
             result.AllCoords.Single().Should().Be((1, 2));
+        }
+        
+        [Test]
+        public void AvailableMovements_ExcludesCoords_WithPieceOfSameSet()
+        {
+            //Arrange
+            var someBoard = BoardBuild.Board().WithSize(2, 3).Build();
+            someBoard[1, 2].Content = Fake.WhitePiece().Build();
+            
+            var sut = ChessBuild.KnightPiece().WithSet(ChessSet.White).Build();
+            someBoard[0, 0].Content = sut;
+
+            //Act
+            var result = sut.ListAvailableMovements(someBoard, someBoard[2, 2]);
+            
+            //Assert
+            result.AllCoords.Should().BeEmpty();
         }
     }
 }

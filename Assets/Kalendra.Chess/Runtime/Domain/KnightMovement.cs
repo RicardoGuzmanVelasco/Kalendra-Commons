@@ -30,10 +30,19 @@ namespace Kalendra.Chess.Runtime.Domain
         {
             if(!board.HasTile(x, y))
                 return;
-            
-            //TODO: other piece? same team?
-            
+
+            if(CoordsAreOccupiedBySameChessSet(x, y))
+                return;
+
             availableMovements.AddNewTrajectory(board[x, y]);
+        }
+
+        bool CoordsAreOccupiedBySameChessSet(int x, int y)
+        {
+            //TODO: da problemas si selfPiece es nula (no está metida en el tablero).
+            return board[x, y].Content is IChessPiece targetPiece &&
+                   board[tileCoords.x, tileCoords.y].Content is IChessPiece selfPiece &&
+                   targetPiece.Set == selfPiece.Set;
         }
     }
 }
