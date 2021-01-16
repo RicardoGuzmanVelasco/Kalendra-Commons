@@ -1,0 +1,15 @@
+{
+    "name": "Kalendra.Chess.Domain",
+    "references": [
+        "GUID:54043fe83d89fc64dacdfa2401a9efac"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
