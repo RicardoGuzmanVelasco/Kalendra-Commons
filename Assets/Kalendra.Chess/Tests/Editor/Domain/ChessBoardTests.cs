@@ -6,6 +6,7 @@ namespace Kalendra.Chess.Tests.Editor.Domain
 {
     public class ChessBoardTests
     {
+        #region Castling
         [Theory]
         public void IsCastlingStillAvailable_IsTrue_ByDefault(ChessSet set)
         {
@@ -34,5 +35,10 @@ namespace Kalendra.Chess.Tests.Editor.Domain
         {
             //store any rook movement. If both moved, state set castling to false. Same with king.
         }
+        #endregion
+
+        #region ChessPiece shortcuts
+        
+        #endregion
     }
 }

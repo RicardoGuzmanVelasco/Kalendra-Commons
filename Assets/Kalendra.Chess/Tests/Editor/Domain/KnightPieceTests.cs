@@ -89,7 +89,7 @@ namespace Kalendra.Chess.Tests.Editor.Domain
             someBoard[0, 0].Content = sut;
 
             //Act
-            var result = sut.ListAvailableMovements(someBoard, someBoard[2, 2]);
+            var result = sut.ListAvailableMovements(someBoard, someBoard[0, 0]);
             
             //Assert
             result.AllCoords.Should().BeEmpty();

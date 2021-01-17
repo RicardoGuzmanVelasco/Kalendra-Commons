@@ -23,7 +23,6 @@ namespace Kalendra.Chess.Runtime.Domain
     {
         public ChessSet Set { get; }
 
-        public KnightChessPiece() : this(ChessSet.White) { }
         public KnightChessPiece(ChessSet set) : base(set, new KnightMovement()) { }
     }
 }
