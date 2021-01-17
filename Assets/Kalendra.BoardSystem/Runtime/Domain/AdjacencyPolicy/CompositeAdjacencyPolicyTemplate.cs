@@ -4,11 +4,11 @@ using Kalendra.BoardSystem.Runtime.Domain.Entities;
 
 namespace Kalendra.BoardSystem.Runtime.Domain.AdjacencyPolicy
 {
-    public abstract class OrderedGroupAdjacencyPolicyTemplate : IAdjacencyPolicy
+    public abstract class CompositeAdjacencyPolicyTemplate : IAdjacencyPolicy
     {
         readonly IEnumerable<IAdjacencyPolicy> orderedPolicies;
 
-        protected OrderedGroupAdjacencyPolicyTemplate() => orderedPolicies = OrderedPoliciesTemplateMethod();
+        protected CompositeAdjacencyPolicyTemplate() => orderedPolicies = OrderedPoliciesTemplateMethod();
 
         #region Template Method Pattern
         protected abstract IEnumerable<IAdjacencyPolicy> OrderedPoliciesTemplateMethod();

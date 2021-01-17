@@ -2,7 +2,7 @@
 
 namespace Kalendra.BoardSystem.Runtime.Domain.AdjacencyPolicy
 {
-    public class SquareAdjacencyPolicy : OrderedGroupAdjacencyPolicyTemplate
+    public class SquareAdjacencyPolicy : CompositeAdjacencyPolicyTemplate
     {
         protected override IEnumerable<IAdjacencyPolicy> OrderedPoliciesTemplateMethod()
         {
