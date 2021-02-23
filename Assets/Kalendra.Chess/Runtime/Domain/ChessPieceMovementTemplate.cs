@@ -13,7 +13,10 @@ namespace Kalendra.Chess.Runtime.Domain
             adjacency = GetAdjacencyPolicyTemplateMethod();
         }
 
+        #region Template
         protected abstract IAdjacencyPolicy GetAdjacencyPolicyTemplateMethod();
+        protected virtual void AddSpecialMovementsHook(IBoard board, ITile tile, ref ChessAvailableMovements movements) { }
+        #endregion
 
         public ChessAvailableMovements ListAvailableMovements(IBoard board, ITile tile)
         {
@@ -24,6 +27,8 @@ namespace Kalendra.Chess.Runtime.Domain
             
             foreach(var tiletoAdd in tiles)
                 availableMovements.AddNewTrajectory(tiletoAdd);
+
+            AddSpecialMovementsHook(board, tile, ref availableMovements);
             
             return availableMovements;
         }

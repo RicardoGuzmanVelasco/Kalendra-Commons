@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using Kalendra.Chess.Runtime.Domain;
 using NUnit.Framework;
 
@@ -37,6 +38,35 @@ namespace Kalendra.Chess.Tests.Editor.Domain
         }
         #endregion
 
+        #region Disposition
+        [Test]
+        public void FromBoardState_WithEmptyDisposition_ThenBoardHasNotPieces()
+        {
+            var state = new ChessBoardState();
+            var sut = new ChessBoard(state);
+
+            var emptyPiecesCount = sut.ListAllEmptyTiles.Count();
+
+            emptyPiecesCount.Should().Be(64);
+        }
+
+        [Theory]
+        public void BoardSettlePieces_FromBoardStateDisposition_WithOnePiece(ChessSet set, ChessPiece piece)
+        {
+            //Arrange
+            var disposition = new ChessBoardDisposition();
+            disposition.SettlePiece(new ChessCoordinate('a', 1), new ChessPieceDefinition(set, piece));
+            var sut = new ChessBoard(new ChessBoardState {Disposition = disposition});
+
+            //Act
+            var resultContent = sut[0, 0].Content as IChessPiece;
+
+            //Assert
+            resultContent.Set.Should().Be(set);
+            resultContent.PieceType.Should().Be(piece);
+        }
+        #endregion
+        
         #region ChessPiece shortcuts
         
         #endregion

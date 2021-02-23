@@ -7,5 +7,6 @@ namespace Kalendra.Chess.Tests.TestDataBuilders.StaticShortcuts
     {
         public static ChessPieceBuilder<KnightChessPiece> KnightPiece() => ChessPieceBuilder<KnightChessPiece>.New<KnightChessPiece>();
         public static ChessPieceBuilder<KingChessPiece> KingPiece() => ChessPieceBuilder<KingChessPiece>.New<KingChessPiece>();
+        public static ChessPieceBuilder<QueenChessPiece> QueenPiece() => ChessPieceBuilder<QueenChessPiece>.New<QueenChessPiece>();
     }
 }

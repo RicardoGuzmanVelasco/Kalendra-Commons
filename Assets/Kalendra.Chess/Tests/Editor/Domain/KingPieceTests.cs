@@ -48,5 +48,8 @@ namespace Kalendra.Chess.Tests.Editor.Domain
             result.AllCoords.Should().Contain((2, 1));
             result.AllCoords.Should().Contain((2, 2));
         }
+        
+        [Test, Category("TODO")]
+        public void Castling_NotInKing_ButInInteractorMaybe(){}
     }
 }

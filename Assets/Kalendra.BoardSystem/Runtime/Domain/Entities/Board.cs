@@ -7,7 +7,7 @@ namespace Kalendra.BoardSystem.Runtime.Domain.Entities
     public class Board : IBoard
     {
         public (int x, int y) Size { get; private set; }
-        readonly Dictionary<(int x, int y), ITile> tiles = new Dictionary<(int, int), ITile>();
+        protected readonly Dictionary<(int x, int y), ITile> tiles = new Dictionary<(int, int), ITile>();
         
         #region Constructors/Init
         public Board(int sizeX, int sizeY)

@@ -1,6 +1,7 @@
 {
     "name": "Kalendra.Chess.Domain",
     "references": [
+        "GUID:dd71efc06e808dd4f96fc733e2faea61",
         "GUID:54043fe83d89fc64dacdfa2401a9efac"
     ],
     "includePlatforms": [],

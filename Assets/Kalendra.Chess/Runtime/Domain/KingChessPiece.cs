@@ -1,9 +1,7 @@
 ﻿namespace Kalendra.Chess.Runtime.Domain
 {
-    public class KingChessPiece : ChessPiece
+    public class KingChessPiece : AbstractChessPiece
     {
-        public ChessSet Set { get; }
-
-        public KingChessPiece(ChessSet set) : base(set, new KingMovement()) { }
+        public KingChessPiece(ChessSet set) : base(set, ChessPiece.King, new KingMovement()) { }
     }
 }

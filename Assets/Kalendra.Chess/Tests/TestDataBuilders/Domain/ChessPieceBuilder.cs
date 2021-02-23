@@ -4,7 +4,7 @@ using Kalendra.Commons.Tests.TestDataBuilders.Builders;
 
 namespace Kalendra.Chess.Tests.TestDataBuilders.Domain
 {
-    internal class ChessPieceBuilder<T> : Builder<T> where T : ChessPiece
+    internal class ChessPieceBuilder<T> : Builder<T> where T : AbstractChessPiece
     {
         protected ChessSet set = ChessSet.White;
 
@@ -17,7 +17,7 @@ namespace Kalendra.Chess.Tests.TestDataBuilders.Domain
         #endregion
         
         #region ObjectMother/FactoryMethods
-        public static ChessPieceBuilder<T> New<T>() where T : ChessPiece => new ChessPieceBuilder<T>();
+        public static ChessPieceBuilder<T> New<T>() where T : AbstractChessPiece => new ChessPieceBuilder<T>();
         #endregion
         
         #region Builder implementation

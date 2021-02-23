@@ -3,29 +3,31 @@ using Kalendra.BoardSystem.Runtime.Domain.Entities;
 
 namespace Kalendra.Chess.Runtime.Domain
 {
-    public class ChessBoardSetUp
-    {
-        public bool WhiteCastlingAvailable { get; set; } = true;
-        public bool BlackCastlingAvailable { get; set; } = true;
-    }
-    
     public class ChessBoard : Board
     {
-        readonly ChessBoardSetUp state = new ChessBoardSetUp();
+        readonly ChessBoardSetUp metaData = new ChessBoardSetUp();
+        readonly ChessPieceFactory pieceFactory = new ChessPieceFactory();
         
         public ChessBoard() : base(8, 8) { }
-        public ChessBoard(ChessBoardSetUp setup) : base(8, 8) => state = setup;
+        public ChessBoard(ChessBoardSetUp setup) : base(8, 8) => metaData = setup;
+        public ChessBoard(ChessBoardState initialState) : this(initialState.Setup) => SettleInitialDisposition(initialState.Disposition);
+
+        void SettleInitialDisposition(ChessBoardDisposition disposition)
+        {
+            foreach(var ((x, y), chessPieceDefinition) in disposition)
+                tiles[(x, y)].Content = pieceFactory.Create(chessPieceDefinition);
+        }
 
         public bool IsCastlingStillAvailable(ChessSet set)
         {
             switch(set)
             {
                 case ChessSet.White:
-                    return state.WhiteCastlingAvailable;
+                    return metaData.WhiteCastlingAvailable;
                 case ChessSet.Black:
-                    return state.BlackCastlingAvailable;
+                    return metaData.BlackCastlingAvailable;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(set), set, null);
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }

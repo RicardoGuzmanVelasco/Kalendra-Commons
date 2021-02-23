@@ -2,14 +2,17 @@
 
 namespace Kalendra.Chess.Runtime.Domain
 {
-    public abstract class ChessPiece : IChessPiece
+    public abstract class AbstractChessPiece : IChessPiece
     {
         readonly IChessMovementStrategy movementStrategy;
-        public ChessSet Set { get; }
+        readonly ChessPieceDefinition definition;
 
-        protected ChessPiece(ChessSet set, IChessMovementStrategy movementStrategy)
+        public ChessSet Set => definition.Set;
+        public ChessPiece PieceType => definition.Piece;
+
+        protected AbstractChessPiece(ChessSet set, ChessPiece type, IChessMovementStrategy movementStrategy)
         {
-            Set = set;
+            definition = new ChessPieceDefinition(set, type);
             this.movementStrategy = movementStrategy;
         }
 
