@@ -1,0 +1,24 @@
+{
+    "name": "Kalendra.Time.Editor.Tests",
+    "references": [
+        "GUID:e372c541aba5148868e12aa078ca7c20",
+        "GUID:edfbb1ff808c40c38d1cfc2742c595f7",
+        "GUID:fbc1566956139db46b0272d48364f83b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "NSubstitute.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
