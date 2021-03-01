@@ -8,13 +8,13 @@ using NUnit.Framework;
 
 namespace Kalendra.Time.Tests.Editor
 {
-    public class TimeCounterTests
+    public class BeatCounterTests
     {
         #region Period
         [Test]
         public void Period_IfNegative_ThrowsException()
         {
-            ITimeCounter sut;
+            IBeatCounter sut;
             
             Action act = () => sut = new Counter(-1);
 

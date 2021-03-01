@@ -2,7 +2,7 @@
 
 namespace Kalendra.Time.Domain
 {
-    public class Counter : ITimeCounterInjectable
+    public class Counter : IBeatCounter, ITimeInjectable
     {
         double accumulated;
 
@@ -18,7 +18,7 @@ namespace Kalendra.Time.Domain
         }
         #endregion
         
-        #region ITimeCounter implementation
+        #region IBeatCounter implementation
         public float Hertz { get; }
         float Period => 1 / Math.Max(Hertz, float.Epsilon);
         public bool Paused { get; set; }

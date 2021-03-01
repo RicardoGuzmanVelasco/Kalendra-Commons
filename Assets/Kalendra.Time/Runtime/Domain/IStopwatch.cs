@@ -2,7 +2,7 @@
 
 namespace Kalendra.Time.Domain
 {
-    public interface IStopwatch
+    public interface IStopwatch : IPausable
     {
         TimeSpan Elapsed { get; }
     }
