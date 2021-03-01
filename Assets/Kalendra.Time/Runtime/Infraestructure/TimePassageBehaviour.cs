@@ -1,21 +1,15 @@
 ﻿using System;
 using Kalendra.Time.Domain;
 using UnityEngine;
+using Zenject;
 
 namespace Kalendra.Time.Runtime.Infraestructure
 {
-    public class TimePassageBehaviourInjector : MonoBehaviour
+    public class TimePassageBehaviour : MonoBehaviour
     {
         [SerializeField] float secondsScale = 1f;
         
-        ITimePassageInjectable timePassage;
-
-        void Awake()
-        {
-            InjectITimePassage(new TimePassage(DateTime.Now));
-
-            timePassage.OnNewSecond += () => Debug.Log(timePassage.CurrentDate - timePassage.InitialDate);
-        }
+        [Inject] ITimePassageInjectable timePassage;
 
         public void InjectITimePassage(ITimePassageInjectable timePassage) => this.timePassage = timePassage;
 
