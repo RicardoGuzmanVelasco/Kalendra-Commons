@@ -5,6 +5,8 @@ namespace Kalendra.Time.Domain
     public interface ITimeCounter
     {
         float Hertz { get; }
+        bool Paused { get; set; }
+        
         event Action Beat;
     }
     

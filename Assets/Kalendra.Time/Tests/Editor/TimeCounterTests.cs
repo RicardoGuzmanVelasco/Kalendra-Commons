@@ -1,5 +1,6 @@
 ﻿using System;
 using FluentAssertions;
+using FluentAssertions.Extensions;
 using Kalendra.BoardCore.Tests;
 using Kalendra.Time.Domain;
 using NSubstitute;
@@ -9,6 +10,7 @@ namespace Kalendra.Time.Tests.Editor
 {
     public class TimeCounterTests
     {
+        #region Period
         [Test]
         public void Period_IfNegative_ThrowsException()
         {
@@ -25,22 +27,24 @@ namespace Kalendra.Time.Tests.Editor
             var mockListener = Substitute.For<IEventListenerMock>();
             var sut = new Counter(0);
 
-            sut.Beat += mockListener.Called;
+            sut.Beat += mockListener.Call;
             sut.InjectTime(TimeSpan.MaxValue);
             
-            mockListener.DidNotReceive().Called();
+            mockListener.DidNotReceive().Call();
         }
+        #endregion
 
+        #region Beat
         [Test]
         public void Beat_IsCalled_ByFrequency_AfterInjection()
         {
             var mockListener = Substitute.For<IEventListenerMock>();
             var sut = new Counter(0);
 
-            sut.Beat += mockListener.Called;
+            sut.Beat += mockListener.Call;
             sut.InjectTime(TimeSpan.MaxValue);
             
-            mockListener.DidNotReceive().Called();
+            mockListener.DidNotReceive().Call();
         }
         
         [Theory, TestCase(0.999f), TestCase(1.001f), TestCase(1.5f), TestCase(99.999f)]
@@ -49,10 +53,41 @@ namespace Kalendra.Time.Tests.Editor
             var mockListener = Substitute.For<IEventListenerMock>();
             var sut = new Counter(1);
 
-            sut.Beat += mockListener.Called;
+            sut.Beat += mockListener.Call;
             sut.InjectTime(TimeSpan.FromSeconds(secondsToInject));
             
-            mockListener.Received((int)secondsToInject).Called();
+            mockListener.Received((int)secondsToInject).Call();
         }
+        #endregion
+        
+        #region Paused
+        [Test]
+        public void Paused_ThenInjectionDoesNotProduceBeat()
+        {
+            var mockListener = Substitute.For<IEventListenerMock>();
+            var sut = new Counter();
+            sut.Beat += mockListener.Call;
+
+            sut.Paused = true;
+            sut.InjectTime(1.Seconds());
+            
+            mockListener.DidNotReceive().Call();
+        }
+        
+        [Test]
+        public void Paused_ThenUnpaused_InjectionDidNotCount()
+        {
+            var mockListener = Substitute.For<IEventListenerMock>();
+            var sut = new Counter();
+            sut.Beat += mockListener.Call;
+
+            sut.Paused = true;
+            sut.InjectTime(0.9.Seconds());
+            sut.Paused = false;
+            sut.InjectTime(0.9.Seconds());
+            
+            mockListener.DidNotReceive().Call();
+        }
+        #endregion
     }
 }

@@ -96,10 +96,10 @@ namespace Kalendra.Time.Tests.Editor
             var mockListener = Substitute.For<IEventListenerMock>();
             var sut = new TimePassage(DateTime.MinValue);
 
-            sut.OnNewSecond += mockListener.Called;
+            sut.OnNewSecond += mockListener.Call;
             sut.InjectTime(1.Ticks());
             
-            mockListener.DidNotReceive().Called();
+            mockListener.DidNotReceive().Call();
         }
 
         [Theory, TestCase(1.5f), TestCase(0.99f), TestCase(1.001f), TestCase(99.999f)]
@@ -108,10 +108,10 @@ namespace Kalendra.Time.Tests.Editor
             var mockListener = Substitute.For<IEventListenerMock>();
             var sut = new TimePassage(DateTime.MinValue);
 
-            sut.OnNewSecond += mockListener.Called;
+            sut.OnNewSecond += mockListener.Call;
             sut.InjectTime(TimeSpan.FromSeconds(secondsToInject));
             
-            mockListener.Received((int)secondsToInject).Called();
+            mockListener.Received((int)secondsToInject).Call();
         }
 
         [Test, Category("TODO")]
@@ -121,11 +121,11 @@ namespace Kalendra.Time.Tests.Editor
             var mockListener = Substitute.For<IEventListenerMock>();
             var sut = new TimePassage(DateTime.MinValue);
 
-            sut.OnNewSecond += mockListener.Called;
+            sut.OnNewSecond += mockListener.Call;
             sut.InjectTime(0.6.Seconds());
             sut.InjectTime(0.6.Seconds());
             
-            mockListener.Received(1).Called();
+            mockListener.Received(1).Call();
         }
         #endregion
     }

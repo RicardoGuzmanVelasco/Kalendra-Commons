@@ -2,6 +2,6 @@
 {
     public interface IEventListenerMock
     {
-        void Called();
+        void Call();
     }
 }
