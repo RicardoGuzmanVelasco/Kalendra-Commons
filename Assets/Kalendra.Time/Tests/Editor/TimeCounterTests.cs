@@ -27,7 +27,7 @@ namespace Kalendra.Time.Tests.Editor
             var mockListener = Substitute.For<IEventListenerMock>();
             var sut = new Counter(0);
 
-            sut.Beat += mockListener.Call;
+            sut.OnBeat += mockListener.Call;
             sut.InjectTime(TimeSpan.MaxValue);
             
             mockListener.DidNotReceive().Call();
@@ -41,7 +41,7 @@ namespace Kalendra.Time.Tests.Editor
             var mockListener = Substitute.For<IEventListenerMock>();
             var sut = new Counter(0);
 
-            sut.Beat += mockListener.Call;
+            sut.OnBeat += mockListener.Call;
             sut.InjectTime(TimeSpan.MaxValue);
             
             mockListener.DidNotReceive().Call();
@@ -53,7 +53,7 @@ namespace Kalendra.Time.Tests.Editor
             var mockListener = Substitute.For<IEventListenerMock>();
             var sut = new Counter(1);
 
-            sut.Beat += mockListener.Call;
+            sut.OnBeat += mockListener.Call;
             sut.InjectTime(TimeSpan.FromSeconds(secondsToInject));
             
             mockListener.Received((int)secondsToInject).Call();
@@ -66,7 +66,7 @@ namespace Kalendra.Time.Tests.Editor
         {
             var mockListener = Substitute.For<IEventListenerMock>();
             var sut = new Counter();
-            sut.Beat += mockListener.Call;
+            sut.OnBeat += mockListener.Call;
 
             sut.Paused = true;
             sut.InjectTime(1.Seconds());
@@ -79,7 +79,7 @@ namespace Kalendra.Time.Tests.Editor
         {
             var mockListener = Substitute.For<IEventListenerMock>();
             var sut = new Counter();
-            sut.Beat += mockListener.Call;
+            sut.OnBeat += mockListener.Call;
 
             sut.Paused = true;
             sut.InjectTime(0.9.Seconds());
@@ -94,7 +94,7 @@ namespace Kalendra.Time.Tests.Editor
         {
             var mockListener = Substitute.For<IEventListenerMock>();
             var sut = new Counter();
-            sut.Beat += mockListener.Call;
+            sut.OnBeat += mockListener.Call;
 
             sut.InjectTime(0.9.Seconds());
             sut.Stop();

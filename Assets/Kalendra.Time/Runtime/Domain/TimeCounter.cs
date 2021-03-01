@@ -23,7 +23,7 @@ namespace Kalendra.Time.Domain
         float Period => 1 / Math.Max(Hertz, float.Epsilon);
         public bool Paused { get; set; }
 
-        public event Action Beat;
+        public event Action OnBeat;
 
         public void Stop()
         {
@@ -48,7 +48,7 @@ namespace Kalendra.Time.Domain
             while(accumulated >= Period)
             {
                 accumulated -= Period;
-                Beat?.Invoke();
+                OnBeat?.Invoke();
             }
         }
     }
