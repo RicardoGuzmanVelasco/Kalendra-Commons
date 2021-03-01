@@ -5,12 +5,6 @@ namespace Kalendra.Time.Domain
     public class Counter : ITimeCounterInjectable
     {
         double accumulated;
-        
-        public float Hertz { get; }
-        float Period => 1 / Math.Max(Hertz, float.Epsilon);
-        public bool Paused { get; set; }
-
-        public event Action Beat;
 
         #region Constructors
         public Counter() : this(1) { }
@@ -21,6 +15,20 @@ namespace Kalendra.Time.Domain
             
             Hertz = hertz;
             Paused = paused;
+        }
+        #endregion
+        
+        #region ITimeCounter implementation
+        public float Hertz { get; }
+        float Period => 1 / Math.Max(Hertz, float.Epsilon);
+        public bool Paused { get; set; }
+
+        public event Action Beat;
+
+        public void Stop()
+        {
+            Paused = true;
+            accumulated = 0;
         }
         #endregion
 

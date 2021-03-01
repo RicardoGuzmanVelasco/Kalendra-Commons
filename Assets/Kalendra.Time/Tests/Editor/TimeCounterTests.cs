@@ -60,7 +60,7 @@ namespace Kalendra.Time.Tests.Editor
         }
         #endregion
         
-        #region Paused
+        #region Paused/Stop
         [Test]
         public void Paused_ThenInjectionDoesNotProduceBeat()
         {
@@ -87,6 +87,34 @@ namespace Kalendra.Time.Tests.Editor
             sut.InjectTime(0.9.Seconds());
             
             mockListener.DidNotReceive().Call();
+        }
+        
+        [Test]
+        public void Stop_ThenAccumulated_IsReset()
+        {
+            var mockListener = Substitute.For<IEventListenerMock>();
+            var sut = new Counter();
+            sut.Beat += mockListener.Call;
+
+            sut.InjectTime(0.9.Seconds());
+            sut.Stop();
+            sut.Paused = false;
+            sut.InjectTime(0.9.Seconds());
+            
+            mockListener.DidNotReceive().Call();
+        }
+        
+        [Test]
+        public void Stop_ThenIsPaused()
+        {
+            var sut = new Counter();
+
+            var pausedBefore = sut.Paused;
+            sut.Stop();
+            var pausedAfter = sut.Paused;
+
+            pausedBefore.Should().BeFalse();
+            pausedAfter.Should().BeTrue();
         }
         #endregion
     }
