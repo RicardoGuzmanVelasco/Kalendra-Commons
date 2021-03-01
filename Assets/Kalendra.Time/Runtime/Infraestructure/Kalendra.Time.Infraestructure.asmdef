@@ -1,0 +1,16 @@
+{
+    "name": "Kalendra.Time.Infraestructure",
+    "references": [
+        "GUID:dd71efc06e808dd4f96fc733e2faea61",
+        "GUID:fbc1566956139db46b0272d48364f83b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

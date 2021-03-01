@@ -2,7 +2,7 @@
 
 namespace Kalendra.Time.Domain
 {
-    public class TimePassage : ITimeInjectable
+    public class TimePassage : ITimePassageInjectable
     {
         readonly DateDelta datePassage;
         
@@ -18,9 +18,11 @@ namespace Kalendra.Time.Domain
         #region Properties
         public DateTime CurrentDate => datePassage.Current;
         public DateTime InitialDate => datePassage.Beggining;
+
+        public TimeSpan TotalElapsedTime => datePassage.TotalDelta;
         #endregion
         
-        #region Events
+        #region Events / ITimePassage implementation
         public event Action OnNewSecond;
         #endregion
 

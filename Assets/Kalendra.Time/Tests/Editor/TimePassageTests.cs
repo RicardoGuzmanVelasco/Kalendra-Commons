@@ -53,6 +53,40 @@ namespace Kalendra.Time.Tests.Editor
 
             resultInitial.Should().Be(DateTime.MinValue);
         }
+
+        [Test]
+        public void TotalElapsedTime_IsZero_ByDefault()
+        {
+            var sut = new TimePassage(DateTime.MinValue);
+
+            var result = sut.TotalElapsedTime;
+
+            result.Should().Be(TimeSpan.Zero);
+        }
+
+        [Test]
+        public void TotalElapsedTime_IsDelta_AfterOneInjection()
+        {
+            var sut = new TimePassage(DateTime.MinValue);
+
+            sut.InjectTime(1.Days());
+            var result = sut.TotalElapsedTime;
+
+            result.Should().Be(1.Days());
+        }
+        
+        [Test]
+        public void TotalElapsedTime_IsAccDelta_AfterSomeInjections()
+        {
+            var sut = new TimePassage(DateTime.MinValue);
+
+            sut.InjectTime(1.Days());
+            sut.InjectTime(10.Hours());
+            sut.InjectTime(30.Minutes());
+            var result = sut.TotalElapsedTime;
+
+            result.Should().Be(1.Days().And(10.Hours()).And(30.Minutes()));
+        }
         #endregion
         
         #region Events
@@ -78,6 +112,19 @@ namespace Kalendra.Time.Tests.Editor
             sut.InjectTime(TimeSpan.FromSeconds(secondsToInject));
             
             mockListener.Received((int)secondsToInject).Called();
+        }
+
+        [Test]
+        public void OnNewSecond_Called_AfterSeveralInjections()
+        {
+            var mockListener = Substitute.For<IEventListenerMock>();
+            var sut = new TimePassage(DateTime.MinValue);
+
+            sut.OnNewSecond += mockListener.Called;
+            sut.InjectTime(0.6.Seconds());
+            sut.InjectTime(0.6.Seconds());
+            
+            mockListener.Received(1).Called();
         }
         #endregion
     }
